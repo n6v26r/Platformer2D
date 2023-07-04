@@ -16,7 +16,7 @@ public class LavaBlock : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (OnLavaStay != null)
+        if (OnLavaExit != null)
         {
             OnLavaExit(collision.gameObject);
         }

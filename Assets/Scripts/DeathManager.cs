@@ -10,11 +10,13 @@ public class DeathManager : MonoBehaviour
     void Awake()
     {
         lavaBlock.OnLavaStay += StayedInLava;
+        lavaBlock.OnLavaExit += LeftLava;
     }
 
     private void OnDestroy()
     {
         lavaBlock.OnLavaStay -= StayedInLava;
+        lavaBlock.OnLavaExit -= LeftLava;
     }
 
     private void StayedInLava(GameObject gameObject)
@@ -29,16 +31,16 @@ public class DeathManager : MonoBehaviour
         CheckDeath(healthComp);
     }
 
+    private void LeftLava(GameObject gameObject)
+    {
+        
+    }
+
     private void CheckDeath(Health healthComp)
     {
         if (healthComp.health <= 0)
         {
             Destroy(healthComp.gameObject);
         }
-    }
-
-    public void Die()
-    {
-        
     }
 }
