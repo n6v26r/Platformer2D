@@ -49,8 +49,8 @@ public class Movement : MonoBehaviour
         if((xinput != 1 || (rb.velocity.x < speedcap )) && (xinput != -1 || (rb.velocity.x > -speedcap)))
             rb.AddForce(new Vector2(acceleration * xinput, 0));
 
-        Debug.Log(jumped);
-        if (jumped != 0 && onground != 0) {
+        Debug.Log(onground);
+        if (jumped > 0 && onground > 0) {
             onground = 0;
             jumped = 0;
             rb.velocity = new Vector2(rb.velocity.x, 0);
@@ -65,8 +65,8 @@ public class Movement : MonoBehaviour
         if (jumped > 0)
             jumped -= 0.1f;
 
-        if (jumped > 0)
-            jumped -= 0.1f;
+        if (onground > 0)
+            onground -= 0.1f;
 
         if (rb.velocity.y < -15)
             rb.velocity = new Vector2(rb.velocity.x, -15);
