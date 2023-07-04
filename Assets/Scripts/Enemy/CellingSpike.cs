@@ -1,18 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CellingSpike : PrototypeEnemyAI
 {
-    
+    public Action<GameObject> OnSpikeHit;
+
     protected BoxCollider2D SelfBoxCollider;
     protected bool EntityBelow;
     protected bool IsFalling;
-    protected bool DidHit;
 
     [SerializeField] protected float SecondsBeforeKO = 3;
     // Start is called before the first frame update
-    void Awake(){
+    void Awake()
+    {
         SelfRigidBody = GetComponent<Rigidbody2D>();
         SelfBoxCollider = GetComponent<BoxCollider2D>(); 
     }
@@ -43,9 +45,10 @@ public class CellingSpike : PrototypeEnemyAI
 
 
     void OnCollisionEnter2D(Collision2D other){
-        if(IsFalling){
-            DidHit = true;
+        if(IsFalling == true){
+            IsFalling = false;
             StartCoroutine(WaitForKO());
+            OnSpikeHit(gameObject);
         }
     }
     
