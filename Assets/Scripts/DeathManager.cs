@@ -5,21 +5,23 @@ using UnityEngine;
 public class DeathManager : MonoBehaviour
 {
     [SerializeField] private LavaBlock lavaBlock;
+    [SerializeField] private Movement playermovement;
 
     void Awake()
     {
-        lavaBlock.OnLavaStay += Stayed;
+        lavaBlock.OnLavaStay += StayedInLava;
     }
 
     private void OnDestroy()
     {
-        lavaBlock.OnLavaStay -= Stayed;
+        lavaBlock.OnLavaStay -= StayedInLava;
     }
 
-    private void Stayed(GameObject gameObject)
+    private void StayedInLava(GameObject gameObject)
     {
         Health healthComp = gameObject.GetComponent<Health>();
         healthComp.health -= 0.5f;
+        
 
         CheckDeath(healthComp);
     }
