@@ -46,7 +46,7 @@ public class Movement : MonoBehaviour
     }
 
     private void FixedUpdate() {
-        if (rb.velocity.x < speedcap && rb.velocity.x > -speedcap)
+        if((xinput != 1 || (rb.velocity.x < speedcap )) && (xinput != -1 || (rb.velocity.x > -speedcap)))
             rb.AddForce(new Vector2(acceleration * xinput, 0));
 
         Debug.Log(jumped);
