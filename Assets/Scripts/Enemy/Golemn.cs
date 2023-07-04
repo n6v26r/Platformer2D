@@ -2,25 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Walker : PrototypeEnemyAI
+public class Golemn : Walker
 {
-    protected Vector2 Direction;
-    protected float DistanceToWall;
-    protected float RememberPlayerTimer;
 
-    protected BoxCollider2D SelfBoxCollider;
-
-    [SerializeField] protected Vector2 PatrolDirection = Vector2.right;
-    [SerializeField] protected float PatrolDistance = 10;
-    [SerializeField] protected float RememberPlayerCounter = 3f;
-    [SerializeField] protected float PatrolStopBeforeWall = 2;
-
-    // Start is called before the first frame update
-
-    void Awake(){
-        SelfRigidBody = GetComponent<Rigidbody2D>();
-        SelfBoxCollider = GetComponent<BoxCollider2D>();
-    }
 
     // Update is called once per frame
     void Update()

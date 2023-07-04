@@ -10,11 +10,6 @@ public class Slime : Walker
     [SerializeField] protected float JumpPower = 300f;
     [SerializeField] protected float JumpCooldown = 3f;
 
-    void Awake(){
-        SelfRigidBody = GetComponent<Rigidbody2D>();
-        SelfBoxCollider = GetComponent<BoxCollider2D>();
-    }
-
     void FixedUpdate() {
         JumpCooldownTimer += Time.fixedDeltaTime;
 
