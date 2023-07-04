@@ -10,7 +10,8 @@ public class Walker : PrototypeEnemyAI
     protected float DistanceToWall; 
     [SerializeField] protected Vector2 PatrolDirection = Vector2.right;
     [SerializeField] protected float PatrolDistance = 10;
-
+    [SerializeField] protected float IgnorePlayerCounter = 2f;
+    [SerializeField] protected float IgnorePlayerTimer;
     [SerializeField] protected float PatrolStopBeforeWall = 2;
 
     // Start is called before the first frame update
@@ -23,15 +24,19 @@ public class Walker : PrototypeEnemyAI
     // Update is called once per frame
     void Update()
     {
+        IgnorePlayerTimer += Time.deltaTime;
         SetTarget(Victim.GetComponent<Transform>().position);
-        
+
         bool IsVictimVisible = FollowVictim();
-        if(!IsVictimVisible){ // Patrol
-            Debug.Log("Patrol");
+        if(!IsVictimVisible || IgnorePlayerTimer<=IgnorePlayerCounter){ // Patrol
+            Debug.Log("Basic Walker enters patrol");
             Patrol();
         }
-        else
+        else{
+            Debug.Log("Basic Walker enters patrol");
+            IgnorePlayerTimer = 0;
             PatrolDirection = Direction;
+        }
         MoveTarget();
         //if(CanJump) SelfRigidBody.AddForce(Vector3.up * JumpPower); 
     }   
