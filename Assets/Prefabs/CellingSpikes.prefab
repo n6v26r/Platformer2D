@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 745561115121086677}
   - component: {fileID: 5323505150279640781}
   - component: {fileID: 6184332151890115042}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CellingSpikes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,11 +29,11 @@ Transform:
   m_GameObject: {fileID: 5987299586485048221}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.7686, y: 5.1823, z: 0}
-  m_LocalScale: {x: 0.4930731, y: 2.9555, z: 1}
+  m_LocalScale: {x: 1, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &9020121397249386386
 SpriteRenderer:
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: -2053173981, guid: ab15b496b79dd8a4cb101caff9d37c43, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -166,7 +166,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.875, y: 1.6875}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

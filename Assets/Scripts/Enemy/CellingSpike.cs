@@ -14,14 +14,13 @@ public class CellingSpike : PrototypeEnemyAI
     // Start is called before the first frame update
     void Awake(){
         SelfRigidBody = GetComponent<Rigidbody2D>();
-        SelfBoxCollider = GetComponent<BoxCollider2D>();
-
-        SelfRigidBody.bodyType = RigidbodyType2D.Kinematic;
+        SelfBoxCollider = GetComponent<BoxCollider2D>(); 
     }
     
     void Start()
     {
-        
+        SelfRigidBody.bodyType = RigidbodyType2D.Dynamic;
+        SelfRigidBody.gravityScale = 0f;
     }
 
     // Update is called once per frame
@@ -29,8 +28,8 @@ public class CellingSpike : PrototypeEnemyAI
     {
         if(EntityBelow){
             IsFalling = true;
-            SelfRigidBody.bodyType = RigidbodyType2D.Dynamic;
             SelfRigidBody.gravityScale = 4;
+            EntityBelow = false;
         }
     }
 
