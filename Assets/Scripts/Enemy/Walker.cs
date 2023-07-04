@@ -7,24 +7,27 @@ public class Walker : PrototypeEnemyAI
     protected Vector2 Direction;
     protected float DistanceToWall; 
     protected float IgnorePlayerTimer;
+    protected float RememberPlayerTimer;
 
     [SerializeField] protected Vector2 PatrolDirection = Vector2.right;
     [SerializeField] protected float PatrolDistance = 10;
     [SerializeField] protected float IgnorePlayerCounter = 2f;
+    [SerializeField] protected float RememberPlayerCounter = 3f;
     [SerializeField] protected float PatrolStopBeforeWall = 2;
 
     // Start is called before the first frame update
-    void Start()
-    {
-        transform.position = StartPosition;
+
+    void Awake(){
         SelfRigidBody = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        IgnorePlayerTimer += Time.deltaTime;
-        SetTarget(Victim.GetComponent<Transform>().position);
+        if(RememberPlayerTimer>RememberPlayerCounter)
+            IgnorePlayerTimer += Time.deltaTime;
+        else
+            RememberPlayerTimer += Time.deltaTime;
 
         bool IsVictimVisible = FollowVictim();
         if(!IsVictimVisible || IgnorePlayerTimer<=IgnorePlayerCounter){ // Patrol
@@ -32,6 +35,7 @@ public class Walker : PrototypeEnemyAI
             Patrol();
         }
         else{
+            RememberPlayerTimer = 0;
             Debug.Log("Basic Walker exists patrol");
             IgnorePlayerTimer = 0;
             PatrolDirection = Direction;

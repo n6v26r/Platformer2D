@@ -5,16 +5,14 @@ using UnityEngine;
 public class PrototypeEnemyAI : MonoBehaviour
 {
     public float Speed = 2f;
-    public Vector3 StartPosition = new Vector3(0, 0, 0);
-    
+
     [SerializeField] protected Vector2 Target;
     public GameObject Victim;
 
     // Start is called before the first frame update
     protected Rigidbody2D SelfRigidBody;
-    void Start()
-    {
-        transform.position = StartPosition;
+
+    void Awake(){
         SelfRigidBody = GetComponent<Rigidbody2D>();
     }
 
