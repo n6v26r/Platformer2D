@@ -13,6 +13,9 @@ public class Movement : MonoBehaviour
     public PhysicsMaterial2D air;
     public GameObject ground;
 
+    public GameObject healthbar;
+    private Vector3 startpoz_health;
+
     float xinput, yinput;
     float jumped, onground;
 
@@ -34,6 +37,7 @@ public class Movement : MonoBehaviour
     void Start()
     {
         rb.gravityScale = BASE_GRAVITY;
+        startpoz_health = healthbar.transform.position;
     }
 
     // Update is called once per frame
@@ -53,6 +57,7 @@ public class Movement : MonoBehaviour
             boxcl2D.sharedMaterial = air;
         }
         
+        healthbar.transform.position = startpoz_health - new Vector3((100 - gameObject.GetComponent<Health>().health)*3.3f, 0, 0);
     }
 
     private void FixedUpdate() {
