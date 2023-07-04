@@ -36,9 +36,7 @@ public class CellingSpike : PrototypeEnemyAI
     void FixedUpdate(){
         RaycastHit2D below = Physics2D.BoxCast(SelfBoxCollider.bounds.center, SelfBoxCollider.bounds.size - new Vector3(0.1f, 0, 0), 0f, Vector2.down, Mathf.Infinity, (1<<3)+(1<<6)+(1<<7));
         if (below.collider != null){
-            Debug.Log("Below!");
             if(below.collider.gameObject.layer != 3){
-                Debug.Log("Entity below");
                 EntityBelow = true;
             }
         }
@@ -47,7 +45,6 @@ public class CellingSpike : PrototypeEnemyAI
 
     void OnCollisionEnter2D(Collision2D other){
         if(IsFalling){
-            Debug.Log("HIT");
             DidHit = true;
             StartCoroutine(WaitForKO());
         }
