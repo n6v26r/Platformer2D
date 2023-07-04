@@ -103,13 +103,22 @@ MonoBehaviour:
   lm_platfrom:
     serializedVersion: 2
     m_Bits: 200
+  good: {fileID: 0}
+  air: {fileID: 0}
+  ground: {fileID: 0}
+  healthbar: {fileID: 0}
   jumppower: 550
   acceleration: 50
-  speedcap: 5
+  speedcap: 6
   HOLD_GRAVITY: 1.5
   BASE_GRAVITY: 5
   JUMPBUFFER: 0.1
   COYOTE_TIME: 0.6
+  dash_cooldown: 5
+  DASH_POWER: 15
+  DASH_MAXAIRTIME: 0.7
+  FALLINGSPEED_WALLCLIMB: 2
+  WALLJUMPPOWER: 400
 --- !u!50 &2485824032784383719
 Rigidbody2D:
   serializedVersion: 4
