@@ -5,6 +5,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     Rigidbody2D rb;
+    SpriteRenderer sp;
     BoxCollider2D boxcl2D;
     [SerializeField] private LayerMask lm_platfrom;
     float extraHeightText = .1f;
@@ -32,7 +33,7 @@ public class Movement : MonoBehaviour
     public float DASH_MAXAIRTIME = 0f;
     float dash_airtime;
     float dash_timer = 0f;
-    int dash_dir = 0;
+    int dash_dir = 1;
 
     public float FALLINGSPEED_WALLCLIMB = 1f;
     public float WALLJUMPPOWER = 390f;
@@ -40,6 +41,7 @@ public class Movement : MonoBehaviour
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         boxcl2D = GetComponent<BoxCollider2D>();
+        sp = GetComponent<SpriteRenderer>();
     }
 
     // Start is called before the first frame update
@@ -65,7 +67,11 @@ public class Movement : MonoBehaviour
             ground.GetComponent<Rigidbody2D>().sharedMaterial = air;
             boxcl2D.sharedMaterial = air;
         }
-        
+
+        if(dash_dir == 1)
+            sp.flipX = true;
+        else
+            sp.flipX=false;
         healthbar.transform.position = startpoz_health - new Vector3((100 - gameObject.GetComponent<Health>().health)*3.3f, 0, 0);
     }
 
