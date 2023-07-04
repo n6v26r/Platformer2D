@@ -7,6 +7,7 @@ public class Movement : MonoBehaviour
     Rigidbody2D rb;
     SpriteRenderer sp;
     BoxCollider2D boxcl2D;
+    Animator animator;
     [SerializeField] private LayerMask lm_platfrom;
     float extraHeightText = .1f;
 
@@ -42,6 +43,7 @@ public class Movement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         boxcl2D = GetComponent<BoxCollider2D>();
         sp = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     // Start is called before the first frame update
@@ -73,6 +75,16 @@ public class Movement : MonoBehaviour
         else
             sp.flipX=false;
         healthbar.transform.position = startpoz_health - new Vector3((100 - gameObject.GetComponent<Health>().health)*3.3f, 0, 0);
+    
+        if(jumped>0)
+            animator.SetBool("IsJumping", true);
+        else
+            animator.SetBool("IsJumping", false);
+
+        if(xinput!=0)
+            animator.SetBool("IsMoving", true);
+        else
+            animator.SetBool("IsMoving", false);
     }
 
     private void FixedUpdate() {
