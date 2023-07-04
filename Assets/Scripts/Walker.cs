@@ -4,21 +4,20 @@ using UnityEngine;
 
 public class Walker : PrototypeEnemyAI
 {
-    public float JumpPower = 300f;
-
     protected Vector2 Direction;
     protected float DistanceToWall; 
+    protected float IgnorePlayerTimer;
+
     [SerializeField] protected Vector2 PatrolDirection = Vector2.right;
     [SerializeField] protected float PatrolDistance = 10;
     [SerializeField] protected float IgnorePlayerCounter = 2f;
-    [SerializeField] protected float IgnorePlayerTimer;
     [SerializeField] protected float PatrolStopBeforeWall = 2;
 
     // Start is called before the first frame update
     void Start()
     {
         transform.position = StartPosition;
-        Rigidbody2D SelfRigidBody = GetComponent<Rigidbody2D>();
+        SelfRigidBody = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -33,15 +32,14 @@ public class Walker : PrototypeEnemyAI
             Patrol();
         }
         else{
-            Debug.Log("Basic Walker enters patrol");
+            Debug.Log("Basic Walker exists patrol");
             IgnorePlayerTimer = 0;
             PatrolDirection = Direction;
         }
         MoveTarget();
-        //if(CanJump) SelfRigidBody.AddForce(Vector3.up * JumpPower); 
     }   
 
-    bool FollowVictim(){
+    protected virtual bool FollowVictim(){
         if(Direction!=Vector2.zero){
             SetTarget(new Vector2(transform.position.x+Direction.x, transform.position.y+Direction.y));
             return true;
@@ -49,7 +47,7 @@ public class Walker : PrototypeEnemyAI
         return false;
     }
 
-    void Patrol(){
+    protected virtual void Patrol(){
         if(DistanceToWall>PatrolStopBeforeWall) SetTarget(new Vector2(transform.position.x+PatrolDirection.x, transform.position.y));
         else{
             PatrolDirection = new Vector2(-PatrolDirection.x, 0);
@@ -91,12 +89,4 @@ public class Walker : PrototypeEnemyAI
         }
         return MaxDistance;
     }
-
-    /*private void OnCollisionEnter2D(Collision2D other) {
-        CanJump = true;
-    }
-    private void OnCollisionExit2D(Collision2D other) {
-        CanJump = false;
-    } */
-
 }
