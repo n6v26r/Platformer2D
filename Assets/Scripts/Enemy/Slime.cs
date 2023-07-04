@@ -10,37 +10,15 @@ public class Slime : Walker
     [SerializeField] protected float JumpPower = 300f;
     [SerializeField] protected float JumpCooldown = 3f;
 
-    // Update is called once per frame
-    void Update()
-    {
-        IgnorePlayerTimer += Time.deltaTime;
-
-        bool IsVictimVisible = FollowVictim();
-        if(!IsVictimVisible || IgnorePlayerTimer<=IgnorePlayerCounter){ // Patrol
-            Debug.Log("Slime enters patrol");
-            Patrol();
-        }
-        else{
-            Debug.Log("Slime exists patrol");
-            IgnorePlayerTimer = 0;
-            PatrolDirection = Direction; 
-        }
-        MoveTarget();
-    }
-
-    protected override void Patrol(){
-        if(DistanceToWall>PatrolStopBeforeWall) SetTarget(new Vector2(transform.position.x+PatrolDirection.x, transform.position.y));
-        else{
-            PatrolDirection = new Vector2(-PatrolDirection.x, 0);
-            SetTarget(transform.position);
-        }
+    void Awake(){
+        SelfRigidBody = GetComponent<Rigidbody2D>();
+        SelfBoxCollider = GetComponent<BoxCollider2D>();
     }
 
     void FixedUpdate() {
         JumpCooldownTimer += Time.fixedDeltaTime;
 
-        if(CanJump && JumpCooldownTimer>JumpCooldown){ // Only for debug.
-            Debug.Log("Applied Jump!");
+        if(CanJump && JumpCooldownTimer>JumpCooldown){
             SelfRigidBody.AddForce(Vector2.up*JumpPower);
             CanJump = false;
             JumpCooldownTimer = 0f;
@@ -48,6 +26,11 @@ public class Slime : Walker
 
         Direction = RaycastVictim();
         DistanceToWall = RaycastWall(PatrolDirection, PatrolDistance);
+
+
+        //if (Physics2D.BoxCast(SelfBoxCollider.bounds.center, SelfBoxCollider.bounds.size - new Vector3(0.1f, 0, 0), 0f, Vector2.down, .31f, (1<<3))){
+        //    CanJump = true;
+        //}
     }
 
     // STUPIIIIIID. 
@@ -55,5 +38,4 @@ public class Slime : Walker
     private void OnCollisionEnter2D(Collision2D other) {
         CanJump = true;
     }
-
 }

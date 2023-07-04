@@ -300,6 +300,7 @@ MonoBehaviour:
   PatrolDirection: {x: 1, y: 0}
   PatrolDistance: 10
   IgnorePlayerCounter: 2
+  RememberPlayerCounter: 3
   PatrolStopBeforeWall: 2
 --- !u!1 &519420028
 GameObject:
@@ -589,6 +590,7 @@ MonoBehaviour:
   PatrolDirection: {x: 1, y: 0}
   PatrolDistance: 10
   IgnorePlayerCounter: 2
+  RememberPlayerCounter: 3
   PatrolStopBeforeWall: 2
   JumpPower: 300
   JumpCooldown: 3
@@ -940,6 +942,10 @@ PrefabInstance:
     - target: {fileID: 2485824032784383714, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
+      propertyPath: lm_platfrom.m_Bits
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 2485824032784383721, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
       propertyPath: m_Name

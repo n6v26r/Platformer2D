@@ -5,13 +5,13 @@ using UnityEngine;
 public class Walker : PrototypeEnemyAI
 {
     protected Vector2 Direction;
-    protected float DistanceToWall; 
-    protected float IgnorePlayerTimer;
+    protected float DistanceToWall;
     protected float RememberPlayerTimer;
+
+    protected BoxCollider2D SelfBoxCollider;
 
     [SerializeField] protected Vector2 PatrolDirection = Vector2.right;
     [SerializeField] protected float PatrolDistance = 10;
-    [SerializeField] protected float IgnorePlayerCounter = 2f;
     [SerializeField] protected float RememberPlayerCounter = 3f;
     [SerializeField] protected float PatrolStopBeforeWall = 2;
 
@@ -24,20 +24,19 @@ public class Walker : PrototypeEnemyAI
     // Update is called once per frame
     void Update()
     {
-        if(RememberPlayerTimer>RememberPlayerCounter)
-            IgnorePlayerTimer += Time.deltaTime;
-        else
-            RememberPlayerTimer += Time.deltaTime;
-
         bool IsVictimVisible = FollowVictim();
-        if(!IsVictimVisible || IgnorePlayerTimer<=IgnorePlayerCounter){ // Patrol
-            Debug.Log("Basic Walker enters patrol");
-            Patrol();
+        if(!IsVictimVisible){
+            if(RememberPlayerTimer>RememberPlayerCounter){
+                Debug.Log("Entity not visible! PATROL MODE");
+                Patrol();
+            }
+            else{
+                RememberPlayerTimer += Time.deltaTime;
+            }
         }
         else{
             RememberPlayerTimer = 0;
-            Debug.Log("Basic Walker exists patrol");
-            IgnorePlayerTimer = 0;
+            Debug.Log("Entity is in follow mode!");
             PatrolDirection = Direction;
         }
         MoveTarget();
