@@ -447,6 +447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lavaBlock: {fileID: 31972164}
+  playermovement: {fileID: 1303785798}
 --- !u!4 &289213507
 Transform:
   m_ObjectHideFlags: 0
@@ -514,6 +515,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2485824032784383717, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2485824032784383717, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 803709361
+      objectReference: {fileID: 0}
     - target: {fileID: 2485824032784383721, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
       propertyPath: m_Name
       value: Player
@@ -569,6 +578,17 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
+--- !u!114 &1303785798 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
+  m_PrefabInstance: {fileID: 1091413151}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 023df0086b9b69a49afbba9d170ae0ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1310407503
 GameObject:
   m_ObjectHideFlags: 0

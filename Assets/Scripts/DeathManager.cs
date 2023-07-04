@@ -21,6 +21,9 @@ public class DeathManager : MonoBehaviour
     {
         Health healthComp = gameObject.GetComponent<Health>();
         healthComp.health -= 0.5f;
+        //playermovement.acceleration = 50;
+        playermovement.speedcap = 1;
+        playermovement.jumppower = 150;
         
 
         CheckDeath(healthComp);
