@@ -7,7 +7,7 @@ public class Movement : MonoBehaviour
     Rigidbody2D rb;
     BoxCollider2D boxcl2D;
     [SerializeField] private LayerMask lm_platfrom;
-    float extraHeightText = .31f;
+    float extraHeightText = .1f;
 
     float xinput, yinput;
     float jumped, onground;
