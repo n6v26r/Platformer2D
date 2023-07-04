@@ -6,10 +6,14 @@ public class DeathManager : MonoBehaviour
 {
     [SerializeField] private LavaBlock lavaBlock;
     [SerializeField] private Movement playermovement;
+    private CellingSpike[] cellingSpikes;
 
     void Awake()
     {
         lavaBlock.OnLavaStay2D += StayedInLava;
+        cellingSpikes = FindObjectsOfType<CellingSpike>();
+        for (int i = 0; i < cellingSpikes.Length; ++i)
+            cellingSpikes[i].OnSpikeHit+= SpikeHit;
     }
 
     private void OnDestroy()
@@ -36,6 +40,18 @@ public class DeathManager : MonoBehaviour
         playermovement.speedcap = 5;
         playermovement.jumppower = 550;
         playermovement.BASE_GRAVITY = 5;
+    }
+
+    private void SpikeHit(GameObject gameObject)
+    {
+        if (gameObject.layer == 6 || gameObject.layer == 7)
+        {
+            Debug.Log("Hit " + gameObject.name);
+            Health healthComp = gameObject.GetComponent<Health>();
+            healthComp.health -= 25f;
+
+            CheckDeath(healthComp);
+        }
     }
 
     private void CheckDeath(Health healthComp)
