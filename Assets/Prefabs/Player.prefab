@@ -35,7 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2485824032784383717
 SpriteRenderer:
@@ -104,17 +104,22 @@ MonoBehaviour:
   lm_platfrom:
     serializedVersion: 2
     m_Bits: 200
-  good: {fileID: 0}
-  air: {fileID: 0}
+  good: {fileID: 6200000, guid: f463d48b9dacdc640a5fa48faf07bb19, type: 2}
+  air: {fileID: 6200000, guid: 731e8d731d5cc1e4c8ecccaa840a4289, type: 2}
   ground: {fileID: 0}
-  healthbar: {fileID: 4277303657536188853, guid: b341b4e717bac9541a1ae270b46f3484, type: 3}
+  healthbar: {fileID: 0}
   jumppower: 550
-  acceleration: 50
-  speedcap: 5
+  acceleration: 70
+  speedcap: 7
   HOLD_GRAVITY: 1.5
   BASE_GRAVITY: 5
   JUMPBUFFER: 0.1
   COYOTE_TIME: 0.6
+  dash_cooldown: 4
+  DASH_POWER: 3
+  DASH_MAXAIRTIME: 0.5
+  FALLINGSPEED_WALLCLIMB: 1
+  WALLJUMPPOWER: 390
 --- !u!50 &2485824032784383719
 Rigidbody2D:
   serializedVersion: 4
@@ -128,7 +133,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: 9087e0d8286547d43b3335a509297b78, type: 2}
