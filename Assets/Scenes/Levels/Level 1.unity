@@ -240,7 +240,6 @@ GameObject:
   m_Component:
   - component: {fileID: 705947564}
   - component: {fileID: 705947563}
-  - component: {fileID: 705947562}
   - component: {fileID: 705947561}
   m_Layer: 0
   m_Name: Biome1Bg4
@@ -262,20 +261,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 1194942571}
-  offset: {x: 0, y: 0, z: 0}
---- !u!114 &705947562
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 705947560}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6febbcbe0a4e8fa44b605394dad4d742, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Player: {fileID: 0}
   offset: {x: 0, y: 0, z: 0}
 --- !u!212 &705947563
 SpriteRenderer:
@@ -397,8 +382,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
+      propertyPath: air
+      value: 
+      objectReference: {fileID: 6200000, guid: 731e8d731d5cc1e4c8ecccaa840a4289, type: 2}
+    - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
+      propertyPath: good
+      value: 
+      objectReference: {fileID: 6200000, guid: f463d48b9dacdc640a5fa48faf07bb19, type: 2}
+    - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
+      propertyPath: ground
+      value: 
+      objectReference: {fileID: 1694407458}
+    - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
       propertyPath: speedcap
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
+      propertyPath: acceleration
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 2485824032784383721, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
       propertyPath: m_Name

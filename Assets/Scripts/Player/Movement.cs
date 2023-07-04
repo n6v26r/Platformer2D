@@ -9,6 +9,10 @@ public class Movement : MonoBehaviour
     [SerializeField] private LayerMask lm_platfrom;
     float extraHeightText = .1f;
 
+    public PhysicsMaterial2D good;
+    public PhysicsMaterial2D air;
+    public GameObject ground;
+
     float xinput, yinput;
     float jumped, onground;
 
@@ -40,8 +44,14 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.UpArrow))
             jumped = JUMPBUFFER;
 
-        if (Physics2D.BoxCast(boxcl2D.bounds.center, boxcl2D.bounds.size - new Vector3(0.1f, 0, 0), 0f, Vector2.down, extraHeightText, lm_platfrom))
+        if (Physics2D.BoxCast(boxcl2D.bounds.center, boxcl2D.bounds.size - new Vector3(0.1f, 0, 0), 0f, Vector2.down, extraHeightText, lm_platfrom)) {
             onground = COYOTE_TIME;
+            ground.GetComponent<Rigidbody2D>().sharedMaterial = good;
+            boxcl2D.sharedMaterial = good;
+        } else {
+            ground.GetComponent<Rigidbody2D>().sharedMaterial = air;
+            boxcl2D.sharedMaterial = air;
+        }
         
     }
 
