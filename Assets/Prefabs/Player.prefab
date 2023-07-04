@@ -75,7 +75,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 803709361
-  m_SortingLayer: 0
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
@@ -103,11 +103,11 @@ MonoBehaviour:
   lm_platfrom:
     serializedVersion: 2
     m_Bits: 200
-  jumppower: 450
+  jumppower: 550
   acceleration: 50
   speedcap: 5
-  HOLD_GRAVITY: 2.5
-  BASE_GRAVITY: 4.5
+  HOLD_GRAVITY: 1.5
+  BASE_GRAVITY: 5
   JUMPBUFFER: 0.1
   COYOTE_TIME: 0.6
 --- !u!50 &2485824032784383719

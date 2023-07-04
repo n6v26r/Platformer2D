@@ -102,6 +102,7 @@ MonoBehaviour:
   Speed: 2
   Target: {x: 0, y: 0}
   Victim: {fileID: 2485824032784383721, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
+  SecondsBeforeKO: 3
 --- !u!50 &5323505150279640781
 Rigidbody2D:
   serializedVersion: 4
