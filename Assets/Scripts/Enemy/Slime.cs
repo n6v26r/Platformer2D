@@ -10,19 +10,10 @@ public class Slime : Walker
     [SerializeField] protected float JumpPower = 300f;
     [SerializeField] protected float JumpCooldown = 3f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        transform.position = StartPosition;
-        SelfRigidBody = GetComponent<Rigidbody2D>();
-    }
-
     // Update is called once per frame
     void Update()
     {
-        
         IgnorePlayerTimer += Time.deltaTime;
-        SetTarget(Victim.GetComponent<Transform>().position);
 
         bool IsVictimVisible = FollowVictim();
         if(!IsVictimVisible || IgnorePlayerTimer<=IgnorePlayerCounter){ // Patrol
@@ -33,7 +24,6 @@ public class Slime : Walker
             Debug.Log("Slime exists patrol");
             IgnorePlayerTimer = 0;
             PatrolDirection = Direction; 
-
         }
         MoveTarget();
     }
