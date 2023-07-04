@@ -299,7 +299,6 @@ MonoBehaviour:
   Victim: {fileID: 0}
   PatrolDirection: {x: 1, y: 0}
   PatrolDistance: 10
-  IgnorePlayerCounter: 2
   RememberPlayerCounter: 3
   PatrolStopBeforeWall: 2
 --- !u!1 &519420028
@@ -565,7 +564,7 @@ GameObject:
   - component: {fileID: 791093067}
   - component: {fileID: 791093066}
   - component: {fileID: 791093065}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BasicSlime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -588,8 +587,7 @@ MonoBehaviour:
   Target: {x: 0, y: 0}
   Victim: {fileID: 1861291262}
   PatrolDirection: {x: 1, y: 0}
-  PatrolDistance: 10
-  IgnorePlayerCounter: 2
+  PatrolDistance: 20
   RememberPlayerCounter: 3
   PatrolStopBeforeWall: 2
   JumpPower: 300

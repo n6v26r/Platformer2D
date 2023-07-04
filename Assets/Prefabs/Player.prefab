@@ -102,7 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lm_platfrom:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 200
   jumppower: 450
   acceleration: 50
   speedcap: 5
