@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Golem : Walker
+public class Golemn : Walker
 {
     public bool StuffAbove;
     void Update()
@@ -14,9 +14,7 @@ public class Golem : Walker
 
     void FixedUpdate(){
         RaycastHit2D above = Physics2D.BoxCast(SelfBoxCollider.bounds.center, SelfBoxCollider.bounds.size - new Vector3(0.1f, 0, 0), 0f, Vector2.up, 0.31f, (1<<3)+(1<<6)+(1<<7));
-        if(above.collider!=null) {StuffAbove = true; Debug.Log("Stuff above");}
+        if(above.collider!=null) StuffAbove = true;
         else StuffAbove = false;
-
-        DistanceToWall = RaycastWall(PatrolDirection, PatrolDistance);
     }
 }
