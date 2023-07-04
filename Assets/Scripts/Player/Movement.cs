@@ -22,8 +22,8 @@ public class Movement : MonoBehaviour
     public float jumppower = 0f;
     public float acceleration = 0f;
     public float speedcap = 0f;
-    [SerializeField] float HOLD_GRAVITY = 0f;
-    [SerializeField] float BASE_GRAVITY = 0f;
+    public float HOLD_GRAVITY = 0f;
+    public float BASE_GRAVITY = 0f;
     [SerializeField] float JUMPBUFFER = 0f;
     [SerializeField] float COYOTE_TIME = 0f;
 

@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class LavaBlock : MonoBehaviour
 {
-    public Action<GameObject> OnLavaStay;
+    public Action<GameObject> OnLavaStay2D;
     public Action<GameObject> OnLavaExit;
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (OnLavaStay != null)
+        if (OnLavaStay2D != null)
         {
-            OnLavaStay(collision.gameObject);
+            OnLavaStay2D(collision.gameObject);
         }
     }
 

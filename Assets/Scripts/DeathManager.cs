@@ -9,23 +9,23 @@ public class DeathManager : MonoBehaviour
 
     void Awake()
     {
-        lavaBlock.OnLavaStay += StayedInLava;
-        lavaBlock.OnLavaExit += LeftLava;
+        lavaBlock.OnLavaStay2D += StayedInLava;
     }
 
     private void OnDestroy()
     {
-        lavaBlock.OnLavaStay -= StayedInLava;
-        lavaBlock.OnLavaExit -= LeftLava;
+        lavaBlock.OnLavaStay2D -= StayedInLava;
     }
 
     private void StayedInLava(GameObject gameObject)
     {
         Health healthComp = gameObject.GetComponent<Health>();
         healthComp.health -= 0.5f;
-        //playermovement.acceleration = 50;
+        playermovement.acceleration = 50;
         playermovement.speedcap = 1;
-        playermovement.jumppower = 150;
+        playermovement.jumppower = 200;
+        playermovement.BASE_GRAVITY = 1.8f;
+        playermovement.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         
 
         CheckDeath(healthComp);
@@ -33,7 +33,9 @@ public class DeathManager : MonoBehaviour
 
     private void LeftLava(GameObject gameObject)
     {
-        
+        playermovement.speedcap = 5;
+        playermovement.jumppower = 550;
+        playermovement.BASE_GRAVITY = 5;
     }
 
     private void CheckDeath(Health healthComp)
