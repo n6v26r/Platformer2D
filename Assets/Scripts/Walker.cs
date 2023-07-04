@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Walker : PrototypeEnemyAI
 {
-    private bool CanJump = false;
     public float JumpPower = 300f;
 
     protected Vector2 Direction;
@@ -88,11 +87,11 @@ public class Walker : PrototypeEnemyAI
         return MaxDistance;
     }
 
-    private void OnCollisionEnter2D(Collision2D other) {
+    /*private void OnCollisionEnter2D(Collision2D other) {
         CanJump = true;
     }
     private void OnCollisionExit2D(Collision2D other) {
         CanJump = false;
-    }
+    } */
 
 }
