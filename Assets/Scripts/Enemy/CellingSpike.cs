@@ -19,8 +19,7 @@ public class CellingSpike : PrototypeEnemyAI
     
     void Start()
     {
-        SelfRigidBody.bodyType = RigidbodyType2D.Dynamic;
-        SelfRigidBody.gravityScale = 0f;
+        SelfRigidBody.bodyType = RigidbodyType2D.Static;
     }
 
     // Update is called once per frame
@@ -28,7 +27,7 @@ public class CellingSpike : PrototypeEnemyAI
     {
         if(EntityBelow){
             IsFalling = true;
-            SelfRigidBody.gravityScale = 4;
+            SelfRigidBody.bodyType = RigidbodyType2D.Dynamic;
             EntityBelow = false;
         }
     }
