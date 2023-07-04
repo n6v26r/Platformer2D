@@ -28,14 +28,8 @@ public class Slime : Walker
         DistanceToWall = RaycastWall(PatrolDirection, PatrolDistance);
 
 
-        //if (Physics2D.BoxCast(SelfBoxCollider.bounds.center, SelfBoxCollider.bounds.size - new Vector3(0.1f, 0, 0), 0f, Vector2.down, .31f, (1<<3))){
-        //    CanJump = true;
-        //}
-    }
-
-    // STUPIIIIIID. 
-    // !!!TODO: Change this as soon as possible.
-    private void OnCollisionEnter2D(Collision2D other) {
-        CanJump = true;
+        if (Physics2D.BoxCast(SelfBoxCollider.bounds.center, SelfBoxCollider.bounds.size - new Vector3(0.1f, 0, 0), 0f, Vector2.down, .31f, (1<<3))){
+            CanJump = true;
+        }
     }
 }

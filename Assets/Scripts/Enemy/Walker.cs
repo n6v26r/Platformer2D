@@ -27,7 +27,7 @@ public class Walker : PrototypeEnemyAI
         bool IsVictimVisible = FollowVictim();
         if(!IsVictimVisible){
             if(RememberPlayerTimer>RememberPlayerCounter){
-                Debug.Log("Entity not visible! PATROL MODE");
+                //Debug.Log("Entity not visible! PATROL MODE");
                 Patrol();
             }
             else{
@@ -36,7 +36,7 @@ public class Walker : PrototypeEnemyAI
         }
         else{
             RememberPlayerTimer = 0;
-            Debug.Log("Entity is in follow mode!");
+           // Debug.Log("Entity is in follow mode!");
             PatrolDirection = Direction;
         }
         MoveTarget();
