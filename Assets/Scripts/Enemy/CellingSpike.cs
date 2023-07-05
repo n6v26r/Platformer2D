@@ -10,6 +10,7 @@ public class CellingSpike : PrototypeEnemyAI
     protected BoxCollider2D SelfBoxCollider;
     protected bool EntityBelow;
     protected bool IsFalling;
+    protected bool Hit;
 
     [SerializeField] protected float SecondsBeforeKO = 3;
     // Start is called before the first frame update
@@ -35,10 +36,15 @@ public class CellingSpike : PrototypeEnemyAI
     }
 
     void FixedUpdate(){
-        RaycastHit2D below = Physics2D.BoxCast(SelfBoxCollider.bounds.center, SelfBoxCollider.bounds.size - new Vector3(0.1f, 0, 0), 0f, Vector2.down, Mathf.Infinity, (1<<3)+(1<<6)+(1<<7));
-        if (below.collider != null){
-            if(below.collider.gameObject.layer != 3){
-                EntityBelow = true;
+        if (!Hit)
+        {
+            RaycastHit2D below = Physics2D.BoxCast(SelfBoxCollider.bounds.center, SelfBoxCollider.bounds.size - new Vector3(0.1f, 0, 0), 0f, Vector2.down, Mathf.Infinity, (1 << 3) + (1 << 6) + (1 << 7));
+            if (below.collider != null)
+            {
+                if (below.collider.gameObject.layer != 3)
+                {
+                    EntityBelow = true;
+                }
             }
         }
     }
@@ -46,6 +52,8 @@ public class CellingSpike : PrototypeEnemyAI
 
     void OnCollisionEnter2D(Collision2D other){
         if(IsFalling == true){
+            EntityBelow = false;
+            Hit = true;
             IsFalling = false;
             StartCoroutine(WaitForKO());
             if(other != null && other.gameObject != null){
