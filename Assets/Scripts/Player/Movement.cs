@@ -48,6 +48,8 @@ public class Movement : MonoBehaviour
     public float emerald_power = 0;
     public float start_holdgrav = 0;
 
+    public static int score = 0;
+
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         boxcl2D = GetComponent<BoxCollider2D>();
