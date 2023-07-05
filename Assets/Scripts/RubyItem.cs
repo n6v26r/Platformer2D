@@ -3,16 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KeyItem : MonoBehaviour
+public class RubyItem : MonoBehaviour
 {
-    public Action<GameObject> OnKeyEnter;
+    public Action<GameObject> OnRubyEnter;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (OnKeyEnter != null && collision.gameObject.tag == "Player")
+        if (OnRubyEnter != null && collision.gameObject.tag == "Player")
         {
-            OnKeyEnter(collision.gameObject);
+            OnRubyEnter(collision.gameObject);
             Destroy(gameObject);
         }
+  
     }
 }

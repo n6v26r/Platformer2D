@@ -1,11 +1,10 @@
-using System;
 using UnityEngine;
 
 public class RubyBlock : MonoBehaviour
 {
+    public GameObject rubyItem;
     public float timeRequired;
-    public Action<GameObject> OnRubyMine;
-
+  
     float timer;
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -21,9 +20,7 @@ public class RubyBlock : MonoBehaviour
 
         if (timer >= timeRequired)
         {
-            if(OnRubyMine != null)
-                OnRubyMine(collision.gameObject);
-
+            rubyItem.SetActive(true);
             Destroy(gameObject);
         }
     }
