@@ -1,4 +1,4 @@
-using System
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,5 +28,10 @@ public class Slime : Walker
         if (Physics2D.BoxCast(SelfBoxCollider.bounds.center, SelfBoxCollider.bounds.size - new Vector3(0.1f, 0, 0), 0f, Vector2.down, .31f, (1<<3))){
             CanJump = true;
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        OnSlimeHit(collision.gameObject);
     }
 }
