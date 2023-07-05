@@ -91,7 +91,14 @@ public class Movement : MonoBehaviour
         if((xinput != 1 || (rb.velocity.x < speedcap )) && (xinput != -1 || (rb.velocity.x > -speedcap)))
             rb.AddForce(new Vector2(acceleration * xinput, 0));
 
-        if (Physics2D.BoxCast(boxcl2D.bounds.center, boxcl2D.bounds.size - new Vector3(0, 0.1f, 0), 0f, Vector2.left, extraHeightText, lm_platfrom)) {
+        if (onground > 0) {
+            if (jumped > 0) {
+                onground = 0;
+                jumped = 0;
+                rb.velocity = new Vector2(rb.velocity.x, 0);
+                rb.AddForce(new Vector2(0, jumppower));
+            }
+        } else if (Physics2D.BoxCast(boxcl2D.bounds.center, boxcl2D.bounds.size - new Vector3(0, 0.1f, 0), 0f, Vector2.left, extraHeightText, lm_platfrom)) {
             rb.velocity = new Vector2(rb.velocity.x, -FALLINGSPEED_WALLCLIMB);
             if (jumped > 0) {
                 jumped = 0;
@@ -102,13 +109,6 @@ public class Movement : MonoBehaviour
             if (jumped > 0) {
                 jumped = 0;
                 rb.AddForce(new Vector2(-WALLJUMPPOWER + 1, jumppower * 1.15f));
-            }
-        } else {
-            if (jumped > 0 && onground > 0) {
-                onground = 0;
-                jumped = 0;
-                rb.velocity = new Vector2(rb.velocity.x, 0);
-                rb.AddForce(new Vector2(0, jumppower));
             }
         }
 
