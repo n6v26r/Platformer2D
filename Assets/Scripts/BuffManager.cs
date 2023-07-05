@@ -11,7 +11,6 @@ public class BuffManager : MonoBehaviour
 
     private void Awake()
     {
-        //movement = F
 
         rubys = FindObjectsOfType<RubyItem>(true);
         for (int i = 0; i < rubys.Length; ++i)
@@ -34,7 +33,7 @@ public class BuffManager : MonoBehaviour
 
     private void EmeraldBuff(GameObject gameObject)
     {
-
+        gameObject.GetComponent<Movement>().dashing = true;
     }
 
     // Start is called before the first frame update

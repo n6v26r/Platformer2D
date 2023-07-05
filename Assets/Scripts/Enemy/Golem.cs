@@ -30,7 +30,6 @@ public class Golem : Walker
         SelfAnimator.SetBool("Launched", JustLaunched);
 
         if(!StuffAbove){
-            Debug.Log("Here");
             SelfRigidBody.bodyType = RigidbodyType2D.Kinematic;
 
             if(PatrolDirection.x<0)

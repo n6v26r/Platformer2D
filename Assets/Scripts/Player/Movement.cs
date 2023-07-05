@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Movement : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class Movement : MonoBehaviour
     public GameObject ground;
     public GameObject spawnpoint;
 
-    public GameObject healthbar;
+    public Image healthbar;
     private Vector3 startpoz_health;
 
     public GameObject dashbar;
@@ -45,7 +46,6 @@ public class Movement : MonoBehaviour
 
     public bool dashing = false;
 
-    public float emerald_power = 0;
     public float start_holdgrav = 0;
 
     public static int score = 0;
@@ -91,8 +91,8 @@ public class Movement : MonoBehaviour
         dashbar.SetActive(dashing);
 
         dashbar.transform.position = startpoz_dash - new Vector3((dash_cooldown - dash_timer + 0.1f)*100, 0, 0);
-        healthbar.transform.position = startpoz_health - new Vector3((100 - gameObject.GetComponent<Health>().health)*3.3f, 0, 0);
-    
+        healthbar.fillAmount = Mathf.Clamp(gameObject.GetComponent<Health>().health / 100, 0, 1f);
+
         if(jumped>0)
             animator.SetBool("IsJumping", true);
         else

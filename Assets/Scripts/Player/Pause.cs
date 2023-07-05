@@ -18,12 +18,12 @@ public class Pause : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape)) {
             Time.timeScale = 1 - Time.timeScale;
-            quit.SetActive(!quit.active);
+            quit.SetActive(!quit.activeSelf);
         }
         
     }
 
     public void quitapp() {
         Application.Quit();
-    }
+    } 
 }

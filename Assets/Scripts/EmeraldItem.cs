@@ -9,11 +9,12 @@ public class EmeraldItem : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(OnEmeraldEnter == null) Debug.Log("Bonjur!");
+
         if (OnEmeraldEnter != null && collision.gameObject.tag == "Player")
         {
             OnEmeraldEnter(collision.gameObject);
             Destroy(gameObject);
         }
-
     }
 }

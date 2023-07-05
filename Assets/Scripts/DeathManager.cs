@@ -69,7 +69,7 @@ public class DeathManager : MonoBehaviour
         {
             Health healthComp = gameObject.GetComponent<Health>();
             if (healthComp == null) return;
-                healthComp.health -= 15f;
+                    healthComp.health -= 15f;
 
             if (gameObject.tag != "Player")
                 CheckDeath(healthComp);
