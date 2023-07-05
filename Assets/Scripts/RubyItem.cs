@@ -14,7 +14,6 @@ public class RubyItem : MonoBehaviour
             Health healthComp = collision.gameObject.GetComponent<Health>();
             OnRubyEnter(collision.gameObject);
             Destroy(gameObject);
-            
         }
   
     }
