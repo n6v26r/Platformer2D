@@ -24,6 +24,7 @@ public class DeathManager : MonoBehaviour
     private void StayedInLava(GameObject gameObject)
     {
         Health healthComp = gameObject.GetComponent<Health>();
+        if(healthComp == null) return;
         healthComp.health -= 0.5f;
         playermovement.acceleration = 50;
         playermovement.speedcap = 1;
