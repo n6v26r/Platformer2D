@@ -14,6 +14,7 @@ public class Movement : MonoBehaviour
     public PhysicsMaterial2D good;
     public PhysicsMaterial2D air;
     public GameObject ground;
+    public GameObject spawnpoint;
 
     public GameObject healthbar;
     private Vector3 startpoz_health;
@@ -91,6 +92,11 @@ public class Movement : MonoBehaviour
             animator.SetBool("IsMoving", true);
         else
             animator.SetBool("IsMoving", false);
+
+        if (GetComponent<Health>().health <= 0) {
+            transform.position = spawnpoint.transform.position;
+            GetComponent<Health>().health = 0;
+        }
     }
 
     private void FixedUpdate() {
@@ -152,8 +158,6 @@ public class Movement : MonoBehaviour
 
         if (dash_timer < dash_cooldown)
             dash_timer += 0.1f;
-
-
 
         if (rb.velocity.y < -15)
             rb.velocity = new Vector2(rb.velocity.x, -15);

@@ -107,7 +107,9 @@ MonoBehaviour:
   good: {fileID: 6200000, guid: f463d48b9dacdc640a5fa48faf07bb19, type: 2}
   air: {fileID: 6200000, guid: 731e8d731d5cc1e4c8ecccaa840a4289, type: 2}
   ground: {fileID: 0}
+  spawnpoint: {fileID: 0}
   healthbar: {fileID: 0}
+  dashbar: {fileID: 0}
   jumppower: 550
   acceleration: 50
   speedcap: 5
@@ -116,7 +118,7 @@ MonoBehaviour:
   JUMPBUFFER: 0.1
   COYOTE_TIME: 0.6
   dash_cooldown: 4
-  DASH_POWER: 15
+  DASH_POWER: 5
   DASH_MAXAIRTIME: 1
   FALLINGSPEED_WALLCLIMB: 1
   WALLJUMPPOWER: 390
