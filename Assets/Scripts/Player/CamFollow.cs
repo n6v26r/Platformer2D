@@ -10,7 +10,7 @@ public class CamFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Player!=null)
+        if(Player != null)
             gameObject.transform.position = Player.transform.position - offset;
     }
 }
