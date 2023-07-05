@@ -1,3 +1,4 @@
+using System
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine;
 public class Slime : Walker
 {
 
+    public Action<GameObject> OnSlimeHit;
     protected float JumpCooldownTimer;
     protected bool CanJump;
     [SerializeField] protected float JumpPower = 300f;
