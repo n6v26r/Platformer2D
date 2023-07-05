@@ -48,7 +48,9 @@ public class CellingSpike : PrototypeEnemyAI
         if(IsFalling == true){
             IsFalling = false;
             StartCoroutine(WaitForKO());
-            OnSpikeHit(other.gameObject);
+            if(other != null && other.gameObject != null){
+                OnSpikeHit(other.gameObject);
+            }
         }
     }
     
