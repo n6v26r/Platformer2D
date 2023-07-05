@@ -257,6 +257,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Golem
       objectReference: {fileID: 0}
+    - target: {fileID: 7486197226009699451, guid: 684efa64bb95cc2408d8483bc00f5ad9, type: 3}
+      propertyPath: LaunchPower
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 7486197226009699451, guid: 684efa64bb95cc2408d8483bc00f5ad9, type: 3}
+      propertyPath: LaunchCooldown
+      value: 24.25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

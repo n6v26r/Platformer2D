@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2169723329187573048}
   - component: {fileID: 5917698483046280439}
   - component: {fileID: 6047014853435766597}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Golem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,6 @@ MonoBehaviour:
   PatrolStopBeforeWall: 2
   LaunchPower: 1500
   LaunchDelay: 1
-  LaunchCooldown: 0.5
 --- !u!50 &2169723329187573048
 Rigidbody2D:
   serializedVersion: 4
