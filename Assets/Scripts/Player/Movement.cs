@@ -95,7 +95,10 @@ public class Movement : MonoBehaviour
 
         if (GetComponent<Health>().health <= 0) {
             transform.position = spawnpoint.transform.position;
-            GetComponent<Health>().health = 0;
+            GetComponent<Health>().health = 100;
+            speedcap = 6;
+            jumppower = 550;
+            BASE_GRAVITY = 5;
         }
     }
 
