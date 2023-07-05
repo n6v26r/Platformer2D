@@ -18,6 +18,9 @@ public class Movement : MonoBehaviour
     public GameObject healthbar;
     private Vector3 startpoz_health;
 
+    public GameObject dashbar;
+    private Vector3 startpoz_dash;
+
     float xinput, yinput;
     float jumped, onground;
 
@@ -51,6 +54,7 @@ public class Movement : MonoBehaviour
     {
         rb.gravityScale = BASE_GRAVITY;
         startpoz_health = healthbar.transform.position;
+        startpoz_dash = dashbar.transform.position;
     }
 
     // Update is called once per frame
@@ -74,6 +78,8 @@ public class Movement : MonoBehaviour
             sp.flipX = true;
         else
             sp.flipX=false;
+
+        dashbar.transform.position = startpoz_dash - new Vector3((dash_cooldown - dash_timer + 0.1f)*100, 0, 0);
         healthbar.transform.position = startpoz_health - new Vector3((100 - gameObject.GetComponent<Health>().health)*3.3f, 0, 0);
     
         if(jumped>0)

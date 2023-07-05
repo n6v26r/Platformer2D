@@ -2897,6 +2897,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 333990139}
   offset: {x: 0, y: 0, z: 0}
+--- !u!1 &538821083 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1808628341814581136, guid: b341b4e717bac9541a1ae270b46f3484, type: 3}
+  m_PrefabInstance: {fileID: 1173902936}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &737263380
 GameObject:
   m_ObjectHideFlags: 0
@@ -3552,6 +3557,10 @@ PrefabInstance:
       propertyPath: ground
       value: 
       objectReference: {fileID: 59700028}
+    - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
+      propertyPath: dashbar
+      value: 
+      objectReference: {fileID: 538821083}
     - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
       propertyPath: healthbar
       value: 
