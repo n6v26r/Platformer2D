@@ -11,6 +11,7 @@ public class DeathManager : MonoBehaviour
     void Awake()
     {
         lavaBlock.OnLavaStay2D += StayedInLava;
+        lavaBlock.OnLavaExit += LeftLava;
         cellingSpikes = FindObjectsOfType<CellingSpike>();
         for (int i = 0; i < cellingSpikes.Length; ++i)
             cellingSpikes[i].OnSpikeHit+= SpikeHit;
@@ -19,6 +20,7 @@ public class DeathManager : MonoBehaviour
     private void OnDestroy()
     {
         lavaBlock.OnLavaStay2D -= StayedInLava;
+        lavaBlock.OnLavaExit -= LeftLava;
     }
 
     private void StayedInLava(GameObject gameObject)

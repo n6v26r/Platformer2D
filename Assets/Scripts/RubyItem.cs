@@ -11,8 +11,12 @@ public class RubyItem : MonoBehaviour
     {
         if (OnRubyEnter != null && collision.gameObject.tag == "Player")
         {
-            OnRubyEnter(collision.gameObject);
-            Destroy(gameObject);
+            Health healthComp = collision.gameObject.GetComponent<Health>();
+            if (healthComp.health != 100)
+            {
+                OnRubyEnter(collision.gameObject);
+                Destroy(gameObject);
+            }
         }
   
     }
