@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2485824032784383718}
   - component: {fileID: 8933543941199673073}
   - component: {fileID: 3733695131143416909}
+  - component: {fileID: 853570845515633530}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -35,7 +36,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2485824032784383717
 SpriteRenderer:
@@ -122,6 +123,9 @@ MonoBehaviour:
   DASH_MAXAIRTIME: 1
   FALLINGSPEED_WALLCLIMB: 1
   WALLJUMPPOWER: 390
+  dashing: 0
+  emerald_power: 0
+  start_holdgrav: 0
 --- !u!50 &2485824032784383719
 Rigidbody2D:
   serializedVersion: 4
@@ -228,3 +232,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &853570845515633530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2485824032784383721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54716b45193752d4f8488691606b1863, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quit: {fileID: 0}
