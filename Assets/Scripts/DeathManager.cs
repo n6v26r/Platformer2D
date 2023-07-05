@@ -46,7 +46,6 @@ public class DeathManager : MonoBehaviour
     {
         if (gameObject.layer == 6 || gameObject.layer == 7)
         {
-            Debug.Log("Hit " + gameObject.name);
             Health healthComp = gameObject.GetComponent<Health>();
             healthComp.health -= 25f;
 
