@@ -33,7 +33,7 @@ public class DeathManager : MonoBehaviour
         playermovement.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         
 
-        CheckDeath(healthComp);
+        //CheckDeath(healthComp);
     }
 
     private void LeftLava(GameObject gameObject)
@@ -50,7 +50,7 @@ public class DeathManager : MonoBehaviour
             Health healthComp = gameObject.GetComponent<Health>();
             healthComp.health -= 25f;
 
-            CheckDeath(healthComp);
+            //CheckDeath(healthComp);
         }
     }
 
@@ -58,7 +58,7 @@ public class DeathManager : MonoBehaviour
     {
         if (healthComp.health <= 0)
         {
-            Destroy(healthComp.gameObject);
+           //Destroy(healthComp.gameObject);
         }
     }
 }
