@@ -11,13 +11,13 @@ public class Golem : Walker
     [SerializeField] private float LaunchDelay = 1;
     [SerializeField] private float LaunchCooldown = 0.5F;
     void Start(){
-        SelfRigidBody.bodyType = RigidbodyType2D.Dynamic;
+        SelfRigidBody.bodyType = RigidbodyType2D.Kinematic;
     }
     
     void Update()
     {
         if(!StuffAbove){
-            SelfRigidBody.bodyType = RigidbodyType2D.Dynamic;
+            SelfRigidBody.bodyType = RigidbodyType2D.Kinematic;
             Patrol();
             MoveTarget();
         }
