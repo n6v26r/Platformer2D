@@ -43,9 +43,8 @@ public class Movement : MonoBehaviour
     public float FALLINGSPEED_WALLCLIMB = 1f;
     public float WALLJUMPPOWER = 390f;
 
-    bool dashing = true;
+    public bool dashing = false;
 
-    public int emerald_collected = 0;
     public float emerald_power = 0;
     public float start_holdgrav = 0;
 
@@ -88,7 +87,7 @@ public class Movement : MonoBehaviour
             sp.flipX=false;
 
         dashbar.transform.position = startpoz_dash - new Vector3((dash_cooldown - dash_timer + 0.1f)*100, 0, 0);
-        healthbar.transform.position = startpoz_health - new Vector3((100 - gameObject.GetComponent<Health>().health)*3.3f, 0, 0);
+        healthbar.transform.position = startpoz_health - new Vector3((100 - gameObject.GetComponent<Health>().health)*1.65f, 0, 0);
     
         if(jumped>0)
             animator.SetBool("IsJumping", true);

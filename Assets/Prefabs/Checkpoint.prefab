@@ -98,7 +98,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d542242e56f6f94ab13ff0ad3be3a9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Checkpoints: []
   On: {fileID: 21300000, guid: f6e7b37d8069e04468d78ff5b0e3c547, type: 3}
+  Off: {fileID: 21300000, guid: 70a9ec5ef0c8f2f4da0469aa97b2a835, type: 3}
 --- !u!61 &6922111408008385469
 BoxCollider2D:
   m_ObjectHideFlags: 0
