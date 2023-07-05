@@ -5,13 +5,21 @@ using UnityEngine;
 public class BuffManager : MonoBehaviour
 {
     private RubyItem[] rubys;
+    private EmeraldItem[] emeralds;
+    private Movement movement;
 
 
     private void Awake()
     {
+        //movement = F
+
         rubys = FindObjectsOfType<RubyItem>(true);
         for (int i = 0; i < rubys.Length; ++i)
             rubys[i].OnRubyEnter += RubyBuff;
+
+        emeralds = FindObjectsOfType<EmeraldItem>(true);
+        for (int i = 0; i < emeralds.Length; ++i)
+            emeralds[i].OnEmeraldEnter += EmeraldBuff;
     }
 
 
@@ -22,6 +30,11 @@ public class BuffManager : MonoBehaviour
             healthComp.health += 15;
         else
             healthComp.health = 100;
+    }
+
+    private void EmeraldBuff(GameObject gameObject)
+    {
+
     }
 
     // Start is called before the first frame update
