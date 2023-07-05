@@ -27,7 +27,7 @@ public class DeathManager : MonoBehaviour
     {
         Health healthComp = gameObject.GetComponent<Health>();
         if(healthComp == null) return;
-        healthComp.health -= 0.5f;
+        healthComp.health -= 1f;
         playermovement.acceleration = 50;
         playermovement.speedcap = 1;
         playermovement.jumppower = 200;
@@ -50,6 +50,7 @@ public class DeathManager : MonoBehaviour
         if (gameObject.layer == 6 || gameObject.layer == 7)
         {
             Health healthComp = gameObject.GetComponent<Health>();
+            if (healthComp == null) return;
             healthComp.health -= 25f;
 
             //CheckDeath(healthComp);
