@@ -32,7 +32,6 @@ public class Slime : Walker
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(OnSlimeHit!=null)
-            OnSlimeHit(collision.gameObject);
+        OnSlimeHit(collision.gameObject);
     }
 }

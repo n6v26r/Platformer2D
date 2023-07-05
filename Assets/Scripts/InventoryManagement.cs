@@ -6,12 +6,10 @@ public class InventoryManagement : MonoBehaviour
 {
     public int KeysInInventory = 0;
     public int RubysCollected = 0;
-    public int EmeraldsCollected = 0;
 
     private KeyItem[] keyItems;
     private Door[] doors;
     private RubyItem[] rubys;
-    private EmeraldItem[] emeralds;
 
     void Awake()
     {
@@ -29,10 +27,6 @@ public class InventoryManagement : MonoBehaviour
         rubys = FindObjectsOfType<RubyItem>(true);
         for (int i = 0; i < rubys.Length; ++i)
             rubys[i].OnRubyEnter += GotRuby;
-
-        emeralds = FindObjectsOfType<EmeraldItem>(true);
-        for (int i = 0; i < emeralds.Length; ++i)
-            emeralds[i].OnEmeraldEnter += GotEmerald;
     }
 
     private void GotKey(GameObject gameObject)
@@ -43,11 +37,6 @@ public class InventoryManagement : MonoBehaviour
     private void GotRuby(GameObject gameObject)
     {
         RubysCollected++;
-    }
-
-    private void GotEmerald(GameObject gameObject)
-    {
-        EmeraldsCollected++;
     }
 
     private void TriedDoor(Door door, GameObject gameObject)
