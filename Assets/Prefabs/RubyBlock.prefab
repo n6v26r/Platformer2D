@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1226317485952892581}
   - component: {fileID: 3640135233697471584}
   - component: {fileID: 3829191778052461}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RubyBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,7 +165,7 @@ TilemapCollider2D:
   m_GameObject: {fileID: 671632640473775837}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: f463d48b9dacdc640a5fa48faf07bb19, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
