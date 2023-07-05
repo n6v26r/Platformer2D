@@ -93,6 +93,10 @@ public class Movement : MonoBehaviour
         else
             animator.SetBool("IsMoving", false);
 
+        if(jumped > 0) 
+            animator.SetBool("IsMoving", false);
+        
+
         if (GetComponent<Health>().health <= 0) {
             transform.position = spawnpoint.transform.position;
             GetComponent<Health>().health = 100;
