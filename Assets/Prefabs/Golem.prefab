@@ -107,7 +107,7 @@ MonoBehaviour:
   PatrolDistance: 10
   RememberPlayerCounter: 3
   PatrolStopBeforeWall: 2
-  LaunchPower: 1500
+  LaunchPower: 600
   LaunchDelay: 1
 --- !u!50 &2169723329187573048
 Rigidbody2D:
