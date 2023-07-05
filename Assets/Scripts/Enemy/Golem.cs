@@ -9,11 +9,9 @@ public class Golem : Walker
     private SpriteRenderer SelfSpriteRenderer;
     private bool StuffAbove;
     private bool IsLaunching;
-    private float LaunchTimer;
     private bool JustLaunched;
     [SerializeField] private float LaunchPower = 500;
     [SerializeField] private float LaunchDelay = 1;
-    [SerializeField] private float LaunchCooldown = 3F;
 
     void Awake(){
         SelfAnimator = GetComponent<Animator>();
@@ -30,10 +28,6 @@ public class Golem : Walker
     {  
         SelfAnimator.SetBool("IsLaunching", IsLaunching);
         SelfAnimator.SetBool("Launched", JustLaunched);
-        if(LaunchTimer<LaunchCooldown)
-            SelfAnimator.SetBool("IsRecharging", true);
-        else
-            SelfAnimator.SetBool("IsRecharging", false);
 
         if(!StuffAbove){
             Debug.Log("Here");
@@ -53,16 +47,13 @@ public class Golem : Walker
     }   
 
     void FixedUpdate(){
-        LaunchTimer+=Time.fixedDeltaTime;
         RaycastHit2D above = Physics2D.BoxCast(SelfBoxCollider.bounds.center, SelfBoxCollider.bounds.size, 0f, Vector2.up, 0.31f, (1<<3)+(1<<6)+(1<<7));
         if(above.collider!=null) {
             StuffAbove = true;
             if(!IsLaunching)
-                if(LaunchTimer>LaunchCooldown){
-                    StopCoroutine("Launch");
-                    IsLaunching = true;
-                    StartCoroutine(Launch(above.collider.gameObject));
-                }
+                StopCoroutine("Launch");
+                IsLaunching = true;
+                StartCoroutine(Launch(above.collider.gameObject));
         }
         else {StuffAbove = false;}
         DistanceToWall = RaycastWall(PatrolDirection, PatrolDistance);
@@ -75,7 +66,6 @@ public class Golem : Walker
             go.GetComponent<Rigidbody2D>().AddForce(Vector2.up*LaunchPower);
         IsLaunching = false;
         StartCoroutine(Launched());
-        LaunchTimer = 0;
     }
 
     IEnumerator Launched(){
