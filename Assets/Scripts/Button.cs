@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class Button : MonoBehaviour {
@@ -10,13 +11,15 @@ public class Button : MonoBehaviour {
     public List<GameObject> on = new List<GameObject>();
     public List<GameObject> off = new List<GameObject>();
     int i;
+    bool disable = true;
 
     public void OnClick() {
         StartCoroutine(click());
     }
 
     IEnumerator click() {
-        
+        if(disable)
+            GetComponent<Image>().enabled = false;
         yield return new WaitForSeconds(wait[0]);
         for (i = 0; i < on.Count; i++)
             on[i].SetActive(true);

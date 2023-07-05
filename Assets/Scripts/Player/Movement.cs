@@ -45,6 +45,10 @@ public class Movement : MonoBehaviour
 
     bool dashing = true;
 
+    public int emerald_collected = 0;
+    public float emerald_power = 0;
+    public float start_holdgrav = 0;
+
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         boxcl2D = GetComponent<BoxCollider2D>();
@@ -58,6 +62,7 @@ public class Movement : MonoBehaviour
         rb.gravityScale = BASE_GRAVITY;
         startpoz_health = healthbar.transform.position;
         startpoz_dash = dashbar.transform.position;
+        start_holdgrav = HOLD_GRAVITY;
     }
 
     // Update is called once per frame

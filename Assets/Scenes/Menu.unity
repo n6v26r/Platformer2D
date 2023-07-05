@@ -271,10 +271,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Scene: 1
-  wait: 00000000000000000500000000000000
+  wait: 00000000000000000300000000000000
   on:
   - {fileID: 1539365224}
-  off: []
+  off:
+  - {fileID: 588236577}
+  - {fileID: 287927569}
+  - {fileID: 1229299438}
+  - {fileID: 1440684234}
 --- !u!1 &256159190
 GameObject:
   m_ObjectHideFlags: 0
