@@ -43,6 +43,8 @@ public class Movement : MonoBehaviour
     public float FALLINGSPEED_WALLCLIMB = 1f;
     public float WALLJUMPPOWER = 390f;
 
+    bool dashing = true;
+
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         boxcl2D = GetComponent<BoxCollider2D>();
@@ -139,7 +141,7 @@ public class Movement : MonoBehaviour
         if (xinput != 0)
             dash_dir = Mathf.RoundToInt(xinput);
 
-        if (Input.GetKey(KeyCode.LeftShift) && dash_timer >= dash_cooldown) {
+        if (Input.GetKey(KeyCode.LeftShift) && dash_timer >= dash_cooldown && dashing) {
             dash_timer = 0;
             dash_airtime = DASH_MAXAIRTIME;
         }
