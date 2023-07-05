@@ -18,7 +18,6 @@ public class Movement : MonoBehaviour
     public GameObject spawnpoint;
 
     public Image healthbar;
-    private Vector3 startpoz_health;
 
     public GameObject dashbar;
     private Vector3 startpoz_dash;
@@ -61,9 +60,10 @@ public class Movement : MonoBehaviour
     void Start()
     {
         rb.gravityScale = BASE_GRAVITY;
-        startpoz_health = healthbar.transform.position;
         startpoz_dash = dashbar.transform.position;
         start_holdgrav = HOLD_GRAVITY;
+        Debug.Log(healthbar.fillAmount);
+        healthbar.fillAmount = 1;
     }
 
     // Update is called once per frame
@@ -103,7 +103,7 @@ public class Movement : MonoBehaviour
         else
             animator.SetBool("IsMoving", false);
 
-        if(jumped > 0) 
+        if(jumped > 0)
             animator.SetBool("IsMoving", false);
         
 
