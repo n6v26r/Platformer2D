@@ -2701,6 +2701,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1694407458}
     - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
+      propertyPath: dashbar
+      value: 
+      objectReference: {fileID: 1050491618}
+    - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
       propertyPath: healthbar
       value: 
       objectReference: {fileID: 1839989045}
@@ -3553,6 +3557,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 3838951029482589177, guid: 5b38e002ce7c56141b409b058920a6bf, type: 3}
   m_PrefabInstance: {fileID: 780298903}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1050491618 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1808628341814581136, guid: b341b4e717bac9541a1ae270b46f3484, type: 3}
+  m_PrefabInstance: {fileID: 378963171040511818}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1051762361
 PrefabInstance:
@@ -101107,26 +101116,6 @@ PrefabInstance:
     - target: {fileID: 4277303657536188853, guid: b341b4e717bac9541a1ae270b46f3484, type: 3}
       propertyPath: m_Name
       value: Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 5767616999954388670, guid: b341b4e717bac9541a1ae270b46f3484, type: 3}
-      propertyPath: m_Color.b
-      value: 0.33962262
-      objectReference: {fileID: 0}
-    - target: {fileID: 5767616999954388670, guid: b341b4e717bac9541a1ae270b46f3484, type: 3}
-      propertyPath: m_Color.g
-      value: 0.33962262
-      objectReference: {fileID: 0}
-    - target: {fileID: 5767616999954388670, guid: b341b4e717bac9541a1ae270b46f3484, type: 3}
-      propertyPath: m_Color.r
-      value: 0.33962262
-      objectReference: {fileID: 0}
-    - target: {fileID: 7291945615308406226, guid: b341b4e717bac9541a1ae270b46f3484, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 50.1164
-      objectReference: {fileID: 0}
-    - target: {fileID: 7291945615308406226, guid: b341b4e717bac9541a1ae270b46f3484, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -5.2717
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -7,6 +7,7 @@ public class Golem : Walker
     private bool StuffAbove;
     private bool IsLaunching;
     private float LaunchTimer;
+    private bool JustLaunched;
     [SerializeField] private float LaunchPower = 500;
     [SerializeField] private float LaunchDelay = 1;
     [SerializeField] private float LaunchCooldown = 0.5F;
@@ -49,6 +50,13 @@ public class Golem : Walker
         if(above.collider != null && above.collider.gameObject!=null && above.collider.gameObject == go)
             go.GetComponent<Rigidbody2D>().AddForce(Vector2.up*LaunchPower);
         IsLaunching = false;
+        StartCoroutine(Launched());
         LaunchTimer = 0;
+    }
+
+    IEnumerator Launched(){
+        JustLaunched = true;
+        yield return new WaitForSeconds(0.2f);
+        JustLaunched = false;
     }
 }

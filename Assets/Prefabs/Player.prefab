@@ -35,7 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2485824032784383717
 SpriteRenderer:
@@ -108,6 +108,7 @@ MonoBehaviour:
   air: {fileID: 6200000, guid: 731e8d731d5cc1e4c8ecccaa840a4289, type: 2}
   ground: {fileID: 0}
   healthbar: {fileID: 0}
+  dashbar: {fileID: 0}
   jumppower: 550
   acceleration: 50
   speedcap: 5
@@ -179,7 +180,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.010486897}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -190,7 +191,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.17, y: 0.26}
+  m_Size: {x: 0.17, y: 0.23902619}
   m_EdgeRadius: 0
 --- !u!114 &8933543941199673073
 MonoBehaviour:
