@@ -29,4 +29,9 @@ public class Slime : Walker
             CanJump = true;
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        OnSlimeHit(collision.gameObject);
+    }
 }

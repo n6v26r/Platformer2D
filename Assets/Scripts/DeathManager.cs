@@ -7,6 +7,7 @@ public class DeathManager : MonoBehaviour
     [SerializeField] private LavaBlock lavaBlock;
     [SerializeField] private Movement playermovement;
     private CellingSpike[] cellingSpikes;
+    private Slime[] slimes;
 
     void Awake()
     {
@@ -15,6 +16,10 @@ public class DeathManager : MonoBehaviour
         cellingSpikes = FindObjectsOfType<CellingSpike>();
         for (int i = 0; i < cellingSpikes.Length; ++i)
             cellingSpikes[i].OnSpikeHit+= SpikeHit;
+
+        slimes = FindObjectsOfType<Slime>();
+        for (int i = 0; i < slimes.Length; ++i)
+            slimes[i].OnSlimeHit += SlimeHit;
     }
 
     private void OnDestroy()
@@ -52,6 +57,19 @@ public class DeathManager : MonoBehaviour
             Health healthComp = gameObject.GetComponent<Health>();
             if (healthComp == null) return;
             healthComp.health -= 25f;
+
+            if (gameObject.tag != "Player")
+                CheckDeath(healthComp);
+        }
+    }
+
+    private void SlimeHit(GameObject gameObject)
+    {
+        if (gameObject.layer == 6 || gameObject.layer == 7)
+        {
+            Health healthComp = gameObject.GetComponent<Health>();
+            if (healthComp == null) return;
+                healthComp.health -= 15f;
 
             if (gameObject.tag != "Player")
                 CheckDeath(healthComp);
