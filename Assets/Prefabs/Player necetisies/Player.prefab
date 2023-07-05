@@ -36,7 +36,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2485824032784383717
 SpriteRenderer:
@@ -118,8 +118,8 @@ MonoBehaviour:
   BASE_GRAVITY: 5
   JUMPBUFFER: 0.1
   COYOTE_TIME: 0.6
-  dash_cooldown: 4
-  DASH_POWER: 3.5
+  dash_cooldown: 6
+  DASH_POWER: 4
   DASH_MAXAIRTIME: 1
   FALLINGSPEED_WALLCLIMB: 1
   WALLJUMPPOWER: 390

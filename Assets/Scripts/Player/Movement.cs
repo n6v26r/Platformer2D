@@ -88,6 +88,8 @@ public class Movement : MonoBehaviour
         else
             sp.flipX=false;
 
+        dashbar.SetActive(dashing);
+
         dashbar.transform.position = startpoz_dash - new Vector3((dash_cooldown - dash_timer + 0.1f)*100, 0, 0);
         healthbar.transform.position = startpoz_health - new Vector3((100 - gameObject.GetComponent<Health>().health)*3.3f, 0, 0);
     
