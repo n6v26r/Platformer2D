@@ -41,4 +41,14 @@ public class Slime : Walker
             OnSlimeHit(collision.gameObject);
         DamageTimer = 0;
     }
+
+    protected override float RaycastWall(Vector2 direction, float MaxDistance=Mathf.Infinity){
+        RaycastHit2D hit;
+        hit = Physics2D.Raycast(transform.position, direction, Mathf.Infinity, (1<<3)+(1<<6)); // Ground
+        if(hit.collider!=null)
+        {
+            return hit.distance;
+        }
+        return MaxDistance;
+    }
 }
