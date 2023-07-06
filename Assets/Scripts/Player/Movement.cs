@@ -125,6 +125,7 @@ public class Movement : MonoBehaviour
         if((xinput != 1 || (rb.velocity.x < speedcap )) && (xinput != -1 || (rb.velocity.x > -speedcap)))
             rb.AddForce(new Vector2(acceleration * xinput, 0));
 
+        animator.SetBool("isWallcliming", false);
         if (onground > 0) {
             if (jumped > 0) {
                 onground = 0;
@@ -139,6 +140,7 @@ public class Movement : MonoBehaviour
                 rb.velocity = new Vector2(0, 0);
                 rb.AddForce(new Vector2(WALLJUMPPOWER, jumppower * 1.15f));
             }
+            animator.SetBool("isWallcliming", true);
         } else if (Physics2D.BoxCast(boxcl2D.bounds.center, boxcl2D.bounds.size - new Vector3(0, 0.1f, 0), 0f, Vector2.right, extraHeightText, lm_platfrom) && (Input.GetKey(KeyCode.LeftControl) || Input.GetMouseButton(0))) {
             rb.velocity = new Vector2(rb.velocity.x, -FALLINGSPEED_WALLCLIMB);
             if (jumped > 0) {
@@ -146,6 +148,7 @@ public class Movement : MonoBehaviour
                 rb.velocity = new Vector2(0, 0);
                 rb.AddForce(new Vector2(-WALLJUMPPOWER, jumppower * 1.15f));
             }
+            animator.SetBool("isWallcliming", true);
         }
 
         if (rb.velocity.y > 0 && (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space)))
