@@ -47,7 +47,8 @@ public class Slime : Walker
         hit = Physics2D.Raycast(transform.position, direction, Mathf.Infinity, (1<<3)+(1<<6)); // Ground
         if(hit.collider!=null)
         {
-            return hit.distance;
+            if(hit.collider.gameObject.tag != "Player")
+                return hit.distance;
         }
         return MaxDistance;
     }
