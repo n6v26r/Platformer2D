@@ -2,11 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System;
 
 public class Movement : MonoBehaviour
 {
-    public Action death;
     Rigidbody2D rb;
     SpriteRenderer sp;
     BoxCollider2D boxcl2D;
@@ -109,8 +107,6 @@ public class Movement : MonoBehaviour
         
 
         if (GetComponent<Health>().health <= 0) {
-            if(death!=null)
-                death();
             transform.position = spawnpoint.transform.position;
             GetComponent<Health>().health = 100;
             speedcap = 6;
