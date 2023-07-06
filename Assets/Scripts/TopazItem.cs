@@ -3,15 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EmeraldItem : MonoBehaviour
+public class TopazItem : MonoBehaviour
 {
-    public Action<GameObject> OnEmeraldEnter;
+    public Action<GameObject> OnTopazEnter;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (OnEmeraldEnter != null && collision.gameObject.tag == "Player")
+        if (OnTopazEnter != null && collision.gameObject.tag == "Player")
         {
-            OnEmeraldEnter(collision.gameObject);
+            OnTopazEnter(collision.gameObject);
             Destroy(gameObject);
         }
     }

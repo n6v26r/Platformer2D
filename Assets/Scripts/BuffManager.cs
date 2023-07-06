@@ -6,7 +6,7 @@ public class BuffManager : MonoBehaviour
 {
     private RubyItem[] rubys;
     private EmeraldItem[] emeralds;
-    private Movement movement;
+    private TopazItem[] topazs;
 
 
     private void Awake()
@@ -19,6 +19,10 @@ public class BuffManager : MonoBehaviour
         emeralds = FindObjectsOfType<EmeraldItem>(true);
         for (int i = 0; i < emeralds.Length; ++i)
             emeralds[i].OnEmeraldEnter += EmeraldBuff;
+
+        topazs = FindObjectsOfType<TopazItem>(true);
+        for (int i = 0; i < topazs.Length; ++i)
+            topazs[i].OnTopazEnter += TopazBuff;
     }
 
 
@@ -32,6 +36,11 @@ public class BuffManager : MonoBehaviour
     }
 
     private void EmeraldBuff(GameObject gameObject)
+    {
+        
+    }
+
+    private void TopazBuff(GameObject gameObject)
     {
         gameObject.GetComponent<Movement>().dashing = true;
     }
