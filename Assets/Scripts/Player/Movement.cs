@@ -62,7 +62,6 @@ public class Movement : MonoBehaviour
     void Start()
     {
         rb.gravityScale = BASE_GRAVITY;
-        startpoz_dash = dashbar.transform.position;
         start_holdgrav = HOLD_GRAVITY;
         healthbar.fillAmount = 1;
     }
@@ -183,5 +182,10 @@ public class Movement : MonoBehaviour
 
         if (rb.velocity.y < -15)
             rb.velocity = new Vector2(rb.velocity.x, -15);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.gameObject.tag == "spike")
+            GetComponent<Health>().health = 0;
     }
 }
