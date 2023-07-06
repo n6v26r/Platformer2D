@@ -1814,6 +1814,7 @@ MonoBehaviour:
   CellingSpike: {fileID: 8300000, guid: d6b51d2f89826d64b924350eff74de56, type: 3}
   WormHoleEnter: {fileID: 8300000, guid: fd9f897a01b96ee48b4aee87cb3cece5, type: 3}
   Portal: {fileID: 8300000, guid: 7f84396e233aa3a469d610b0c186b5d0, type: 3}
+  flame: {fileID: 8300000, guid: fd9f897a01b96ee48b4aee87cb3cece5, type: 3}
 --- !u!4 &2004385736
 Transform:
   m_ObjectHideFlags: 0

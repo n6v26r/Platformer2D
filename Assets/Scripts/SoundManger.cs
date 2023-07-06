@@ -22,6 +22,7 @@ public class SoundManger : MonoBehaviour
     [SerializeField] public AudioClip CellingSpike; // ok
     [SerializeField] public AudioClip WormHoleEnter; // ok
     [SerializeField] public AudioClip Portal; // ok
+    [SerializeField] public AudioClip flame;
 
     void Awake(){
         DontDestroyOnLoad(gameObject);
