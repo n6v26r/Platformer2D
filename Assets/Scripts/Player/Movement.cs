@@ -165,6 +165,7 @@ public class Movement : MonoBehaviour
             dash_dir = Mathf.RoundToInt(xinput);
 
         if ((Input.GetKey(KeyCode.LeftShift )|| Input.GetMouseButton(1)) && dash_timer >= dash_cooldown && dashing) {
+            SoundManager.PlaySound(SoundManager.PlayerDash);
             dash_timer = 0;
             dash_airtime = DASH_MAXAIRTIME;
         }

@@ -26,7 +26,7 @@ public class Portal : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other){
         if(other.gameObject.tag == "Player"){
             SoundManager.PlaySound(SoundManager.Portal);
-            SceneManager.LoadScene(SceneManager.loadedSceneCount+1);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 }
