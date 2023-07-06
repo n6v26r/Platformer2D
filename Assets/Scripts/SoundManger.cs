@@ -8,34 +8,20 @@ public class SoundManger : MonoBehaviour
     [SerializeField] private AudioSource music;
     [SerializeField] private AudioSource aud;
 
-    [SerializeField] private AudioSource PlayerHit;
-    [SerializeField] private AudioSource PlayerJump;
-    [SerializeField] private AudioSource PlayerDash;
-    [SerializeField] private AudioSource PlayerDeath;
-    [SerializeField] private AudioSource BlockBreak;
-    [SerializeField] private AudioSource RubyCollect;
-    [SerializeField] private AudioSource EmeraldCollect;
-    [SerializeField] private AudioSource TopazCollect;
-    [SerializeField] private AudioSource SlimeJump;
-    [SerializeField] private AudioSource GolemCharge;
-    [SerializeField] private AudioSource GolemLaunch;
-    [SerializeField] private AudioSource CellingSpike;
-    [SerializeField] private AudioSource WormHoleEnter;
-    [SerializeField] private AudioSource Portal;
-    
-    private Movement Player;
-    private Button btn;
-    private Slime[] slimes;
-    private Golem[] golems;
-    private CellingSpike[] cellingSpikes;
-    private WormHole[] wormholes;
-
-    private RubyBlock[] RubyBlocks;
-    private TopazBlock[] TopazBlocks;
-
-    private EmeraldItem[] emeraldItems;
-    private RubyItem[] rubyItems;
-    private TopazItem topazItem;
+    [SerializeField] public AudioClip PlayerHit; // ok
+    [SerializeField] public AudioClip PlayerJump; // ok
+    [SerializeField] public AudioClip PlayerDash; // ok
+    [SerializeField] public AudioClip PlayerDeath; // later
+    [SerializeField] public AudioClip BlockBreak; // ok
+    [SerializeField] public AudioClip RubyCollect; // ok
+    [SerializeField] public AudioClip EmeraldCollect; // ok
+    [SerializeField] public AudioClip TopazCollect; // ok
+    [SerializeField] public AudioClip SlimeJump; // ok
+    [SerializeField] public AudioClip GolemCharge; // ok
+    [SerializeField] public AudioClip GolemLaunch; // later
+    [SerializeField] public AudioClip CellingSpike; // ok
+    [SerializeField] public AudioClip WormHoleEnter; // ok
+    [SerializeField] public AudioClip Portal; // ok
 
     void Awake(){
         DontDestroyOnLoad(gameObject);
@@ -44,7 +30,6 @@ public class SoundManger : MonoBehaviour
 
     void OnSceneLoaded(Scene loadedScene, LoadSceneMode loadedMode) 
     {
-
     }
 
     void PlaySound(AudioClip source){
