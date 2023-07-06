@@ -33,10 +33,10 @@ RectTransform:
   m_Father: {fileID: 1998509985148871050}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -249.81, y: 497.95}
-  m_SizeDelta: {x: 95.62793, y: 25.2977}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -249.81, y: -42.049988}
+  m_SizeDelta: {x: 95.62793, y: 25.29773}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &779454917646875129
 MeshRenderer:
@@ -472,11 +472,11 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3444099644450892022}
   - {fileID: 5320131344212356044}
   - {fileID: 4644304410173454689}
   - {fileID: 8054585325148046059}
   - {fileID: 462429446428208753}
-  - {fileID: 3444099644450892022}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
