@@ -3575,37 +3575,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2158196638034901598, guid: b341b4e717bac9541a1ae270b46f3484, type: 3}
-      propertyPath: m_margin.z
-      value: -152.83508
-      objectReference: {fileID: 0}
-    - target: {fileID: 2158196638034901598, guid: b341b4e717bac9541a1ae270b46f3484, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 7bb2174aaa21fd34995b9baf6975395e, type: 2}
-    - target: {fileID: 2158196638034901598, guid: b341b4e717bac9541a1ae270b46f3484, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -3839480217846032899, guid: 7bb2174aaa21fd34995b9baf6975395e, type: 2}
-    - target: {fileID: 2158196638034901598, guid: b341b4e717bac9541a1ae270b46f3484, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4277303657536188853, guid: b341b4e717bac9541a1ae270b46f3484, type: 3}
       propertyPath: m_Name
       value: Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 9177109645736035563, guid: b341b4e717bac9541a1ae270b46f3484, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 7bb2174aaa21fd34995b9baf6975395e, type: 2}
-    - target: {fileID: 9177109645736035563, guid: b341b4e717bac9541a1ae270b46f3484, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -3839480217846032899, guid: 7bb2174aaa21fd34995b9baf6975395e, type: 2}
-    - target: {fileID: 9177109645736035563, guid: b341b4e717bac9541a1ae270b46f3484, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
