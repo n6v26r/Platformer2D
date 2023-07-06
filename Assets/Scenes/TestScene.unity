@@ -2789,6 +2789,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &196555752 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5055901584909487376, guid: b341b4e717bac9541a1ae270b46f3484, type: 3}
+  m_PrefabInstance: {fileID: 2063650921}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &333990139 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2485824032784383721, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
@@ -3570,16 +3575,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2158196638034901598, guid: b341b4e717bac9541a1ae270b46f3484, type: 3}
+      propertyPath: m_margin.z
+      value: -152.83508
+      objectReference: {fileID: 0}
+    - target: {fileID: 2158196638034901598, guid: b341b4e717bac9541a1ae270b46f3484, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 7bb2174aaa21fd34995b9baf6975395e, type: 2}
+    - target: {fileID: 2158196638034901598, guid: b341b4e717bac9541a1ae270b46f3484, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -3839480217846032899, guid: 7bb2174aaa21fd34995b9baf6975395e, type: 2}
+    - target: {fileID: 2158196638034901598, guid: b341b4e717bac9541a1ae270b46f3484, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4277303657536188853, guid: b341b4e717bac9541a1ae270b46f3484, type: 3}
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 8940587910310759393, guid: b341b4e717bac9541a1ae270b46f3484, type: 3}
-      propertyPath: m_Type
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8940587910310759393, guid: b341b4e717bac9541a1ae270b46f3484, type: 3}
-      propertyPath: m_FillMethod
+    - target: {fileID: 9177109645736035563, guid: b341b4e717bac9541a1ae270b46f3484, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 7bb2174aaa21fd34995b9baf6975395e, type: 2}
+    - target: {fileID: 9177109645736035563, guid: b341b4e717bac9541a1ae270b46f3484, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -3839480217846032899, guid: 7bb2174aaa21fd34995b9baf6975395e, type: 2}
+    - target: {fileID: 9177109645736035563, guid: b341b4e717bac9541a1ae270b46f3484, type: 3}
+      propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3647,6 +3672,10 @@ PrefabInstance:
       propertyPath: ground
       value: 
       objectReference: {fileID: 59700028}
+    - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
+      propertyPath: ScoreUI
+      value: 
+      objectReference: {fileID: 196555752}
     - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
       propertyPath: dashbar
       value: 

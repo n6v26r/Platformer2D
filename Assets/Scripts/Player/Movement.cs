@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using TMPro;
 
 public class Movement : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class Movement : MonoBehaviour
     public PhysicsMaterial2D air;
     public GameObject ground;
     public GameObject spawnpoint;
+    public GameObject ScoreUI;
 
     public Image healthbar;
 
@@ -92,6 +94,7 @@ public class Movement : MonoBehaviour
 
         healthbar.fillAmount = Mathf.Clamp(gameObject.GetComponent<Health>().health / 100, 0, 1f);
         dashbar.fillAmount = Mathf.Clamp(dash_timer / dash_cooldown, 0, 1f);
+        ScoreUI.GetComponent<TMP_Text>().text = "Score: " + score.ToString();
 
         if(jumped>0)
             animator.SetBool("IsJumping", true);
