@@ -6,8 +6,12 @@ public class WormHole : MonoBehaviour
 {
 
     public GameObject WormBrother;
-    public WormHole WormBrotherScript;
+    private WormHole WormBrotherScript;
     private bool canteleport = true;
+
+    void Awake(){
+        WormBrotherScript = WormBrother.GetComponent<WormHole>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

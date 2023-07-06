@@ -61,8 +61,9 @@ public class Golem : Walker
     IEnumerator Launch(GameObject go){
         yield return new WaitForSeconds(LaunchDelay);
         RaycastHit2D above = Physics2D.BoxCast(SelfBoxCollider.bounds.center, SelfBoxCollider.bounds.size, 0f, Vector2.up, 0.31f, (1<<3)+(1<<6)+(1<<7));
-        if(above.collider != null && above.collider.gameObject!=null && above.collider.gameObject == go)
+        if(above.collider != null && above.collider.gameObject!=null && above.collider.gameObject == go){
             go.GetComponent<Rigidbody2D>().AddForce(Vector2.up*LaunchPower);
+        }
         IsLaunching = false;
         StartCoroutine(Launched());
     }
