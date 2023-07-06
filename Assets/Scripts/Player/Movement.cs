@@ -19,7 +19,7 @@ public class Movement : MonoBehaviour
 
     public Image healthbar;
 
-    public GameObject dashbar;
+    public Image dashbar;
     private Vector3 startpoz_dash;
 
     float xinput, yinput;
@@ -87,9 +87,10 @@ public class Movement : MonoBehaviour
         else
             sp.flipX=false;
 
-        dashbar.SetActive(dashing);
+        dashbar.enabled = dashing;
 
         healthbar.fillAmount = Mathf.Clamp(gameObject.GetComponent<Health>().health / 100, 0, 1f);
+        dashbar.fillAmount = Mathf.Clamp(dash_timer / dash_cooldown, 0, 1f);
 
         if(jumped>0)
             animator.SetBool("IsJumping", true);
