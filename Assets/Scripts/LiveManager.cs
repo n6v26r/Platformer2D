@@ -27,7 +27,7 @@ public class LiveManager : MonoBehaviour
         Player = FindObjectOfType<Movement>();
         text = GameObject.Find("Lives");
         if(text != null)
-            text.GetComponent<TMP_Text>().text = "Lives left: " + lives.ToString();
+            text.GetComponent<TMP_Text>().text = "Lives left: 10";
         Player.death = OnDeath;
         lives = 10;
     }
