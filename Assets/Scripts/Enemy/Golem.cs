@@ -9,6 +9,7 @@ public class Golem : Walker
     private bool StuffAbove;
     private bool IsLaunching;
     private bool JustLaunched;
+    private bool sound;
     [SerializeField] private bool StaticJump = true;
     [SerializeField] private float LaunchPower = 500;
     [SerializeField] private float LaunchDelay = 1;
@@ -62,10 +63,13 @@ public class Golem : Walker
     }
 
     IEnumerator Launch(GameObject go){
+        if(!sound)
+            SoundManager.PlaySound(SoundManager.GolemCharge);
+        sound = true;
         yield return new WaitForSeconds(LaunchDelay);
+        sound = false;
         RaycastHit2D above = Physics2D.BoxCast(SelfBoxCollider.bounds.center, SelfBoxCollider.bounds.size, 0f, Vector2.up, 0.31f, (1<<3)+(1<<6)+(1<<7));
         if(above.collider != null && above.collider.gameObject!=null && above.collider.gameObject == go){
-            SoundManager.PlaySound(SoundManager.GolemCharge);
             if(StaticJump)
                 go.GetComponent<Rigidbody2D>().velocity = new Vector2(go.GetComponent<Rigidbody2D>().velocity.x, 0);
             go.GetComponent<Rigidbody2D>().AddForce(Vector2.up*LaunchPower);
