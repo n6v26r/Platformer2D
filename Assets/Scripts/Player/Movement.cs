@@ -75,7 +75,7 @@ public class Movement : MonoBehaviour
         xinput = Input.GetAxisRaw("Horizontal");
         yinput = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W))
             jumped = JUMPBUFFER;
 
         if (Physics2D.BoxCast(boxcl2D.bounds.center, boxcl2D.bounds.size - new Vector3(0.1f, 0, 0), 0f, Vector2.down, extraHeightText, lm_platfrom)) {
@@ -164,7 +164,7 @@ public class Movement : MonoBehaviour
         if (xinput != 0)
             dash_dir = Mathf.RoundToInt(xinput);
 
-        if (Input.GetKey(KeyCode.LeftShift) && dash_timer >= dash_cooldown && dashing) {
+        if ((Input.GetKey(KeyCode.LeftShift )|| Input.GetMouseButton(1)) && dash_timer >= dash_cooldown && dashing) {
             dash_timer = 0;
             dash_airtime = DASH_MAXAIRTIME;
         }
