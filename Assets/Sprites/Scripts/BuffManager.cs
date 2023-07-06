@@ -33,16 +33,18 @@ public class BuffManager : MonoBehaviour
             healthComp.health += 15;
         else
             healthComp.health = 100;
+        Movement.score += 15;
     }
 
     private void EmeraldBuff(GameObject gameObject)
     {
-        
+        Movement.score += 100;
     }
 
     private void TopazBuff(GameObject gameObject)
     {
         gameObject.GetComponent<Movement>().dashing = true;
+        Movement.score += 25;
     }
 
     // Start is called before the first frame update
