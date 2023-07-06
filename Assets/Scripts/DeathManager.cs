@@ -60,7 +60,8 @@ public class DeathManager : MonoBehaviour
             Health healthComp = gameObject.GetComponent<Health>();
             if (healthComp == null) return;
             healthComp.health -= 25f;
-            SoundManager.PlaySound(SoundManager.PlayerHit);
+            if(gameObject.name != "Lava")
+                SoundManager.PlaySound(SoundManager.PlayerHit);
             if (gameObject.tag != "Player")
                 CheckDeath(healthComp);
         }
