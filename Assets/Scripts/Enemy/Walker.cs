@@ -15,6 +15,8 @@ public class Walker : PrototypeEnemyAI
     [SerializeField] protected float RememberPlayerCounter = 3f;
     [SerializeField] protected float PatrolStopBeforeWall = 2;
 
+    [SerializeField] protected bool Agro = true;
+
     // Start is called before the first frame update
 
     void Awake(){
@@ -25,21 +27,25 @@ public class Walker : PrototypeEnemyAI
     // Update is called once per frame
     void Update()
     {
-        bool IsVictimVisible = FollowVictim();
-        if(!IsVictimVisible){
-            if(RememberPlayerTimer>RememberPlayerCounter){
-                Patrol();
+        if(Agro){
+            bool IsVictimVisible = FollowVictim();
+            if(!IsVictimVisible){
+                if(RememberPlayerTimer>RememberPlayerCounter){
+                    Patrol();
+                }
+                else{
+                    RememberPlayerTimer += Time.deltaTime;
+                }
             }
             else{
-                RememberPlayerTimer += Time.deltaTime;
+                RememberPlayerTimer = 0;
+                PatrolDirection = Direction;
             }
         }
-        else{
-            RememberPlayerTimer = 0;
-            PatrolDirection = Direction;
-        }
+        else
+            Patrol();
         MoveTarget();
-    }   
+    }
 
     protected virtual bool FollowVictim(){
         if(Direction!=Vector2.zero){
