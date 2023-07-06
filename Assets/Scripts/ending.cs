@@ -21,6 +21,9 @@ public class ending : MonoBehaviour
     }
 
     IEnumerator end() {
+        Movement.score = 0;
+        LiveManager lm = FindAnyObjectByType<LiveManager>();
+        lm.lives = 15; 
         yield return new WaitForSeconds(10);
         SceneManager.LoadScene(0);
     }
