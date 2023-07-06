@@ -10,7 +10,7 @@ public class Golem : Walker
     private bool StuffAbove;
     private bool IsLaunching;
     private bool JustLaunched;
-    [SerializeField] private bool StaticJump;
+    [SerializeField] private bool StaticJump = true;
     [SerializeField] private float LaunchPower = 500;
     [SerializeField] private float LaunchDelay = 1;
 
@@ -50,10 +50,11 @@ public class Golem : Walker
         RaycastHit2D above = Physics2D.BoxCast(SelfBoxCollider.bounds.center, SelfBoxCollider.bounds.size, 0f, Vector2.up, 0.31f, (1<<3)+(1<<6)+(1<<7));
         if(above.collider!=null) {
             StuffAbove = true;
-            if(!IsLaunching)
+            if(!IsLaunching){
                 StopCoroutine("Launch");
                 IsLaunching = true;
                 StartCoroutine(Launch(above.collider.gameObject));
+            }
         }
         else {StuffAbove = false;}
         DistanceToWall = RaycastWall(PatrolDirection, PatrolDistance);
