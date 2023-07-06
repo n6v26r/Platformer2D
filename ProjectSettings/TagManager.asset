@@ -54,3 +54,6 @@ TagManager:
   - name: Pl
     uniqueID: 803709361
     locked: 0
+  - name: Golem
+    uniqueID: 3234824503
+    locked: 0
