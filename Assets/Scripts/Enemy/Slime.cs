@@ -15,7 +15,6 @@ public class Slime : Walker
     [SerializeField] protected float JumpCooldown = 3f;
     [SerializeField] protected float DamageCoolDown = 0.3f;
     void FixedUpdate() {
-        Debug.Log(DamageTimer);
         DamageTimer += Time.fixedDeltaTime;
         JumpCooldownTimer += Time.fixedDeltaTime;
 
