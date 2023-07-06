@@ -18,7 +18,7 @@ public class LiveManager : MonoBehaviour
     void Start()
     {
         if(text!= null)
-            text.GetComponent<TMP_Text>().text = "Lives left: " + lives.ToString();
+            text.GetComponent<TMP_Text>().text = "Lives: " + lives.ToString();
     }
 
     void OnSceneLoaded(Scene loadedScene, LoadSceneMode loadedMode) 
@@ -26,11 +26,9 @@ public class LiveManager : MonoBehaviour
         Player = FindObjectOfType<Movement>();
         text = GameObject.Find("Lives");
         if(text != null)
-            text.GetComponent<TMP_Text>().text = "Lives left: " + lives.ToString();
-        if(Player != null){
+            text.GetComponent<TMP_Text>().text = "Lives: " + lives.ToString();
+        if(Player != null)
             Player.death = OnDeath;
-            Movement.score = 0;
-        }
     }
 
 
@@ -38,7 +36,7 @@ public class LiveManager : MonoBehaviour
     void OnDeath(){
         lives--;
         if(text != null)
-            text.GetComponent<TMP_Text>().text = "Lives left: " + lives.ToString();
-        if(lives<=0){ lives = 10; UnityEngine.SceneManagement.SceneManager.LoadScene(1);}
+            text.GetComponent<TMP_Text>().text = "Lives: " + lives.ToString();
+        if(lives<=0){Movement.score = 0;lives = 10; UnityEngine.SceneManagement.SceneManager.LoadScene(SceneManager.sceneCount);}
     }
 }
