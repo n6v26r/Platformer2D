@@ -62,7 +62,6 @@ public class Movement : MonoBehaviour
         rb.gravityScale = BASE_GRAVITY;
         startpoz_dash = dashbar.transform.position;
         start_holdgrav = HOLD_GRAVITY;
-        Debug.Log(healthbar.fillAmount);
         healthbar.fillAmount = 1;
     }
 
@@ -90,7 +89,6 @@ public class Movement : MonoBehaviour
 
         dashbar.SetActive(dashing);
 
-        dashbar.transform.position = startpoz_dash - new Vector3((dash_cooldown - dash_timer + 0.1f)*100, 0, 0);
         healthbar.fillAmount = Mathf.Clamp(gameObject.GetComponent<Health>().health / 100, 0, 1f);
 
         if(jumped>0)
@@ -127,17 +125,19 @@ public class Movement : MonoBehaviour
                 rb.velocity = new Vector2(rb.velocity.x, 0);
                 rb.AddForce(new Vector2(0, jumppower));
             }
-        } else if (Physics2D.BoxCast(boxcl2D.bounds.center, boxcl2D.bounds.size - new Vector3(0, 0.1f, 0), 0f, Vector2.left, extraHeightText, lm_platfrom)) {
+        } else if (Physics2D.BoxCast(boxcl2D.bounds.center, boxcl2D.bounds.size - new Vector3(0, 0.1f, 0), 0f, Vector2.left, extraHeightText, lm_platfrom)  && (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.LeftControl))) {
             rb.velocity = new Vector2(rb.velocity.x, -FALLINGSPEED_WALLCLIMB);
             if (jumped > 0) {
                 jumped = 0;
-                rb.AddForce(new Vector2(WALLJUMPPOWER - 1, jumppower * 1.15f));
+                rb.velocity = new Vector2(0, 0);
+                rb.AddForce(new Vector2(WALLJUMPPOWER, jumppower * 1.15f));
             }
-        } else if (Physics2D.BoxCast(boxcl2D.bounds.center, boxcl2D.bounds.size - new Vector3(0, 0.1f, 0), 0f, Vector2.right, extraHeightText, lm_platfrom)) {
+        } else if (Physics2D.BoxCast(boxcl2D.bounds.center, boxcl2D.bounds.size - new Vector3(0, 0.1f, 0), 0f, Vector2.right, extraHeightText, lm_platfrom) && (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.LeftControl))) {
             rb.velocity = new Vector2(rb.velocity.x, -FALLINGSPEED_WALLCLIMB);
             if (jumped > 0) {
                 jumped = 0;
-                rb.AddForce(new Vector2(-WALLJUMPPOWER + 1, jumppower * 1.15f));
+                rb.velocity = new Vector2(0, 0);
+                rb.AddForce(new Vector2(-WALLJUMPPOWER, jumppower * 1.15f));
             }
         }
 
