@@ -156,7 +156,7 @@ public class Movement : MonoBehaviour
             animator.SetBool("isWallcliming", true);
         }
 
-        if (rb.velocity.y > 0 && (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space)))
+        if (rb.velocity.y > 0 && (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W)))
             rb.gravityScale = HOLD_GRAVITY;
         else
             rb.gravityScale = BASE_GRAVITY;
