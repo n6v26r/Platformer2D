@@ -197,7 +197,9 @@ public class Movement : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.tag == "spike")
+        if (collision.gameObject.tag == "spike"){
+            SoundManager.PlaySound(SoundManager.CellingSpike);
             GetComponent<Health>().health = 0;
+        }
     }
 }

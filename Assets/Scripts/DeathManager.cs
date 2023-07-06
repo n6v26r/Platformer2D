@@ -54,8 +54,6 @@ public class DeathManager : MonoBehaviour
 
     private void SpikeHit(GameObject gameObject)
     {
-        if(gameObject.tag != "Liquid")
-            SoundManager.PlaySound(SoundManager.CellingSpike);
         if (gameObject.layer == 6 || gameObject.layer == 7)
         {
             Health healthComp = gameObject.GetComponent<Health>();
