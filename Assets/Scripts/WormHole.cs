@@ -18,7 +18,7 @@ public class WormHole : MonoBehaviour
         if (canteleport == true)
         {
             WormBrotherScript.canteleport = false;
-            collision.gameObject.transform.position = WormBrother.transform.position;
+            collision.gameObject.transform.position = new Vector3(WormBrother.transform.position.x, WormBrother.transform.position.y);
         }
     }
 
