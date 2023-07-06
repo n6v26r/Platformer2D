@@ -8,7 +8,7 @@ public class LiveManager : MonoBehaviour
     [SerializeField] private Movement Player;
     [SerializeField] private GameObject text;
 
-    public int lives = 10;
+    public int lives = 15;
     // Start is called before the first frame update
 
     void Awake(){
@@ -37,6 +37,6 @@ public class LiveManager : MonoBehaviour
         lives--;
         if(text != null)
             text.GetComponent<TMP_Text>().text = "Lives: " + lives.ToString();
-        if(lives<=0){Movement.score = 0;lives = 10; UnityEngine.SceneManagement.SceneManager.LoadScene(SceneManager.sceneCount);}
+        if(lives<=0){Movement.score = 0;lives = 15;}
     }
 }
