@@ -990,13 +990,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Scene: -1
   wait: 00000000000000000300000000000000
-  on:
-  - {fileID: 1539365224}
-  off:
-  - {fileID: 588236577}
-  - {fileID: 287927569}
-  - {fileID: 1229299438}
-  - {fileID: 95594013}
+  on: []
+  off: []
 --- !u!114 &982147410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1806,7 +1801,7 @@ MonoBehaviour:
   music: {fileID: 2004385734}
   aud: {fileID: 2004385733}
   PlayerHit: {fileID: 8300000, guid: e29d9ae94449ae34199c9f6e4b203fe3, type: 3}
-  PlayerJump: {fileID: 8300000, guid: 3019c71fe30a81e44aee6ca16b43d8c6, type: 3}
+  PlayerJump: {fileID: 8300000, guid: ead7585b41ac68d4ea4d5753bd408f56, type: 3}
   PlayerDash: {fileID: 8300000, guid: 04ac0e5d0c5d609478e19c53e072e9b5, type: 3}
   PlayerDeath: {fileID: 0}
   BlockBreak: {fileID: 8300000, guid: 9b64381f0cc32c84da0af7d345be5370, type: 3}
