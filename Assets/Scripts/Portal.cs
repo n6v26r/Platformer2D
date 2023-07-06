@@ -6,8 +6,12 @@ using UnityEngine.SceneManagement;
 public class Portal : MonoBehaviour
 {
 
-
+    private SoundManger SoundManager;
     // Start is called before the first frame update
+    void Awake(){
+        SoundManager = FindAnyObjectByType<SoundManger>();
+    }
+
     void Start()
     {
         
@@ -21,6 +25,7 @@ public class Portal : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other){
         if(other.gameObject.tag == "Player"){
+            SoundManager.PlaySound(SoundManager.Portal);
             SceneManager.LoadScene(SceneManager.loadedSceneCount+1);
         }
     }

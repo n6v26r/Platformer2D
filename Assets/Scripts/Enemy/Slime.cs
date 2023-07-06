@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class Slime : Walker
 {
-
-
     public Action<GameObject> OnSlimeHit;
     protected float JumpCooldownTimer;
     protected float DamageTimer;
@@ -19,6 +17,8 @@ public class Slime : Walker
         JumpCooldownTimer += Time.fixedDeltaTime;
 
         if(CanJump && JumpCooldownTimer>JumpCooldown){
+            if(FollowVictim())
+                SoundManager.PlaySound(SoundManager.SlimeJump);
             SelfRigidBody.AddForce(Vector2.up*JumpPower);
             CanJump = false;
             JumpCooldownTimer = 0f;

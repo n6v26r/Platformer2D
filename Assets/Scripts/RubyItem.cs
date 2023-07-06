@@ -7,6 +7,9 @@ public class RubyItem : MonoBehaviour
 {
     public Action<GameObject> OnRubyEnter;
 
+    private void Awake() {
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (OnRubyEnter != null && collision.gameObject.tag == "Player")

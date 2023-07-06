@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Walker : PrototypeEnemyAI
 {
+    protected SoundManger SoundManager;
     protected Vector2 Direction;
     protected float DistanceToWall;
     protected float RememberPlayerTimer;
@@ -22,6 +23,7 @@ public class Walker : PrototypeEnemyAI
     void Awake(){
         SelfRigidBody = GetComponent<Rigidbody2D>();
         SelfBoxCollider = GetComponent<BoxCollider2D>();
+        SoundManager = FindObjectOfType<SoundManger>();
     }
 
     // Update is called once per frame

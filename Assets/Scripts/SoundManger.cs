@@ -32,12 +32,12 @@ public class SoundManger : MonoBehaviour
     {
     }
 
-    void PlaySound(AudioClip source){
+    public void PlaySound(AudioClip source){
         aud.clip = source;
         aud.Play();
     }
 
-    void PlayMusic(AudioClip source){
+    public void PlayMusic(AudioClip source){
         music.clip = source;
         music.Play();
     }

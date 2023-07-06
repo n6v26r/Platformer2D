@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Golem : Walker
 {
-
     private Animator SelfAnimator;
     private SpriteRenderer SelfSpriteRenderer;
     private bool StuffAbove;
@@ -20,6 +19,7 @@ public class Golem : Walker
         SelfRigidBody = GetComponent<Rigidbody2D>();
         SelfBoxCollider = GetComponent<BoxCollider2D>();
         SelfSpriteRenderer = GetComponent<SpriteRenderer>();
+        SoundManager = FindObjectOfType<SoundManger>();
     }
 
     void Start(){
@@ -62,7 +62,7 @@ public class Golem : Walker
     }
 
     IEnumerator Launch(GameObject go){
-
+        SoundManager.PlaySound(SoundManager.GolemCharge);
         yield return new WaitForSeconds(LaunchDelay);
         RaycastHit2D above = Physics2D.BoxCast(SelfBoxCollider.bounds.center, SelfBoxCollider.bounds.size, 0f, Vector2.up, 0.31f, (1<<3)+(1<<6)+(1<<7));
         if(above.collider != null && above.collider.gameObject!=null && above.collider.gameObject == go){

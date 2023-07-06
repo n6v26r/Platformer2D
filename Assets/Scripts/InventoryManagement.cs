@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class InventoryManagement : MonoBehaviour
 {
+    private SoundManger SoundManager;
     public int KeysInInventory = 0;
     public int RubysCollected = 0;
     public int EmeraldsCollected = 0;
@@ -17,6 +18,7 @@ public class InventoryManagement : MonoBehaviour
 
     void Awake()
     {
+        SoundManager = FindAnyObjectByType<SoundManger>();
         keyItems = FindObjectsOfType<KeyItem>();
         for (int i = 0; i < keyItems.Length; ++i)
             keyItems[i].OnKeyEnter += GotKey;
@@ -43,21 +45,25 @@ public class InventoryManagement : MonoBehaviour
 
     private void GotKey(GameObject gameObject)
     {
+        SoundManager.PlaySound(SoundManager.TopazCollect);
         KeysInInventory++;
     }
 
     private void GotRuby(GameObject gameObject)
     {
+        SoundManager.PlaySound(SoundManager.RubyCollect);
         RubysCollected++;
     }
 
     private void GotEmerald(GameObject gameObject)
     {
+        SoundManager.PlaySound(SoundManager.EmeraldCollect);
         EmeraldsCollected++;
     }
 
     private void GotTopaz(GameObject gameObject)
     {
+        SoundManager.PlaySound(SoundManager.TopazCollect);
         TopazsCollected++;
     }
 

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DeathManager : MonoBehaviour
 {
+    private SoundManger SoundManager;
     [SerializeField] private LavaBlock lavaBlock;
     [SerializeField] private Movement playermovement;
     private CellingSpike[] cellingSpikes;
@@ -11,6 +12,8 @@ public class DeathManager : MonoBehaviour
 
     void Awake()
     {
+        SoundManager = FindAnyObjectByType<SoundManger>();
+
         lavaBlock.OnLavaStay2D += StayedInLava;
         lavaBlock.OnLavaExit += LeftLava;
         cellingSpikes = FindObjectsOfType<CellingSpike>();
@@ -38,7 +41,6 @@ public class DeathManager : MonoBehaviour
         playermovement.jumppower = 200;
         playermovement.BASE_GRAVITY = 1.8f;
         playermovement.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-        
         if(gameObject.tag != "Player")
             CheckDeath(healthComp);
     }
@@ -52,12 +54,13 @@ public class DeathManager : MonoBehaviour
 
     private void SpikeHit(GameObject gameObject)
     {
+        SoundManager.PlaySound(SoundManager.CellingSpike);
         if (gameObject.layer == 6 || gameObject.layer == 7)
         {
             Health healthComp = gameObject.GetComponent<Health>();
             if (healthComp == null) return;
             healthComp.health -= 25f;
-
+            SoundManager.PlaySound(SoundManager.PlayerHit);
             if (gameObject.tag != "Player")
                 CheckDeath(healthComp);
         }
@@ -70,7 +73,7 @@ public class DeathManager : MonoBehaviour
             Health healthComp = gameObject.GetComponent<Health>();
             if (healthComp == null) return;
                     healthComp.health -= 15f;
-
+            SoundManager.PlaySound(SoundManager.PlayerHit);
             if (gameObject.tag != "Player")
                 CheckDeath(healthComp);
         }
