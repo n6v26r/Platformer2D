@@ -29,8 +29,8 @@ public class BuffManager : MonoBehaviour
     private void RubyBuff(GameObject gameObject)
     {
         Health healthComp = gameObject.GetComponent<Health>();
-        if (healthComp.health < 85)
-            healthComp.health += 15;
+        if (healthComp.health < 75)
+            healthComp.health += 25;
         else
             healthComp.health = 100;
 
@@ -39,7 +39,7 @@ public class BuffManager : MonoBehaviour
 
     private void EmeraldBuff(GameObject gameObject)
     {
-        Movement.score += 100;
+        Movement.score += 200;
     }
 
     private void TopazBuff(GameObject gameObject)
