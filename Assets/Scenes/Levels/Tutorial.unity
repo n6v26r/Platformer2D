@@ -870,6 +870,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 234402598846467810, guid: d763136a7a37afc488835fbeb9f87a3b, type: 3}
+      propertyPath: Victim
+      value: 
+      objectReference: {fileID: 1954705468}
     - target: {fileID: 7046201432096475252, guid: d763136a7a37afc488835fbeb9f87a3b, type: 3}
       propertyPath: m_Name
       value: BasicSlime
@@ -27736,7 +27740,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Some golems might get anoyyed and push you upward
+  m_text: Some golems might get annoyed and push you upward
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7bb2174aaa21fd34995b9baf6975395e, type: 2}
   m_sharedMaterial: {fileID: -3839480217846032899, guid: 7bb2174aaa21fd34995b9baf6975395e, type: 2}
