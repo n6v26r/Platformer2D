@@ -414,6 +414,10 @@ MonoBehaviour:
   - {fileID: 287927569}
   - {fileID: 1229299438}
   - {fileID: 1440684234}
+  - {fileID: 365647744}
+  - {fileID: 1031146785}
+  - {fileID: 982147407}
+  - {fileID: 95594013}
 --- !u!1 &256159190
 GameObject:
   m_ObjectHideFlags: 0
@@ -1796,7 +1800,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2004385732}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2642080077616aa4b88ce45aaf72c5e7, type: 3}
+  m_Script: {fileID: 11500000, guid: f604c5df0f77c9748bcc45c5cea8cc37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   music: {fileID: 2004385734}
