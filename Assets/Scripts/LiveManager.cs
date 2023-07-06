@@ -27,8 +27,10 @@ public class LiveManager : MonoBehaviour
         text = GameObject.Find("Lives");
         if(text != null)
             text.GetComponent<TMP_Text>().text = "Lives left: " + lives.ToString();
-        if(Player != null)
+        if(Player != null){
             Player.death = OnDeath;
+            Movement.score = 0;
+        }
     }
 
 
