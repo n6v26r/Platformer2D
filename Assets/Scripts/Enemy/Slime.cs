@@ -14,7 +14,6 @@ public class Slime : Walker
     [SerializeField] protected float JumpPower = 300f;
     [SerializeField] protected float JumpCooldown = 3f;
     [SerializeField] protected float DamageCoolDown = 0.2f;
-
     void FixedUpdate() {
         DamageTimer += Time.fixedDeltaTime;
         JumpCooldownTimer += Time.fixedDeltaTime;
