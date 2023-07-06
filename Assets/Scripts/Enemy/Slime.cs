@@ -6,6 +6,7 @@ using UnityEngine;
 public class Slime : Walker
 {
 
+
     public Action<GameObject> OnSlimeHit;
     protected float JumpCooldownTimer;
     protected float DamageTimer;
