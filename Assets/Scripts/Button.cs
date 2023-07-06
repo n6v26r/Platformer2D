@@ -29,6 +29,8 @@ public class Button : MonoBehaviour {
         yield return new WaitForSeconds(wait[2]);
         if (Scene != -1)
             SceneManager.LoadScene(Scene);
+        else
+            Application.Quit();
         yield return new WaitForSeconds(wait[3]);
     }
 }
