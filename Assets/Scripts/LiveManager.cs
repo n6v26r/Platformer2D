@@ -5,11 +5,10 @@ using TMPro;
 using UnityEngine.SceneManagement;
 public class LiveManager : MonoBehaviour
 {
-
     [SerializeField] private Movement Player;
     [SerializeField] private GameObject text;
 
-    public int lives = 1;
+    public int lives = 10;
     // Start is called before the first frame update
 
     void Awake(){
@@ -27,9 +26,9 @@ public class LiveManager : MonoBehaviour
         Player = FindObjectOfType<Movement>();
         text = GameObject.Find("Lives");
         if(text != null)
-            text.GetComponent<TMP_Text>().text = "Lives left: 10";
-        Player.death = OnDeath;
-        lives = 10;
+            text.GetComponent<TMP_Text>().text = "Lives left: " + lives.ToString();
+        if(Player != null)
+            Player.death = OnDeath;
     }
 
 
@@ -38,6 +37,6 @@ public class LiveManager : MonoBehaviour
         lives--;
         if(text != null)
             text.GetComponent<TMP_Text>().text = "Lives left: " + lives.ToString();
-        if(lives<=0) UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+        if(lives<=0){ lives = 10; UnityEngine.SceneManagement.SceneManager.LoadScene(1);}
     }
 }
