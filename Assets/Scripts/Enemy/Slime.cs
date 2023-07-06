@@ -13,7 +13,7 @@ public class Slime : Walker
     protected bool CanJump;
     [SerializeField] protected float JumpPower = 300f;
     [SerializeField] protected float JumpCooldown = 3f;
-    [SerializeField] protected float DamageCoolDown = 0.2f;
+    [SerializeField] protected float DamageCoolDown = 0.3f;
     void FixedUpdate() {
         Debug.Log(DamageTimer);
         DamageTimer += Time.fixedDeltaTime;
