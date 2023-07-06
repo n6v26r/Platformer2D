@@ -13,6 +13,7 @@ public class Golem : Walker
     [SerializeField] private bool StaticJump = true;
     [SerializeField] private float LaunchPower = 500;
     [SerializeField] private float LaunchDelay = 1;
+    [SerializeField] private bool launch = true;
 
     void Awake(){
         SelfAnimator = GetComponent<Animator>();
@@ -48,7 +49,7 @@ public class Golem : Walker
 
     void FixedUpdate(){
         RaycastHit2D above = Physics2D.BoxCast(SelfBoxCollider.bounds.center, SelfBoxCollider.bounds.size, 0f, Vector2.up, 0.31f, (1<<3)+(1<<6)+(1<<7));
-        if(above.collider!=null) {
+        if(above.collider!=null && launch) {
             StuffAbove = true;
             if(!IsLaunching){
                 StopCoroutine("Launch");
@@ -61,6 +62,7 @@ public class Golem : Walker
     }
 
     IEnumerator Launch(GameObject go){
+
         yield return new WaitForSeconds(LaunchDelay);
         RaycastHit2D above = Physics2D.BoxCast(SelfBoxCollider.bounds.center, SelfBoxCollider.bounds.size, 0f, Vector2.up, 0.31f, (1<<3)+(1<<6)+(1<<7));
         if(above.collider != null && above.collider.gameObject!=null && above.collider.gameObject == go){
