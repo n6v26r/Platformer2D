@@ -48,7 +48,7 @@ public class DeathManager : MonoBehaviour
 
 
         playermovement.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-        if(Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.UpArrow)){
+        if(Input.GetKey(KeyCode.LeftControl) && (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W))){
             playermovement.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up*150);
             healthComp.health -= 10f;
         } 
