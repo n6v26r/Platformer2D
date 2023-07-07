@@ -44,6 +44,9 @@ public class DeathManager : MonoBehaviour
         playermovement.speedcap = 1;
         playermovement.jumppower = 200;
         playermovement.BASE_GRAVITY = 1.8f;
+
+
+
         playermovement.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         if(Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.UpArrow))
             playermovement.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up*150);
