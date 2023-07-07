@@ -35,14 +35,18 @@ public class DeathManager : MonoBehaviour
     {
         Health healthComp = gameObject.GetComponent<Health>();
         if(healthComp == null) return;
+        if(gameObject.tag != "Player"){
+            CheckDeath(healthComp);
+            return;
+        }
         healthComp.health -= 1f;
         playermovement.acceleration = 50;
         playermovement.speedcap = 1;
         playermovement.jumppower = 200;
         playermovement.BASE_GRAVITY = 1.8f;
         playermovement.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-        if(gameObject.tag != "Player")
-            CheckDeath(healthComp);
+        if(Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.UpArrow))
+            playermovement.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up*150);
     }
 
     private void LeftLava(GameObject gameObject)
