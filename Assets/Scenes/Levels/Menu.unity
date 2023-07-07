@@ -409,6 +409,7 @@ MonoBehaviour:
   wait: 00000000000000000300000000000000
   on:
   - {fileID: 1539365224}
+  - {fileID: 2004385732}
   off:
   - {fileID: 588236577}
   - {fileID: 287927569}
@@ -755,7 +756,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Scene: 1
   wait: 00000000000000000000000000000000
-  on: []
+  on:
+  - {fileID: 2004385732}
   off: []
 --- !u!114 &365647747
 MonoBehaviour:
@@ -1593,7 +1595,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &2004385733
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1700,15 +1702,15 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 7e353e218c0c75a4da0e16f35a04e1ca, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 102
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
