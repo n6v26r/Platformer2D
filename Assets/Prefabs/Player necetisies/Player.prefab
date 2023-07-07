@@ -114,7 +114,7 @@ MonoBehaviour:
   dashbar: {fileID: 0}
   jumppower: 550
   acceleration: 50
-  speedcap: 5
+  speedcap: 6
   HOLD_GRAVITY: 1.5
   BASE_GRAVITY: 5
   JUMPBUFFER: 0.1
@@ -124,7 +124,7 @@ MonoBehaviour:
   DASH_MAXAIRTIME: 1
   FALLINGSPEED_WALLCLIMB: 1
   WALLJUMPPOWER: 390
-  dashing: 1
+  dashing: 0
   start_holdgrav: 0
 --- !u!50 &2485824032784383719
 Rigidbody2D:

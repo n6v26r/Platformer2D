@@ -398,4 +398,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rubyItem: {fileID: 2506915712407384202}
-  timeRequired: 2
+  timeRequired: 1

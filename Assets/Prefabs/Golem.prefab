@@ -74,8 +74,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 803709361
-  m_SortingLayer: 3
+  m_SortingLayerID: -1060142793
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 1117723449, guid: c858226879f0346438b5b098efdde5c3, type: 3}
   m_Color: {r: 0.6226415, g: 0.53688145, b: 0.53688145, a: 1}
@@ -107,9 +107,12 @@ MonoBehaviour:
   PatrolDistance: 10
   RememberPlayerCounter: 3
   PatrolStopBeforeWall: 2
+  Agro: 1
+  IsMoving: 1
   StaticJump: 1
   LaunchPower: 1000
   LaunchDelay: 1
+  launch: 1
 --- !u!50 &2169723329187573048
 Rigidbody2D:
   serializedVersion: 4
