@@ -17,6 +17,7 @@ public class Walker : PrototypeEnemyAI
     [SerializeField] protected float PatrolStopBeforeWall = 2;
 
     [SerializeField] protected bool Agro = true;
+    [SerializeField] protected bool IsMoving = true;
 
     // Start is called before the first frame update
 
@@ -29,6 +30,7 @@ public class Walker : PrototypeEnemyAI
     // Update is called once per frame
     void Update()
     {
+        if(!IsMoving) return;
         if(Agro){
             bool IsVictimVisible = FollowVictim();
             if(!IsVictimVisible){
