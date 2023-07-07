@@ -989,7 +989,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Scene: -1
-  wait: 00000000000000000300000000000000
+  wait: 00000000000000000000000000000000
   on: []
   off: []
 --- !u!114 &982147410
