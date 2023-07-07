@@ -35,8 +35,11 @@ public class LiveManager : MonoBehaviour
     // Update is called once per frame
     void OnDeath(){
         lives--;
-        if(text != null)
+        if(lives<=0){
+            Movement.score = 0;
+            lives = 15;
+        }
+        if (text != null)
             text.GetComponent<TMP_Text>().text = "Lives: " + lives.ToString();
-        if(lives<=0){Movement.score = 0;lives = 15;}
     }
 }
