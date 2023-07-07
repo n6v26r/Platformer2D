@@ -124,7 +124,7 @@ MonoBehaviour:
   DASH_MAXAIRTIME: 1
   FALLINGSPEED_WALLCLIMB: 1
   WALLJUMPPOWER: 390
-  dashing: 1
+  dashing: 0
   start_holdgrav: 0
 --- !u!50 &2485824032784383719
 Rigidbody2D:
