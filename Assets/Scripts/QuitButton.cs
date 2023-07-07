@@ -17,6 +17,7 @@ public class QuitButton : MonoBehaviour
     }
 
     public void OnClick(){
+        Debug.Log("Yessir");
         Application.Quit();
     }
 }
