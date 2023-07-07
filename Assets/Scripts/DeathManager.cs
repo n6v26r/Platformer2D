@@ -40,6 +40,9 @@ public class DeathManager : MonoBehaviour
         playermovement.speedcap = 1;
         playermovement.jumppower = 200;
         playermovement.BASE_GRAVITY = 1.8f;
+
+
+
         playermovement.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         if(gameObject.tag != "Player")
             CheckDeath(healthComp);
