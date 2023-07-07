@@ -77,7 +77,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 803709361
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 2115120068, guid: d8f59695a7cee014aa053c2f881637f0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -109,6 +109,7 @@ MonoBehaviour:
   air: {fileID: 6200000, guid: 731e8d731d5cc1e4c8ecccaa840a4289, type: 2}
   ground: {fileID: 0}
   spawnpoint: {fileID: 0}
+  ScoreUI: {fileID: 0}
   healthbar: {fileID: 0}
   dashbar: {fileID: 0}
   jumppower: 550
@@ -119,12 +120,11 @@ MonoBehaviour:
   JUMPBUFFER: 0.1
   COYOTE_TIME: 0.6
   dash_cooldown: 6
-  DASH_POWER: 4
+  DASH_POWER: 3.5
   DASH_MAXAIRTIME: 1
   FALLINGSPEED_WALLCLIMB: 1
   WALLJUMPPOWER: 390
-  dashing: 0
-  emerald_power: 0
+  dashing: 1
   start_holdgrav: 0
 --- !u!50 &2485824032784383719
 Rigidbody2D:
