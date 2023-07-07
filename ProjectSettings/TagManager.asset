@@ -48,11 +48,11 @@ TagManager:
   - name: Ground Tiles
     uniqueID: 2165191299
     locked: 0
-  - name: Lava Tiles
-    uniqueID: 2186925951
-    locked: 0
   - name: Pl
     uniqueID: 803709361
+    locked: 0
+  - name: Lava Tiles
+    uniqueID: 2186925951
     locked: 0
   - name: Golem
     uniqueID: 3234824503
