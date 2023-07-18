@@ -63,24 +63,24 @@ public class DeathManager : MonoBehaviour
 
     private void SpikeHit(GameObject gameObject)
     {
-        if (gameObject.layer == 6 || gameObject.layer == 7)
-        {
-            Health healthComp = gameObject.GetComponent<Health>();
-            if (healthComp == null) return;
-            healthComp.health -= 25f;
-                SoundManager.PlaySound(SoundManager.PlayerHit);
-            if (gameObject.tag != "Player")
-                CheckDeath(healthComp);
-        }
+        Damage(gameObject, 25);
     }
 
     private void SlimeHit(GameObject gameObject)
     {
+       Damage(gameObject, 20f);
+    }
+
+    public void BulletHit(GameObject gameObject){
+        Damage(gameObject, 30);
+    }
+
+    private void Damage(GameObject gameObject, float dmg){
         if (gameObject.layer == 6 || gameObject.layer == 7)
         {
             Health healthComp = gameObject.GetComponent<Health>();
             if (healthComp == null) return;
-                    healthComp.health -= 15f;
+                    healthComp.health -= dmg;
             SoundManager.PlaySound(SoundManager.PlayerHit);
             if (gameObject.tag != "Player")
                 CheckDeath(healthComp);
