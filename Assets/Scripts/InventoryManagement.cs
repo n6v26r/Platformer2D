@@ -45,26 +45,30 @@ public class InventoryManagement : MonoBehaviour
 
     private void GotKey(GameObject gameObject)
     {
-        SoundManager.PlaySound(SoundManager.TopazCollect);
         KeysInInventory++;
+        if(SoundManager!=null)
+            SoundManager.PlaySound(SoundManager.TopazCollect);
     }
 
     private void GotRuby(GameObject gameObject)
     {
-        SoundManager.PlaySound(SoundManager.RubyCollect);
         RubysCollected++;
+        if(SoundManager!=null)
+            SoundManager.PlaySound(SoundManager.RubyCollect);
     }
 
     private void GotEmerald(GameObject gameObject)
     {
-        SoundManager.PlaySound(SoundManager.EmeraldCollect);
         EmeraldsCollected++;
+        if(SoundManager!=null)
+            SoundManager.PlaySound(SoundManager.EmeraldCollect);
     }
 
     private void GotTopaz(GameObject gameObject)
     {
-        SoundManager.PlaySound(SoundManager.TopazCollect);
         TopazsCollected++;
+        if(SoundManager!=null)
+            SoundManager.PlaySound(SoundManager.TopazCollect);
     }
 
     private void TriedDoor(Door door, GameObject gameObject)

@@ -25,9 +25,9 @@ public class RubyBlock : MonoBehaviour
 
         if (timer >= timeRequired)
         {
-            SoundManager.PlaySound(SoundManager.BlockBreak);
             rubyItem.SetActive(true);
             Destroy(gameObject);
+            SoundManager.PlaySound(SoundManager.BlockBreak);
         }
     }
 }
