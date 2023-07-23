@@ -10,18 +10,12 @@ public class InventoryManagement : MonoBehaviour
     public int EmeraldsCollected = 0;
     public int TopazsCollected = 0;
 
-    private KeyItem[] keyItems;
     private Door[] doors;
-    private RubyItem[] rubys;
-    private EmeraldItem[] emeralds;
-    private TopazItem[] topazs;
+    private Items[] items;
 
     void Awake()
     {
         SoundManager = FindAnyObjectByType<SoundManger>();
-        keyItems = FindObjectsOfType<KeyItem>();
-        for (int i = 0; i < keyItems.Length; ++i)
-            keyItems[i].OnKeyEnter += GotKey;
 
         doors = FindObjectsOfType<Door>();
         foreach (var door in doors)
@@ -30,45 +24,37 @@ public class InventoryManagement : MonoBehaviour
                 TriedDoor(door, gameObject);
             };
 
-        rubys = FindObjectsOfType<RubyItem>(true);
-        for (int i = 0; i < rubys.Length; ++i)
-            rubys[i].OnRubyEnter += GotRuby;
-
-        emeralds = FindObjectsOfType<EmeraldItem>(true);
-        for (int i = 0; i < emeralds.Length; ++i)
-            emeralds[i].OnEmeraldEnter += GotEmerald;
-
-        topazs = FindObjectsOfType<TopazItem>(true);
-        for (int i = 0; i < topazs.Length; ++i)
-            topazs[i].OnTopazEnter += GotTopaz;
+        items = FindObjectsOfType<Items>(true);
+        for (int i = 0; i < items.Length; ++i)
+            items[i].OnItemEnter += GotItem;
     }
 
-    private void GotKey(GameObject gameObject)
+    private void GotItem(int Type)
     {
-        KeysInInventory++;
-        if(SoundManager!=null)
-            SoundManager.PlaySound(SoundManager.TopazCollect);
-    }
-
-    private void GotRuby(GameObject gameObject)
-    {
-        RubysCollected++;
-        if(SoundManager!=null)
-            SoundManager.PlaySound(SoundManager.RubyCollect);
-    }
-
-    private void GotEmerald(GameObject gameObject)
-    {
-        EmeraldsCollected++;
-        if(SoundManager!=null)
-            SoundManager.PlaySound(SoundManager.EmeraldCollect);
-    }
-
-    private void GotTopaz(GameObject gameObject)
-    {
-        TopazsCollected++;
-        if(SoundManager!=null)
-            SoundManager.PlaySound(SoundManager.TopazCollect);
+        if (Type == 1)
+        {
+            RubysCollected++;
+            if (SoundManager != null)
+                SoundManager.PlaySound(SoundManager.RubyCollect);
+        }
+        else if (Type == 2)
+        {
+            EmeraldsCollected++;
+            if (SoundManager != null)
+                SoundManager.PlaySound(SoundManager.EmeraldCollect);
+        }
+        else if (Type == 3)
+        {
+            TopazsCollected++;
+            if (SoundManager != null)
+                SoundManager.PlaySound(SoundManager.TopazCollect);
+        }
+        else if( Type == 4)
+        {
+            KeysInInventory++;
+            if (SoundManager != null)
+                SoundManager.PlaySound(SoundManager.TopazCollect);
+        }
     }
 
     private void TriedDoor(Door door, GameObject gameObject)

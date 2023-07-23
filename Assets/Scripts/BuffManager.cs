@@ -4,59 +4,40 @@ using UnityEngine;
 
 public class BuffManager : MonoBehaviour
 {
-    private RubyItem[] rubys;
-    private EmeraldItem[] emeralds;
-    private TopazItem[] topazs;
+    public GameObject player;
 
+    private Items[] items;
 
     private void Awake()
     {
-
-        rubys = FindObjectsOfType<RubyItem>(true);
-        for (int i = 0; i < rubys.Length; ++i)
-            rubys[i].OnRubyEnter += RubyBuff;
-
-        emeralds = FindObjectsOfType<EmeraldItem>(true);
-        for (int i = 0; i < emeralds.Length; ++i)
-            emeralds[i].OnEmeraldEnter += EmeraldBuff;
-
-        topazs = FindObjectsOfType<TopazItem>(true);
-        for (int i = 0; i < topazs.Length; ++i)
-            topazs[i].OnTopazEnter += TopazBuff;
+        items = FindObjectsOfType<Items>(true);
+        for (int i = 0; i < items.Length; ++i)
+        {
+            items[i].OnItemEnter += ItemBuff;
+        }
     }
 
 
-    private void RubyBuff(GameObject gameObject)
+    private void ItemBuff(int Type)
     {
-        Health healthComp = gameObject.GetComponent<Health>();
-        if (healthComp.health < 75)
-            healthComp.health += 25;
-        else
-            healthComp.health = 100;
+        if (Type == 1)
+        {
+            Health healthComp = player.GetComponent<Health>();
+            if (healthComp.health < 75)
+                healthComp.health += 25;
+            else
+                healthComp.health = 100;
 
-        Movement.score += 15;
-    }
-
-    private void EmeraldBuff(GameObject gameObject)
-    {
-        Movement.score += 200;
-    }
-
-    private void TopazBuff(GameObject gameObject)
-    {
-        gameObject.GetComponent<Movement>().dashing = true;
-        Movement.score += 25;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+            Movement.score += 15;
+        }
+        else if (Type == 2)
+        {
+            Movement.score += 200;
+        }
+        else if (Type == 3)
+        {
+            player.GetComponent<Movement>().dashing = true;
+            Movement.score += 25;
+        }
     }
 }
