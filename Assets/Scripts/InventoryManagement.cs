@@ -5,10 +5,11 @@ using UnityEngine;
 public class InventoryManagement : MonoBehaviour
 {
     private SoundManger SoundManager;
-    public int KeysInInventory = 0;
     public int RubysCollected = 0;
     public int EmeraldsCollected = 0;
     public int TopazsCollected = 0;
+    public int SilverKeysInInventory = 0;
+    public int GoldenKeysInInventory = 0;
 
     private Door[] doors;
     private Items[] items;
@@ -19,9 +20,9 @@ public class InventoryManagement : MonoBehaviour
 
         doors = FindObjectsOfType<Door>();
         foreach (var door in doors)
-            door.OnDoorCollision += delegate (GameObject gameObject)
+            door.OnDoorCollision += delegate (int DoorType) /// this doesn`t work...
             {
-                TriedDoor(door, gameObject);
+                TriedDoor(door, DoorType);
             };
 
         items = FindObjectsOfType<Items>(true);
@@ -51,19 +52,31 @@ public class InventoryManagement : MonoBehaviour
         }
         else if( Type == 4)
         {
-            KeysInInventory++;
+            SilverKeysInInventory++;
+            if (SoundManager != null)
+                SoundManager.PlaySound(SoundManager.EmeraldCollect);
+        }
+        else if( Type == 5)
+        {
+            GoldenKeysInInventory++;
             if (SoundManager != null)
                 SoundManager.PlaySound(SoundManager.TopazCollect);
         }
     }
 
-    private void TriedDoor(Door door, GameObject gameObject)
+    private void TriedDoor(Door door, int doorType)
     {
+        Debug.Log("idk");
         if (gameObject.tag == "Player")
         {
-            if (KeysInInventory > 0)
+            if (doorType == 1 && SilverKeysInInventory > 0)
             {
-                KeysInInventory--;
+                SilverKeysInInventory--;
+                Destroy(door.gameObject);
+            }
+            else if (doorType ==2 && GoldenKeysInInventory > 0)
+            {
+                GoldenKeysInInventory--;
                 Destroy(door.gameObject);
             }
         }
