@@ -37,6 +37,8 @@ public class Movement : MonoBehaviour
     public float BASE_GRAVITY = 0f;
     [SerializeField] float JUMPBUFFER = 0f;
     [SerializeField] float COYOTE_TIME = 0f;
+    public int extrajumps = 0;
+    int jumpsleft;
 
     public float dash_cooldown = 4f;
     public float DASH_POWER = 20f;
@@ -68,6 +70,7 @@ public class Movement : MonoBehaviour
         rb.gravityScale = BASE_GRAVITY;
         start_holdgrav = HOLD_GRAVITY;
         healthbar.fillAmount = 1;
+        jumpsleft = extrajumps;
     }
 
     // Update is called once per frame
@@ -75,17 +78,25 @@ public class Movement : MonoBehaviour
         xinput = Input.GetAxisRaw("Horizontal");
         yinput = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W))
             jumped = JUMPBUFFER;
 
         if (Physics2D.BoxCast(boxcl2D.bounds.center, boxcl2D.bounds.size - new Vector3(0.1f, 0, 0), 0f, Vector2.down, extraHeightText, lm_platfrom)) {
             onground = COYOTE_TIME;
-            ground.GetComponent<Rigidbody2D>().sharedMaterial = good;
-            boxcl2D.sharedMaterial = good;
+            jumpsleft = extrajumps;
+            if (xinput == 0) {
+                ground.GetComponent<Rigidbody2D>().sharedMaterial = good;
+                boxcl2D.sharedMaterial = good;
+            } else {
+                ground.GetComponent<Rigidbody2D>().sharedMaterial = air;
+                boxcl2D.sharedMaterial = air;
+            }
         } else {
             ground.GetComponent<Rigidbody2D>().sharedMaterial = air;
             boxcl2D.sharedMaterial = air;
         }
+
+
 
         if(dash_dir == 1)
             sp.flipX = true;
@@ -113,7 +124,7 @@ public class Movement : MonoBehaviour
         
 
         if (GetComponent<Health>().health <= 0) {
-            if(death!=null)
+            if(death != null)
                 death();
             transform.position = spawnpoint.transform.position;
             GetComponent<Health>().health = 100;
@@ -124,19 +135,12 @@ public class Movement : MonoBehaviour
     }
 
     private void FixedUpdate() {
-        if((xinput != 1 || (rb.velocity.x < speedcap )) && (xinput != -1 || (rb.velocity.x > -speedcap)))
+        if ((xinput != 1 || (rb.velocity.x < speedcap)) && (xinput != -1 || (rb.velocity.x > -speedcap))) {
             rb.AddForce(new Vector2(acceleration * xinput, 0));
+        }
 
         animator.SetBool("isWallcliming", false);
-        if (onground > 0) {
-            if (jumped > 0) {
-                onground = 0;
-                jumped = 0;
-                rb.velocity = new Vector2(rb.velocity.x, 0);
-                rb.AddForce(new Vector2(0, jumppower));
-                SoundManager.PlaySound(SoundManager.PlayerJump);
-            }
-        } else if (Physics2D.BoxCast(boxcl2D.bounds.center, boxcl2D.bounds.size - new Vector3(0, 0.1f, 0), 0f, Vector2.left, extraHeightText, lm_platfrom)  && (Input.GetKey(KeyCode.LeftControl) || Input.GetMouseButton(0))) {
+        if (Physics2D.BoxCast(boxcl2D.bounds.center, boxcl2D.bounds.size - new Vector3(0, 0.1f, 0), 0f, Vector2.left, extraHeightText, lm_platfrom) && (!Input.GetKey(KeyCode.LeftControl) || Input.GetMouseButton(0))) {
             rb.velocity = new Vector2(rb.velocity.x, -FALLINGSPEED_WALLCLIMB);
             if (jumped > 0) {
                 jumped = 0;
@@ -145,7 +149,7 @@ public class Movement : MonoBehaviour
                 SoundManager.PlaySound(SoundManager.PlayerJump);
             }
             animator.SetBool("isWallcliming", true);
-        } else if (Physics2D.BoxCast(boxcl2D.bounds.center, boxcl2D.bounds.size - new Vector3(0, 0.1f, 0), 0f, Vector2.right, extraHeightText, lm_platfrom) && (Input.GetKey(KeyCode.LeftControl) || Input.GetMouseButton(0))) {
+        } else if (Physics2D.BoxCast(boxcl2D.bounds.center, boxcl2D.bounds.size - new Vector3(0, 0.1f, 0), 0f, Vector2.right, extraHeightText, lm_platfrom) && (!Input.GetKey(KeyCode.LeftControl) || Input.GetMouseButton(0))) {
             rb.velocity = new Vector2(rb.velocity.x, -FALLINGSPEED_WALLCLIMB);
             if (jumped > 0) {
                 jumped = 0;
@@ -154,9 +158,19 @@ public class Movement : MonoBehaviour
                 SoundManager.PlaySound(SoundManager.PlayerJump);
             }
             animator.SetBool("isWallcliming", true);
+        } else if (onground > 0 || jumpsleft > 0) {
+            if (jumped > 0) {
+                if (onground == 0)
+                    jumpsleft--;
+                onground = 0;
+                jumped = 0;
+                rb.velocity = new Vector2(rb.velocity.x, 0);
+                rb.AddForce(new Vector2(0, jumppower));
+                SoundManager.PlaySound(SoundManager.PlayerJump);
+            }
         }
 
-        if (rb.velocity.y > 0 && (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W)))
+            if (rb.velocity.y > 0 && (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W)))
             rb.gravityScale = HOLD_GRAVITY;
         else
             rb.gravityScale = BASE_GRAVITY;

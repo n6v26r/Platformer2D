@@ -3912,6 +3912,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 591226901}
     - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
+      propertyPath: extrajumps
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
       propertyPath: spawnpoint
       value: 
       objectReference: {fileID: 6923894984026310416}
