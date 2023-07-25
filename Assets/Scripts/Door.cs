@@ -6,9 +6,9 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     public int DoorType;
-    public Action<int> OnDoorCollision;
+    public Action<GameObject, int> OnDoorCollision;
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        OnDoorCollision(DoorType);
+        OnDoorCollision(collision.gameObject, DoorType);
     }
 }

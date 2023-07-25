@@ -20,14 +20,31 @@ public class InventoryManagement : MonoBehaviour
 
         doors = FindObjectsOfType<Door>();
         foreach (var door in doors)
-            door.OnDoorCollision += delegate (int DoorType) /// this doesn`t work...
+            door.OnDoorCollision += delegate (GameObject gameObject, int DoorType) /// this doesn`t work...
             {
-                TriedDoor(door, DoorType);
+                TriedDoor(door, gameObject, DoorType);
             };
 
         items = FindObjectsOfType<Items>(true);
         for (int i = 0; i < items.Length; ++i)
             items[i].OnItemEnter += GotItem;
+    }
+
+    private void TriedDoor(Door door, GameObject WhoTouched, int doorType)
+    {
+        if (WhoTouched.tag == "Player")
+        {
+            if (doorType == 1 && SilverKeysInInventory > 0)
+            {
+                SilverKeysInInventory--;
+                Destroy(door.gameObject);
+            }
+            else if (doorType == 2 && GoldenKeysInInventory > 0)
+            {
+                GoldenKeysInInventory--;
+                Destroy(door.gameObject);
+            }
+        }
     }
 
     private void GotItem(int Type)
@@ -61,24 +78,6 @@ public class InventoryManagement : MonoBehaviour
             GoldenKeysInInventory++;
             if (SoundManager != null)
                 SoundManager.PlaySound(SoundManager.TopazCollect);
-        }
-    }
-
-    private void TriedDoor(Door door, int doorType)
-    {
-        Debug.Log("idk");
-        if (gameObject.tag == "Player")
-        {
-            if (doorType == 1 && SilverKeysInInventory > 0)
-            {
-                SilverKeysInInventory--;
-                Destroy(door.gameObject);
-            }
-            else if (doorType ==2 && GoldenKeysInInventory > 0)
-            {
-                GoldenKeysInInventory--;
-                Destroy(door.gameObject);
-            }
         }
     }
 }
