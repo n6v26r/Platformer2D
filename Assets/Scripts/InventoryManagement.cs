@@ -47,7 +47,7 @@ public class InventoryManagement : MonoBehaviour
         }
     }
 
-    private void GotItem(GameObject gameObject, int Type)
+    private void GotItem(int Type)
     {
         if (Type == 1)
         {

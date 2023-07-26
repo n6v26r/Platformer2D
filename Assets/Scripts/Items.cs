@@ -6,7 +6,7 @@ using UnityEngine;
 public class Items : MonoBehaviour
 {
     public int ItemType;
-    public Action<GameObject, int> OnItemEnter;
+    public Action<int> OnItemEnter;
 
     private void Awake()
     {
@@ -16,7 +16,7 @@ public class Items : MonoBehaviour
     {
         if (OnItemEnter != null && collision.gameObject.tag == "Player")
         {
-            OnItemEnter(collision.gameObject, ItemType);
+            OnItemEnter(ItemType);
             Destroy(gameObject);
         }
 

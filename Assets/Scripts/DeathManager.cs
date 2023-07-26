@@ -9,7 +9,6 @@ public class DeathManager : MonoBehaviour
     [SerializeField] private Movement playermovement;
     private CellingSpike[] cellingSpikes;
     private Slime[] slimes;
-    private Items[] items;
 
     void Awake()
     {
@@ -24,10 +23,6 @@ public class DeathManager : MonoBehaviour
         slimes = FindObjectsOfType<Slime>();
         for (int i = 0; i < slimes.Length; ++i)
             slimes[i].OnSlimeHit += SlimeHit;
-
-        items = FindObjectsOfType<Items>(true);
-        for (int i = 0; i < items.Length; ++i)
-            items[i].OnItemEnter += GotItem;
     }
 
     private void OnDestroy()
@@ -36,18 +31,15 @@ public class DeathManager : MonoBehaviour
         lavaBlock.OnLavaExit -= LeftLava;
     }
 
-    private void GotItem(GameObject gameObject, int Type)
-    {
-        if (Type == 6)
-        {
-            BulletHit(gameObject);
-        }
-    }
-
     private void StayedInLava(GameObject gameObject)
     {
-
-        LavaHit(gameObject);
+        Health healthComp = gameObject.GetComponent<Health>();
+        if(healthComp == null) return;
+        if(gameObject.tag != "Player"){
+            CheckDeath(healthComp);
+            return;
+        }
+        healthComp.health -= 1f;
         playermovement.acceleration = 50;
         playermovement.speedcap = 1;
         playermovement.jumppower = 200;
@@ -58,13 +50,8 @@ public class DeathManager : MonoBehaviour
         playermovement.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         if((Input.GetKey(KeyCode.LeftControl) || Input.GetMouseButton(0)) && (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W))){
             playermovement.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up*150);
-            EscapeLava(gameObject);
+            healthComp.health -= 5f;
         } 
-    }
-
-    private void LavaHit(GameObject gameObject)
-    {
-        Damage(gameObject, 1);
     }
 
     private void LeftLava(GameObject gameObject)
@@ -72,11 +59,6 @@ public class DeathManager : MonoBehaviour
         playermovement.speedcap = 5;
         playermovement.jumppower = 550;
         playermovement.BASE_GRAVITY = 5;
-    }
-
-    private void EscapeLava(GameObject gameObject)
-    {
-        Damage(gameObject, 5);
     }
 
     private void SpikeHit(GameObject gameObject)

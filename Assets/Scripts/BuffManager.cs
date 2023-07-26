@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BuffManager : MonoBehaviour
 {
+    public GameObject player;
+
     private Items[] items;
 
     private void Awake()
@@ -16,11 +18,11 @@ public class BuffManager : MonoBehaviour
     }
 
 
-    private void ItemBuff(GameObject gameObject, int Type)
+    private void ItemBuff(int Type)
     {
         if (Type == 1)
         {
-            Health healthComp = gameObject.GetComponent<Health>();
+            Health healthComp = player.GetComponent<Health>();
             if (healthComp.health < 75)
                 healthComp.health += 25;
             else
@@ -34,7 +36,7 @@ public class BuffManager : MonoBehaviour
         }
         else if (Type == 3)
         {
-            gameObject.GetComponent<Movement>().dashing = true;
+            player.GetComponent<Movement>().dashing = true;
             Movement.score += 25;
         }
     }
