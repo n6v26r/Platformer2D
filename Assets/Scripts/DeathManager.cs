@@ -33,13 +33,7 @@ public class DeathManager : MonoBehaviour
 
     private void StayedInLava(GameObject gameObject)
     {
-        Health healthComp = gameObject.GetComponent<Health>();
-        if(healthComp == null) return;
-        if(gameObject.tag != "Player"){
-            CheckDeath(healthComp);
-            return;
-        }
-        healthComp.health -= 1f;
+        LavaDamage(gameObject);
         playermovement.acceleration = 50;
         playermovement.speedcap = 1;
         playermovement.jumppower = 200;
@@ -50,8 +44,18 @@ public class DeathManager : MonoBehaviour
         playermovement.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         if((Input.GetKey(KeyCode.LeftControl) || Input.GetMouseButton(0)) && (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W))){
             playermovement.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up*150);
-            healthComp.health -= 5f;
+            EscapeLavaDamage(gameObject);
         } 
+    }
+
+    private void LavaDamage(GameObject gameObject)
+    {
+        Damage(gameObject, 1);
+    }
+
+    private void EscapeLavaDamage(GameObject gameObject)
+    {
+        Damage(gameObject, 5);
     }
 
     private void LeftLava(GameObject gameObject)
