@@ -8,6 +8,7 @@ TagManager:
   - Liquid
   - KeyItem
   - spike
+  - FireDartShooter
   layers:
   - Default
   - TransparentFX

@@ -6,7 +6,9 @@ public class PressurePlate : MonoBehaviour
 {
 
     private SpriteRenderer spriteRenderer;
+    private FireDartShooter fireDartShooter;
 
+    public GameObject[] traps;
     public Sprite[] sprites;
 
     private void Awake()
@@ -25,7 +27,17 @@ public class PressurePlate : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             spriteRenderer.sprite = sprites[1];
-            Debug.Log("Press Me Daddy UWU");
+
+            for(int i = 0; i<traps.Length; ++i)
+            {
+                if (traps[i].tag == "FireDartShooter")
+                {
+                    Debug.Log("Press Me Daddy UWU");
+                    fireDartShooter = traps[i].GetComponent<FireDartShooter>();
+                    fireDartShooter.ShouldShootTrue();
+                }
+            }
+
         }
     }
 
