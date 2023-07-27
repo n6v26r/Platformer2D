@@ -9,6 +9,7 @@ TagManager:
   - KeyItem
   - spike
   - FireDartShooter
+  - pressure plate
   layers:
   - Default
   - TransparentFX

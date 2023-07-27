@@ -12,6 +12,7 @@ public class Movement : MonoBehaviour
     Rigidbody2D rb;
     SpriteRenderer sp;
     BoxCollider2D boxcl2D;
+    private BoxCollider2D ppbx; 
     Animator animator;
     [SerializeField] private LayerMask lm_platfrom;
     float extraHeightText = .1f;
@@ -55,7 +56,6 @@ public class Movement : MonoBehaviour
     public float start_holdgrav = 0;
 
     public static int score = 0;
-
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         boxcl2D = GetComponent<BoxCollider2D>();
@@ -211,7 +211,12 @@ public class Movement : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.tag == "spike"){
+        if (collision.gameObject.tag == "pressure plate") {
+            ppbx = collision.gameObject.GetComponent<BoxCollider2D>();
+            gameObject.transform.position = new Vector3(gameObject.transform.position.x, collision.gameObject.transform.position.y+ppbx.size.y*2.9f, gameObject.transform.position.z);
+        }
+
+        if (collision.gameObject.tag == "spike") {
             SoundManager.PlaySound(SoundManager.CellingSpike);
             GetComponent<Health>().health = 0;
         }
