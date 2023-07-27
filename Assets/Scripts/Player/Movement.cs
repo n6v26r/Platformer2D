@@ -213,7 +213,7 @@ public class Movement : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.tag == "pressure plate") {
             ppbx = collision.gameObject.GetComponent<BoxCollider2D>();
-            gameObject.transform.position = new Vector3(gameObject.transform.position.x, collision.gameObject.transform.position.y+ppbx.size.y*2.9f, gameObject.transform.position.z);
+            gameObject.transform.position = new Vector3(gameObject.transform.position.x, collision.gameObject.transform.position.y+ppbx.size.y*2.7f, gameObject.transform.position.z);
         }
 
         if (collision.gameObject.tag == "spike") {
