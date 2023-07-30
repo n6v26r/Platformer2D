@@ -5,10 +5,15 @@ using UnityEngine;
 public class InventoryManagement : MonoBehaviour
 {
     private SoundManger SoundManager;
+    [HideInInspector]
     public int RubysCollected = 0;
+    [HideInInspector]
     public int EmeraldsCollected = 0;
+    [HideInInspector]
     public int TopazsCollected = 0;
+    [HideInInspector]
     public int SilverKeysInInventory = 0;
+    [HideInInspector]
     public int GoldenKeysInInventory = 0;
 
     private Door[] doors;
