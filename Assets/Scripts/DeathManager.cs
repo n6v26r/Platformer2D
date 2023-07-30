@@ -10,9 +10,12 @@ public class DeathManager : MonoBehaviour
     private CellingSpike[] cellingSpikes;
     private Slime[] slimes;
 
+    private GameObject Player;
+
     void Awake()
     {
         SoundManager = FindAnyObjectByType<SoundManger>();
+        Player = GameObject.FindGameObjectWithTag("Player");
 
         lavaBlock.OnLavaStay2D += StayedInLava;
         lavaBlock.OnLavaExit += LeftLava;
@@ -29,6 +32,20 @@ public class DeathManager : MonoBehaviour
     {
         lavaBlock.OnLavaStay2D -= StayedInLava;
         lavaBlock.OnLavaExit -= LeftLava;
+    }
+
+
+    private int OnFire = 0;
+    private float OnFireCooldown = 0.3f;
+    private float LastOnFire = 0;
+    private void FixedUpdate()
+    {
+        if(OnFire > 0 && Time.time - LastOnFire > OnFireCooldown)
+        {
+            OnFire--;
+            Damage(Player, 1);
+            LastOnFire = Time.time;
+        }
     }
 
     private void StayedInLava(GameObject gameObject)
@@ -79,6 +96,12 @@ public class DeathManager : MonoBehaviour
         Damage(gameObject, 30);
     }
 
+    public void FireDartHit(GameObject gameObject)
+    {
+        Damage(gameObject, 5);
+        OnFire += 25;
+    }
+
     private void Damage(GameObject gameObject, float dmg){
         if (gameObject.layer == 6 || gameObject.layer == 7)
         {
@@ -88,6 +111,8 @@ public class DeathManager : MonoBehaviour
             SoundManager.PlaySound(SoundManager.PlayerHit);
             if (gameObject.tag != "Player")
                 CheckDeath(healthComp);
+            else if (healthComp.health <= 0)
+                OnFire = 0;
         }
     }
 
