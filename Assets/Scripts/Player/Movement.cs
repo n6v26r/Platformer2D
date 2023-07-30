@@ -84,7 +84,7 @@ public class Movement : MonoBehaviour
         if (Physics2D.BoxCast(boxcl2D.bounds.center, boxcl2D.bounds.size - new Vector3(0.1f, 0, 0), 0f, Vector2.down, extraHeightText, lm_platfrom)) {
             onground = COYOTE_TIME;
             jumpsleft = extrajumps;
-            if (xinput == 0) {
+            if (xinput == 0 || Math.Abs(rb.velocity.x) > speedcap) {
                 ground.GetComponent<Rigidbody2D>().sharedMaterial = good;
                 boxcl2D.sharedMaterial = good;
             } else {
@@ -170,7 +170,7 @@ public class Movement : MonoBehaviour
             }
         }
 
-            if (rb.velocity.y > 0 && (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W)))
+        if (rb.velocity.y > 0 && (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W)))
             rb.gravityScale = HOLD_GRAVITY;
         else
             rb.gravityScale = BASE_GRAVITY;
