@@ -6,6 +6,7 @@ public class DeathManager : MonoBehaviour
 {
     private SoundManger SoundManager;
     [SerializeField] private LavaBlock lavaBlock;
+    [SerializeField] private WaterBlock waterBlock;
     [SerializeField] private Movement playermovement;
     private CellingSpike[] cellingSpikes;
     private Slime[] slimes;
@@ -19,6 +20,9 @@ public class DeathManager : MonoBehaviour
 
         lavaBlock.OnLavaStay2D += StayedInLava;
         lavaBlock.OnLavaExit += LeftLava;
+
+        waterBlock.OnWaterEnter += EnteredWater;
+       
         cellingSpikes = FindObjectsOfType<CellingSpike>();
         for (int i = 0; i < cellingSpikes.Length; ++i)
             cellingSpikes[i].OnSpikeHit+= SpikeHit;
@@ -80,6 +84,11 @@ public class DeathManager : MonoBehaviour
         playermovement.speedcap = 5;
         playermovement.jumppower = 550;
         playermovement.BASE_GRAVITY = 5;
+    }
+
+    private void EnteredWater()
+    {
+        OnFire = 0;
     }
 
     private void SpikeHit(GameObject gameObject)
