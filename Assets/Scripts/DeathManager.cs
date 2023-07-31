@@ -6,7 +6,6 @@ public class DeathManager : MonoBehaviour
 {
     private SoundManger SoundManager;
     
-    public Movement playermovement;
     private CellingSpike[] cellingSpikes;
     private Slime[] slimes;
     private Liquid[] liquids;
@@ -62,15 +61,9 @@ public class DeathManager : MonoBehaviour
         if(Type == 1)
         {
             LavaDamage(gameObject);
-            playermovement.acceleration = 50;
-            playermovement.speedcap = 1;
-            playermovement.jumppower = 200;
-            playermovement.BASE_GRAVITY = 1.8f;
 
-            playermovement.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
             if((Input.GetKey(KeyCode.LeftControl) || Input.GetMouseButton(0)) && (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W)))
             {
-                playermovement.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up*150);
                 EscapeLavaDamage(gameObject);
             }
         }
@@ -84,9 +77,7 @@ public class DeathManager : MonoBehaviour
     {
         if (Type == 1)
         {
-            playermovement.speedcap = 5;
-            playermovement.jumppower = 550;
-            playermovement.BASE_GRAVITY = 5;
+            
         }
         else if(Type == 2)
         {

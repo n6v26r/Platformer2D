@@ -27,6 +27,7 @@ public class Movement : MonoBehaviour
 
     public Image dashbar;
     private Vector3 startpoz_dash;
+    private Liquid[] liquids;
 
     float xinput, yinput;
     float jumped, onground;
@@ -62,6 +63,48 @@ public class Movement : MonoBehaviour
         sp = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         SoundManager = FindAnyObjectByType<SoundManger>();
+
+        liquids = FindObjectsOfType<Liquid>();
+        for (int i = 0; i < liquids.Length; ++i)
+        {
+            liquids[i].OnLiquidStay2D += StayedInLiquid;
+            liquids[i].OnLiquidExit += LeftLiquid;
+        }
+    }
+
+    private void StayedInLiquid(GameObject gameObject, int Type)
+    {
+        if(Type == 1)
+        {
+            acceleration = 50;
+            speedcap = 1;
+            jumppower = 200;
+            BASE_GRAVITY = 1.8f;
+
+            gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+            if ((Input.GetKey(KeyCode.LeftControl) || Input.GetMouseButton(0)) && (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W)))
+            {
+                gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 150);
+            }
+        }
+        else if(Type == 2)
+        {
+
+        }
+    }
+
+    private void LeftLiquid(int Type)
+    {
+        if (Type == 1)
+        {
+            speedcap = 5;
+            jumppower = 550;
+            BASE_GRAVITY = 5;
+        }
+        else if (Type == 2)
+        {
+
+        }
     }
 
     // Start is called before the first frame update
