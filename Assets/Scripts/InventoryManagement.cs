@@ -25,7 +25,7 @@ public class InventoryManagement : MonoBehaviour
 
         doors = FindObjectsOfType<Door>();
         foreach (var door in doors)
-            door.OnDoorCollision += delegate (GameObject gameObject, int DoorType) /// this doesn`t work...
+            door.OnDoorCollision += delegate (GameObject gameObject, int DoorType)
             {
                 TriedDoor(door, gameObject, DoorType);
             };

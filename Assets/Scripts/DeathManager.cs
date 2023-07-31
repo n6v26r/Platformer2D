@@ -5,11 +5,11 @@ using UnityEngine;
 public class DeathManager : MonoBehaviour
 {
     private SoundManger SoundManager;
-    [SerializeField] private LavaBlock lavaBlock;
-    [SerializeField] private WaterBlock waterBlock;
-    [SerializeField] private Movement playermovement;
+    
+    public Movement playermovement;
     private CellingSpike[] cellingSpikes;
     private Slime[] slimes;
+    private Liquid[] liquids;
 
     private GameObject Player;
 
@@ -18,11 +18,13 @@ public class DeathManager : MonoBehaviour
         SoundManager = FindAnyObjectByType<SoundManger>();
         Player = GameObject.FindGameObjectWithTag("Player");
 
-        lavaBlock.OnLavaStay2D += StayedInLava;
-        lavaBlock.OnLavaExit += LeftLava;
+        liquids = FindObjectsOfType<Liquid>();
+        for (int i = 0; i < liquids.Length; ++i)
+        {
+            liquids[i].OnLiquidStay2D += StayedInLiquid;
+            liquids[i].OnLiquidExit += LeftLiquid;
+        }
 
-        waterBlock.OnWaterEnter += EnteredWater;
-       
         cellingSpikes = FindObjectsOfType<CellingSpike>();
         for (int i = 0; i < cellingSpikes.Length; ++i)
             cellingSpikes[i].OnSpikeHit+= SpikeHit;
@@ -34,8 +36,11 @@ public class DeathManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        lavaBlock.OnLavaStay2D -= StayedInLava;
-        lavaBlock.OnLavaExit -= LeftLava;
+        for (int i = 0; i < liquids.Length; ++i)
+        {
+            liquids[i].OnLiquidStay2D -= StayedInLiquid;
+            liquids[i].OnLiquidExit -= LeftLiquid;
+        }
     }
 
 
@@ -52,21 +57,41 @@ public class DeathManager : MonoBehaviour
         }
     }
 
-    private void StayedInLava(GameObject gameObject)
+    private void StayedInLiquid(GameObject gameObject, int Type)
     {
-        LavaDamage(gameObject);
-        playermovement.acceleration = 50;
-        playermovement.speedcap = 1;
-        playermovement.jumppower = 200;
-        playermovement.BASE_GRAVITY = 1.8f;
+        if(Type == 1)
+        {
+            LavaDamage(gameObject);
+            playermovement.acceleration = 50;
+            playermovement.speedcap = 1;
+            playermovement.jumppower = 200;
+            playermovement.BASE_GRAVITY = 1.8f;
 
+            playermovement.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+            if((Input.GetKey(KeyCode.LeftControl) || Input.GetMouseButton(0)) && (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W)))
+            {
+                playermovement.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up*150);
+                EscapeLavaDamage(gameObject);
+            }
+        }
+        else if(Type == 2)
+        {
+            OnFire = 0;
+        }
+    }
 
+    private void LeftLiquid(int Type)
+    {
+        if (Type == 1)
+        {
+            playermovement.speedcap = 5;
+            playermovement.jumppower = 550;
+            playermovement.BASE_GRAVITY = 5;
+        }
+        else if(Type == 2)
+        {
 
-        playermovement.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-        if((Input.GetKey(KeyCode.LeftControl) || Input.GetMouseButton(0)) && (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W))){
-            playermovement.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up*150);
-            EscapeLavaDamage(gameObject);
-        } 
+        }
     }
 
     private void LavaDamage(GameObject gameObject)
@@ -77,18 +102,6 @@ public class DeathManager : MonoBehaviour
     private void EscapeLavaDamage(GameObject gameObject)
     {
         Damage(gameObject, 5);
-    }
-
-    private void LeftLava(GameObject gameObject)
-    {
-        playermovement.speedcap = 5;
-        playermovement.jumppower = 550;
-        playermovement.BASE_GRAVITY = 5;
-    }
-
-    private void EnteredWater()
-    {
-        OnFire = 0;
     }
 
     private void SpikeHit(GameObject gameObject)
