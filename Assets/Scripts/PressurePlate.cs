@@ -24,8 +24,8 @@ public class PressurePlate : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
-        {
+        //if (collision.gameObject.tag == "Player")
+        //{
             spriteRenderer.sprite = sprites[1];
 
             for(int i = 0; i<traps.Length; ++i)
@@ -38,15 +38,15 @@ public class PressurePlate : MonoBehaviour
                 }
             }
 
-        }
+        //}
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
-        {
+        //if (collision.gameObject.tag == "Player")
+        //{
             spriteRenderer.sprite = sprites[0];
             Debug.Log("Why Not Pressing Anymore :(");
-        }
+        //}
     }
 }

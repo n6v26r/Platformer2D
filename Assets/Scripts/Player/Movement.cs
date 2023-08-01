@@ -67,12 +67,13 @@ public class Movement : MonoBehaviour
         liquids = FindObjectsOfType<Liquid>();
         for (int i = 0; i < liquids.Length; ++i)
         {
+            liquids[i].OnLiquidEnter += EnteredLiquid;
             liquids[i].OnLiquidStay2D += StayedInLiquid;
             liquids[i].OnLiquidExit += LeftLiquid;
         }
     }
 
-    private void StayedInLiquid(GameObject gameObject, int Type)
+    private void EnteredLiquid(GameObject gameObject, int Type)
     {
         if(Type == 1)
         {
@@ -80,7 +81,20 @@ public class Movement : MonoBehaviour
             speedcap = 1;
             jumppower = 200;
             BASE_GRAVITY = 1.8f;
+        }
+        else if(Type == 2)
+        {
+            acceleration = 20;
+            speedcap = 4;
+            BASE_GRAVITY = 0.3f;
+            gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+        }
+    }
 
+    private void StayedInLiquid(GameObject gameObject, int Type)
+    {
+        if(Type == 1)
+        {
             gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
             if ((Input.GetKey(KeyCode.LeftControl) || Input.GetMouseButton(0)) && (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W)))
             {
@@ -103,7 +117,9 @@ public class Movement : MonoBehaviour
         }
         else if (Type == 2)
         {
-
+            speedcap = 5;
+            jumppower = 550;
+            BASE_GRAVITY = 5;
         }
     }
 
