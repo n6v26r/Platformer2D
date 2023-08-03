@@ -36,8 +36,10 @@ public class FireDart : MonoBehaviour
             if (collision.gameObject.layer == 6 || collision.gameObject.layer == 7)
             {
                 FireDartHit(collision.gameObject);
+                Destroy(gameObject);
             }
-            Destroy(gameObject);
+            else if(collision.gameObject.layer == 0 || collision.gameObject.layer == 3)
+                Destroy(gameObject);
         }
     }
 }

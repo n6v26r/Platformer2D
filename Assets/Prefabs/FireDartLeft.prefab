@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 145498421895336902}
   - component: {fileID: 7917139394403222819}
   - component: {fileID: 2585974534603152636}
+  - component: {fileID: 6147133585873070760}
   m_Layer: 0
   m_Name: FireDartLeft
   m_TagString: Untagged
@@ -143,3 +144,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff8d285b484bf934089f61b9d570b3ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &6147133585873070760
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210994121150196621}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
