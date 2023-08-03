@@ -10,6 +10,7 @@ TagManager:
   - spike
   - FireDartShooter
   - pressure plate
+  - TNT
   layers:
   - Default
   - TransparentFX

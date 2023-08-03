@@ -9,6 +9,7 @@ public class DeathManager : MonoBehaviour
     private CellingSpike[] cellingSpikes;
     private Slime[] slimes;
     private Liquid[] liquids;
+    private TNT[] tnts;
 
     private GameObject Player;
 
@@ -31,6 +32,10 @@ public class DeathManager : MonoBehaviour
         slimes = FindObjectsOfType<Slime>();
         for (int i = 0; i < slimes.Length; ++i)
             slimes[i].OnSlimeHit += SlimeHit;
+
+        tnts = FindObjectsOfType<TNT>();
+        for (int i = 0; i < tnts.Length; ++i)
+            tnts[i].OnBlowVictim += BlewUp;
     }
 
     private void OnDestroy()
@@ -113,6 +118,14 @@ public class DeathManager : MonoBehaviour
     {
         Damage(gameObject, 5);
         OnFire += 25;
+    }
+
+    public void BlewUp(GameObject gameObject)
+    {
+        if (gameObject.tag == "Player")
+            Damage(gameObject, 100);
+        else
+            Destroy(gameObject);
     }
 
     private void Damage(GameObject gameObject, float dmg){

@@ -86,6 +86,7 @@ public class Movement : MonoBehaviour
         {
             acceleration = 20;
             speedcap = 4;
+            jumppower = 250;
             BASE_GRAVITY = 0.3f;
             gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         }
@@ -103,7 +104,7 @@ public class Movement : MonoBehaviour
         }
         else if(Type == 2)
         {
-
+            onground = 1;
         }
     }
 
@@ -111,12 +112,14 @@ public class Movement : MonoBehaviour
     {
         if (Type == 1)
         {
+            acceleration = 50;
             speedcap = 5;
             jumppower = 550;
             BASE_GRAVITY = 5;
         }
         else if (Type == 2)
         {
+            acceleration = 50;
             speedcap = 5;
             jumppower = 550;
             BASE_GRAVITY = 5;

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4006843024024516414}
   - component: {fileID: 7444182384132662904}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SmallRock
   m_TagString: pressure plate
   m_Icon: {fileID: 0}

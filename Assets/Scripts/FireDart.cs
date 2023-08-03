@@ -31,9 +31,12 @@ public class FireDart : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if ((collision.gameObject.layer == 6 || collision.gameObject.layer == 7) && collision.gameObject.tag != "FireDartShooter")
+        if (collision.gameObject.tag != "FireDartShooter")
         {
-            FireDartHit(collision.gameObject);
+            if (collision.gameObject.layer == 6 || collision.gameObject.layer == 7)
+            {
+                FireDartHit(collision.gameObject);
+            }
             Destroy(gameObject);
         }
     }
