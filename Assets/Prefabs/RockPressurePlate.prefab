@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 2848032928412607714}
   - component: {fileID: 4319970501507905032}
   - component: {fileID: 2320795879708997134}
+  - component: {fileID: 4533552236083245578}
   m_Layer: 0
   m_Name: RockPressurePlate
   m_TagString: Untagged
@@ -225,3 +226,16 @@ MonoBehaviour:
   sprites:
   - {fileID: 21300000, guid: bfda012625a50b84c91e39bd73f14f42, type: 3}
   - {fileID: 21300000, guid: 29d98eb425b52434987532b394117e48, type: 3}
+--- !u!114 &4533552236083245578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7062577226153930159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 072468fd25077ce4a9c9e9756f6ec258, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: 2

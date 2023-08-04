@@ -13,7 +13,7 @@ public class Liquid : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(OnLiquidEnter != null)
+        if(OnLiquidEnter != null && collision.gameObject.tag == "Player")
         {
             OnLiquidEnter(collision.gameObject, Type);
         }
@@ -21,7 +21,7 @@ public class Liquid : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (OnLiquidStay2D != null)
+        if (OnLiquidStay2D != null && collision.gameObject.tag == "Player")
         {
             OnLiquidStay2D(collision.gameObject, Type);
         }
@@ -29,7 +29,7 @@ public class Liquid : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (OnLiquidExit != null)
+        if (OnLiquidExit != null && collision.gameObject.tag == "Player")
         {
             OnLiquidExit(Type);
         }
