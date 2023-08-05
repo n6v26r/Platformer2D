@@ -12,7 +12,6 @@ public class Pause : MonoBehaviour
             Time.timeScale = 1 - Time.timeScale;
             quit.SetActive(!quit.activeSelf);
         }
-        
     }
 
     public void quitapp() {

@@ -57,32 +57,27 @@ public class InventoryManagement : MonoBehaviour
         if (Type == 1)
         {
             RubysCollected++;
-            if (SoundManager != null)
-                SoundManager.PlaySound(SoundManager.RubyCollect);
+            SoundManager?.PlaySound(SoundManager.RubyCollect);
         }
         else if (Type == 2)
         {
             EmeraldsCollected++;
-            if (SoundManager != null)
-                SoundManager.PlaySound(SoundManager.EmeraldCollect);
+            SoundManager?.PlaySound(SoundManager.EmeraldCollect);
         }
         else if (Type == 3)
         {
             TopazsCollected++;
-            if (SoundManager != null)
-                SoundManager.PlaySound(SoundManager.TopazCollect);
+            SoundManager?.PlaySound(SoundManager.TopazCollect);
         }
         else if( Type == 4)
         {
             SilverKeysInInventory++;
-            if (SoundManager != null)
-                SoundManager.PlaySound(SoundManager.EmeraldCollect);
+            SoundManager?.PlaySound(SoundManager.EmeraldCollect);
         }
         else if( Type == 5)
         {
             GoldenKeysInInventory++;
-            if (SoundManager != null)
-                SoundManager.PlaySound(SoundManager.TopazCollect);
+            SoundManager?.PlaySound(SoundManager.TopazCollect);
         }
     }
 }

@@ -208,8 +208,7 @@ public class Movement : MonoBehaviour
                 jumped = 0;
                 rb.velocity = new Vector2(0, 0);
                 rb.AddForce(new Vector2(WALLJUMPPOWER, jumppower * 1.15f));
-                if(SoundManager!=null)
-                    SoundManager.PlaySound(SoundManager.PlayerJump);
+                SoundManager?.PlaySound(SoundManager.PlayerJump);
             }
             animator.SetBool("isWallcliming", true);
         } else if (Physics2D.BoxCast(boxcl2D.bounds.center, boxcl2D.bounds.size - new Vector3(0, 0.1f, 0), 0f, Vector2.right, extraHeightText, lm_platfrom) && (!Input.GetKey(KeyCode.LeftControl) || Input.GetMouseButton(0))) {
@@ -218,8 +217,7 @@ public class Movement : MonoBehaviour
                 jumped = 0;
                 rb.velocity = new Vector2(0, 0);
                 rb.AddForce(new Vector2(-WALLJUMPPOWER, jumppower * 1.15f));
-                if(SoundManager!=null)
-                    SoundManager.PlaySound(SoundManager.PlayerJump);
+                SoundManager?.PlaySound(SoundManager.PlayerJump);
             }  
             animator.SetBool("isWallcliming", true);
         } else if (onground > 0 || jumpsleft > 0) {
@@ -230,8 +228,7 @@ public class Movement : MonoBehaviour
                 jumped = 0;
                 rb.velocity = new Vector2(rb.velocity.x, 0);
                 rb.AddForce(new Vector2(0, jumppower));
-                if(SoundManager!=null)
-                    SoundManager.PlaySound(SoundManager.PlayerJump);
+                SoundManager?.PlaySound(SoundManager.PlayerJump);
             }
         }
 
@@ -244,8 +241,7 @@ public class Movement : MonoBehaviour
             dash_dir = Mathf.RoundToInt(xinput);
 
         if ((Input.GetKey(KeyCode.LeftShift )|| Input.GetMouseButton(1)) && dash_timer >= dash_cooldown && dashing) {
-            if(SoundManager!=null)
-                SoundManager.PlaySound(SoundManager.PlayerDash);
+            SoundManager?.PlaySound(SoundManager.PlayerDash);
             dash_timer = 0;
             dash_airtime = DASH_MAXAIRTIME;
         }
@@ -283,8 +279,7 @@ public class Movement : MonoBehaviour
         }
 
         if (collision.gameObject.tag == "spike") {
-            if(SoundManager!=null)
-            SoundManager.PlaySound(SoundManager.CellingSpike);
+            SoundManager?.PlaySound(SoundManager.CellingSpike);
             GetComponent<Health>().health = 0;
         }
     }

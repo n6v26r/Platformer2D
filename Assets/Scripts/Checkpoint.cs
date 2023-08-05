@@ -22,7 +22,7 @@ public class Checkpoint : MonoBehaviour
             sp.sprite = On;
             for (int i = 0; i < Checkpoints.Count; i++)
                 Checkpoints[i].GetComponent<SpriteRenderer>().sprite = Off;
-            SoundManager.PlaySound(SoundManager.flame);
+            SoundManager?.PlaySound(SoundManager.flame);
         }
     }
 }

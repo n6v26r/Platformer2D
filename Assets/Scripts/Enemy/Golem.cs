@@ -54,7 +54,7 @@ public class Golem : Walker
             StuffAbove = true;
             if(!IsLaunching){
                 if(!sound)
-                    SoundManager.PlaySound(SoundManager.GolemCharge);
+                    SoundManager?.PlaySound(SoundManager.GolemCharge);
                     sound = true;
                 StopCoroutine("Launch");
                 IsLaunching = true;

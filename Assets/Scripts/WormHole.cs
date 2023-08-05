@@ -18,7 +18,7 @@ public class WormHole : MonoBehaviour
     {
         if (canteleport == true)
         {
-            SoundManager.PlaySound(SoundManager.WormHoleEnter);
+            SoundManager?.PlaySound(SoundManager.WormHoleEnter);
             WormBrotherScript.canteleport = false;
             collision.gameObject.transform.position = new Vector3(WormBrother.transform.position.x, WormBrother.transform.position.y);
         }

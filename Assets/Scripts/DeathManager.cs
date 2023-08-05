@@ -133,7 +133,7 @@ public class DeathManager : MonoBehaviour
             Health healthComp = gameObject.GetComponent<Health>();
             if (healthComp == null) return;
                     healthComp.health -= dmg;
-            SoundManager.PlaySound(SoundManager.PlayerHit);
+            SoundManager?.PlaySound(SoundManager.PlayerHit);
             if (gameObject.tag != "Player")
                 CheckDeath(healthComp);
             else if (healthComp.health <= 0)

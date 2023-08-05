@@ -18,7 +18,7 @@ public class Slime : Walker
 
         if(CanJump && JumpCooldownTimer>JumpCooldown){
             if(FollowVictim())
-                SoundManager.PlaySound(SoundManager.SlimeJump);
+                SoundManager?.PlaySound(SoundManager.SlimeJump);
             SelfRigidBody.AddForce(Vector2.up*JumpPower);
             CanJump = false;
             JumpCooldownTimer = 0f;

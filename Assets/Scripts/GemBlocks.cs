@@ -30,7 +30,7 @@ public class GemBlocks : MonoBehaviour
         {
             gemItem.SetActive(true);
             Destroy(gameObject);
-            SoundManager.PlaySound(SoundManager.BlockBreak);
+            SoundManager?.PlaySound(SoundManager.BlockBreak);
         }
     }
 }
