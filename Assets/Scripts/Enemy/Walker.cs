@@ -11,7 +11,7 @@ public class Walker : PrototypeEnemyAI
 
     protected BoxCollider2D SelfBoxCollider;
     [SerializeField] protected Vector2 PatrolDirection = Vector2.right;
-     [SerializeField] protected float PatrolDistance = 10;
+    [SerializeField] protected float PatrolDistance = 10;
     [SerializeField] protected float RememberPlayerCounter = 3f;
     [SerializeField] protected float PatrolStopBeforeWall = 2;
 
@@ -20,14 +20,14 @@ public class Walker : PrototypeEnemyAI
 
     // Start is called before the first frame update
 
-    void Awake(){
+    private void Awake(){
         SelfRigidBody = GetComponent<Rigidbody2D>();
         SelfBoxCollider = GetComponent<BoxCollider2D>();
         SoundManager = FindObjectOfType<SoundManger>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if(!IsMoving) return;
         if(Agro){

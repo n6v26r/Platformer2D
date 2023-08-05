@@ -220,7 +220,7 @@ public class Movement : MonoBehaviour
                 rb.AddForce(new Vector2(-WALLJUMPPOWER, jumppower * 1.15f));
                 if(SoundManager!=null)
                     SoundManager.PlaySound(SoundManager.PlayerJump);
-            }
+            }  
             animator.SetBool("isWallcliming", true);
         } else if (onground > 0 || jumpsleft > 0) {
             if (jumped > 0) {

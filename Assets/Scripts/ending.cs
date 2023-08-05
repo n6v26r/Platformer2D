@@ -9,8 +9,6 @@ public class ending : MonoBehaviour
     public GameObject ending1;
     public GameObject ending2;
 
-
-    // Start is called before the first frame update
     private void Start()
     {
         if (Movement.score >= goodending)

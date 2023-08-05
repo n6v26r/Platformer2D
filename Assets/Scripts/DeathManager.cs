@@ -13,7 +13,7 @@ public class DeathManager : MonoBehaviour
 
     private GameObject Player;
 
-    void Awake()
+    private void Awake()
     {
         SoundManager = FindAnyObjectByType<SoundManger>();
         Player = GameObject.FindGameObjectWithTag("Player");
@@ -47,7 +47,6 @@ public class DeathManager : MonoBehaviour
         }
     }
 
-
     private int OnFire = 0;
     private float OnFireCooldown = 0.3f;
     private float LastOnFire = 0;
@@ -77,7 +76,7 @@ public class DeathManager : MonoBehaviour
             OnFire = 0;
         }
     }
-
+    //TODO @rrradu: Complete this!
     private void LeftLiquid(int Type)
     {
         if (Type == 1)
