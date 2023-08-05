@@ -119,7 +119,7 @@ MonoBehaviour:
   BASE_GRAVITY: 5
   JUMPBUFFER: 0.5
   COYOTE_TIME: 0.6
-  extrajumps: 2
+  extrajumps: 0
   dash_cooldown: 6
   DASH_POWER: 4
   DASH_MAXAIRTIME: 1
