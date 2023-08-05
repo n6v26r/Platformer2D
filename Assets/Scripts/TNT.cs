@@ -29,6 +29,7 @@ public class TNT : MonoBehaviour
     private IEnumerator Blowing()
     {
         yield return new WaitForSeconds(0.1f);
+        // TODO @rrradu: Add animator call here!(Explosion)
         Blew = true;
         OnBlow(transform.position.x, transform.position.y);
         yield return new WaitForSeconds(0.5f);

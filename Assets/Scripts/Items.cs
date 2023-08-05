@@ -8,10 +8,6 @@ public class Items : MonoBehaviour
     public int ItemType;
     public Action<int> OnItemEnter;
 
-    private void Awake()
-    {
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (OnItemEnter != null && collision.gameObject.tag == "Player")
@@ -19,6 +15,5 @@ public class Items : MonoBehaviour
             OnItemEnter(ItemType);
             Destroy(gameObject);
         }
-
     }
 }

@@ -10,8 +10,8 @@ public class Button : MonoBehaviour {
     public int[] wait = new int[4];
     public List<GameObject> on = new List<GameObject>();
     public List<GameObject> off = new List<GameObject>();
-    int i;
-    bool disable = true;
+    
+    private bool disable = true;
 
     public void OnClick() {
         StartCoroutine(click());
@@ -21,10 +21,10 @@ public class Button : MonoBehaviour {
         if(disable)
             GetComponent<Image>().enabled = false;
         yield return new WaitForSeconds(wait[0]);
-        for (i = 0; i < on.Count; i++)
+        for (int i = 0; i < on.Count; i++)
             on[i].SetActive(true);
         yield return new WaitForSeconds(wait[1]);
-        for (i = 0; i < off.Count; i++)
+        for (int i = 0; i < off.Count; i++)
             off[i].SetActive(false);
         yield return new WaitForSeconds(wait[2]);
         if (Scene != -1)

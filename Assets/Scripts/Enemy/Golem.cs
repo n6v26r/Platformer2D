@@ -15,7 +15,7 @@ public class Golem : Walker
     [SerializeField] private float LaunchDelay = 1;
     [SerializeField] private bool launch = true;
 
-    void Awake(){
+    private void Awake(){
         SelfAnimator = GetComponent<Animator>();
         SelfRigidBody = GetComponent<Rigidbody2D>();
         SelfBoxCollider = GetComponent<BoxCollider2D>();
@@ -23,11 +23,11 @@ public class Golem : Walker
         SoundManager = FindObjectOfType<SoundManger>();
     }
 
-    void Start(){
+    private void Start(){
         SelfRigidBody.bodyType = RigidbodyType2D.Kinematic;
     }
      
-    void Update()
+    private void Update()
     {  
         SelfAnimator.SetBool("IsLaunching", IsLaunching);
         SelfAnimator.SetBool("Launched", JustLaunched);
@@ -48,7 +48,7 @@ public class Golem : Walker
         }
     }   
 
-    void FixedUpdate(){
+    private void FixedUpdate(){
         RaycastHit2D above = Physics2D.BoxCast(SelfBoxCollider.bounds.center, SelfBoxCollider.bounds.size, 0f, Vector2.up, 0.31f, (1<<3)+(1<<6)+(1<<7));
         if(above.collider!=null && launch) {
             StuffAbove = true;
@@ -83,7 +83,6 @@ public class Golem : Walker
         yield return new WaitForSeconds(0.2f);
         JustLaunched = false;
     }
-
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.collider == null || other.collider.gameObject == null) return;
         Rigidbody2D rb = other.collider.gameObject.GetComponent<Rigidbody2D>();

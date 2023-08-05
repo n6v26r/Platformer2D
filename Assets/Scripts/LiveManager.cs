@@ -9,19 +9,18 @@ public class LiveManager : MonoBehaviour
     [SerializeField] private GameObject text;
 
     public int lives = 15;
-    // Start is called before the first frame update
 
-    void Awake(){
+    private void Awake(){
         DontDestroyOnLoad(gameObject);
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
-    void Start()
+    private void Start()
     {
         if(text!= null)
             text.GetComponent<TMP_Text>().text = "Lives: " + lives.ToString();
     }
 
-    void OnSceneLoaded(Scene loadedScene, LoadSceneMode loadedMode) 
+    private void OnSceneLoaded(Scene loadedScene, LoadSceneMode loadedMode) 
     {
         Player = FindObjectOfType<Movement>();
         text = GameObject.Find("Lives");
@@ -31,9 +30,7 @@ public class LiveManager : MonoBehaviour
             Player.death = OnDeath;
     }
 
-
-    // Update is called once per frame
-    void OnDeath(){
+    private void OnDeath(){
         lives--;
         if(lives<=0){
             Movement.score = 0;

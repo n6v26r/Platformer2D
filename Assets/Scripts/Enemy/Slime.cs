@@ -12,7 +12,7 @@ public class Slime : Walker
     [SerializeField] protected float JumpPower = 300f;
     [SerializeField] protected float JumpCooldown = 3f;
     [SerializeField] protected float DamageCoolDown = 0.3f;
-    void FixedUpdate() {
+    private void FixedUpdate() {
         DamageTimer += Time.fixedDeltaTime;
         JumpCooldownTimer += Time.fixedDeltaTime;
 
@@ -37,8 +37,7 @@ public class Slime : Walker
     {
         if(collision.gameObject.tag != "Player") return;
         if(DamageTimer <= DamageCoolDown) return;
-        if(OnSlimeHit!=null)
-            OnSlimeHit(collision.gameObject);
+        OnSlimeHit?.Invoke(collision.gameObject);
         DamageTimer = 0;
     }
 

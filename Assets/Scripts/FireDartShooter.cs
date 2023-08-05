@@ -4,24 +4,20 @@ using UnityEngine;
 
 public class FireDartShooter : MonoBehaviour
 {
-    private SpriteRenderer spriteRenderer;
-
     public GameObject FireDartRight;
     public GameObject FireDartLeft;
-
     public Sprite[] sprites;
-    //HideInInspector
+
+    private SpriteRenderer spriteRenderer;
     private bool ShouldShoot = false;
     private bool CanShoot = true;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if(ShouldShoot == true && CanShoot == true)
         {
@@ -30,7 +26,7 @@ public class FireDartShooter : MonoBehaviour
         }
     }
 
-    public void ShouldShootTrue()
+    public void AllowShoot()
     {
         ShouldShoot = true;
     }
@@ -38,6 +34,7 @@ public class FireDartShooter : MonoBehaviour
     private IEnumerator Shoot()
     {
         CanShoot = false;
+        // TODO @rrradu: For the love of god, please put a animator, this hurts my eyes!!!
         yield return new WaitForSeconds(0.1f);
         spriteRenderer.sprite = sprites[1];
         yield return new WaitForSeconds(0.1f);

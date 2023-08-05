@@ -5,27 +5,21 @@ using UnityEngine;
 public class PrototypeEnemyAI : MonoBehaviour
 {
     public float Speed = 2f;
-
-    [SerializeField] protected Vector2 Target;
     public GameObject Victim;
 
-    // Start is called before the first frame update
+    [SerializeField] protected Vector2 Target;
     protected Rigidbody2D SelfRigidBody;
 
-    void Awake(){
+    private void Awake(){
         SelfRigidBody = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-
-    void Update()
+    private void Update()
     {
         SetTarget(Victim.GetComponent<Transform>().position);
         MoveTarget();
     }   
 
-    // Will Infinetly target the player
-    // Stupid and Goofy
     protected virtual void MoveTarget(){
         transform.position = Vector2.MoveTowards(transform.position, Target, Speed * Time.deltaTime);
     }

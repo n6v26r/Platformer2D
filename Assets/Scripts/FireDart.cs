@@ -8,10 +8,8 @@ public class FireDart : MonoBehaviour
     private float Speed = 25f;
     private float Distante = 0f;
     private Vector3 targetpos;
-
     private Action<GameObject> FireDartHit;
     private DeathManager deathManager;
-
 
     private void Awake()
     {
@@ -20,8 +18,7 @@ public class FireDart : MonoBehaviour
         targetpos = new Vector3(transform.position.x-0.5f+Distante,transform.position.y, transform.position.z);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
        if(transform.localScale.x == 1) 
         transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x+1, transform.position.y, transform.position.z), Speed * Time.deltaTime);

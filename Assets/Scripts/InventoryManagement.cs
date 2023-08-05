@@ -19,7 +19,7 @@ public class InventoryManagement : MonoBehaviour
     private Door[] doors;
     private Items[] items;
 
-    void Awake()
+    private void Awake()
     {
         SoundManager = FindAnyObjectByType<SoundManger>();
 

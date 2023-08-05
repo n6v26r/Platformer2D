@@ -17,7 +17,6 @@ public class BuffManager : MonoBehaviour
         }
     }
 
-
     private void ItemBuff(int Type)
     {
         if (Type == 1)

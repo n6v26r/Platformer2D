@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class GemBlocks : MonoBehaviour
 {
-    private SoundManger SoundManager;
     public GameObject gemItem;
     public float timeRequired;
+    
+    private SoundManger SoundManager;
+    private float timer;
 
-    float timer;
-
-    void Awake()
+    private void Awake()
     {
         SoundManager = FindAnyObjectByType<SoundManger>();
     }
