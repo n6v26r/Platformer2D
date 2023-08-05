@@ -29,6 +29,14 @@ public class Movement : MonoBehaviour
     private Vector3 startpoz_dash;
     private Liquid[] liquids;
 
+    public GameObject silverkey;
+    public GameObject silverkey_text;
+    public GameObject silverkey_rama;
+
+    public GameObject goldenkey;
+    public GameObject goldenkey_text;
+    private GameObject goldenkey_rama;
+
     float xinput, yinput;
     float jumped, onground;
 
@@ -273,11 +281,6 @@ public class Movement : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.tag == "pressure plate") {
-            ppbx = collision.gameObject.GetComponent<BoxCollider2D>();
-            gameObject.transform.position = new Vector3(gameObject.transform.position.x, collision.gameObject.transform.position.y+ppbx.size.y*2.7f, gameObject.transform.position.z);
-        }
-
         if (collision.gameObject.tag == "spike") {
             SoundManager?.PlaySound(SoundManager.CellingSpike);
             GetComponent<Health>().health = 0;

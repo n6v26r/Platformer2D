@@ -2779,7 +2779,6 @@ GameObject:
   m_Component:
   - component: {fileID: 511703297}
   - component: {fileID: 511703296}
-  - component: {fileID: 511703298}
   - component: {fileID: 511703299}
   m_Layer: 0
   m_Name: Biome1Bg4
@@ -2855,20 +2854,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &511703298
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 511703295}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6febbcbe0a4e8fa44b605394dad4d742, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Player: {fileID: 333990139}
-  offset: {x: 0, y: 0, z: 0}
 --- !u!114 &511703299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2881,8 +2866,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6febbcbe0a4e8fa44b605394dad4d742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 333990139}
+  Entity: {fileID: 333990139}
   offset: {x: 0, y: 0, z: 0}
+  EntityAllowedFreeMovementSpace: {x: 2, y: 2}
+  DistanceForTeleport: {x: 10, y: 10}
+  StopFollowOnEntityStill: 0.2
+  Speed: 5
 --- !u!1001 &514369115
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3459,8 +3448,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6febbcbe0a4e8fa44b605394dad4d742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 333990139}
+  Entity: {fileID: 333990139}
   offset: {x: 0, y: 0, z: 0}
+  EntityAllowedFreeMovementSpace: {x: 2, y: 2}
+  DistanceForTeleport: {x: 10, y: 10}
+  StopFollowOnEntityStill: 0.2
+  Speed: 5
 --- !u!212 &1831387197
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3888,8 +3881,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6febbcbe0a4e8fa44b605394dad4d742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 333990139}
+  Entity: {fileID: 333990139}
   offset: {x: 0, y: 0, z: 1}
+  EntityAllowedFreeMovementSpace: {x: 2, y: 2}
+  DistanceForTeleport: {x: 10, y: 10}
+  StopFollowOnEntityStill: 0.2
+  Speed: 5
 --- !u!1001 &2485824034448868814
 PrefabInstance:
   m_ObjectHideFlags: 0
