@@ -7,6 +7,7 @@ public class CamFollow : MonoBehaviour
     public GameObject Entity;
     public Vector3 offset;
     public Vector2 EntityAllowedFreeMovementSpace = new Vector2(2, 2);
+    public Vector2 DistanceForTeleport = new Vector2(10, 10);
     public float StopFollowOnEntityStill = 0.2f;
     public float Speed = 5f;
 
@@ -17,9 +18,15 @@ public class CamFollow : MonoBehaviour
             Debug.Log("<color=yellow>[CamFollow WARN]: No entity specified!</color>"); 
             return;
         }
-        
+
         Vector2 EntityPos = Entity.transform.position - offset;
         Vector3 MoveTo = gameObject.transform.position;
+
+        if(Mathf.Abs(EntityPos.x-MoveTo.x)>=DistanceForTeleport.x || Mathf.Abs(EntityPos.y-MoveTo.y)>=DistanceForTeleport.y){
+            gameObject.transform.position = new Vector3(EntityPos.x, EntityPos.y, MoveTo.z);
+            return;
+        }
+        
         if(EntityPos==lastEntityPosition)
             EntityStillCooldown+=Time.deltaTime;
         else
