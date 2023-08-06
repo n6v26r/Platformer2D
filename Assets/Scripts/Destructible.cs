@@ -43,7 +43,7 @@ public class Destructible : MonoBehaviour
         {
             for (int col = -2; col <= 2; col++)
             {
-                if ((lin != -2 || col != -2) && (lin != -2 || col != 2) && (lin != 2 || col != -2) && (lin != 2 || col != 2))
+                if ((lin != -2 || col != -2) && (lin != -2 || col != 2) && (lin != 2 || col != -2) && (lin != 2 || col != 2) && gameObject != null)
                 {
                     if (x + col == transform.position.x && y + lin == transform.position.y)
                         Destroy(gameObject);

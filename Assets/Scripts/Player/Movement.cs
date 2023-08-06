@@ -20,7 +20,6 @@ public class Movement : MonoBehaviour
     public PhysicsMaterial2D good;
     public PhysicsMaterial2D air;
     public GameObject ground;
-    public GameObject spawnpoint;
     public GameObject ScoreUI;
 
     private Vector3 startpoz_dash;
@@ -199,17 +198,6 @@ public class Movement : MonoBehaviour
 
         if(jumped > 0)
             animator.SetBool("IsMoving", false);
-        
-
-        if (GetComponent<Health>().health <= 0) {
-            if(death != null)
-                death();
-            transform.position = spawnpoint.transform.position;
-            GetComponent<Health>().health = 100;
-            speedcap = 6;
-            jumppower = 550;
-            BASE_GRAVITY = 5;
-        }
     }
 
     private void FixedUpdate() {

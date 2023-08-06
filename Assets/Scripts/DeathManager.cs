@@ -10,6 +10,10 @@ public class DeathManager : MonoBehaviour
     private Slime[] slimes;
     private Liquid[] liquids;
     private TNT[] tnts;
+    private Health healthComp;
+
+
+    public GameObject spawnpoint;
 
     private GameObject Player;
 
@@ -47,17 +51,24 @@ public class DeathManager : MonoBehaviour
         }
     }
 
+    private bool CanCatchOnFire = true;
     private int OnFire = 0;
     private float OnFireCooldown = 0.3f;
     private float LastOnFire = 0;
-    private void FixedUpdate()
+    private void Update()
     {
-        if(OnFire > 0 && Time.time - LastOnFire > OnFireCooldown)
+        //CheckDeath(Player);
+        if (CanCatchOnFire == true)
         {
-            OnFire--;
-            Damage(Player, 1);
-            LastOnFire = Time.time;
+            if (OnFire > 0 && Time.time - LastOnFire > OnFireCooldown)
+            {
+                OnFire--;
+                Damage(Player, 1);
+                LastOnFire = Time.time;
+            }
         }
+        else
+            OnFire = 0;
     }
 
     private void StayedInLiquid(GameObject gameObject, int Type)
@@ -73,7 +84,7 @@ public class DeathManager : MonoBehaviour
         }
         else if(Type == 2)
         {
-            OnFire = 0;
+            CanCatchOnFire = false;
         }
     }
     //TODO @rrradu: Complete this!
@@ -85,7 +96,7 @@ public class DeathManager : MonoBehaviour
         }
         else if(Type == 2)
         {
-
+            CanCatchOnFire = true;
         }
     }
 
@@ -130,22 +141,28 @@ public class DeathManager : MonoBehaviour
     private void Damage(GameObject gameObject, float dmg){
         if (gameObject.layer == 6 || gameObject.layer == 7)
         {
-            Health healthComp = gameObject.GetComponent<Health>();
+            healthComp = gameObject.GetComponent<Health>();
             if (healthComp == null) return;
                     healthComp.health -= dmg;
-            SoundManager?.PlaySound(SoundManager.PlayerHit);
-            if (gameObject.tag != "Player")
-                CheckDeath(healthComp);
-            else if (healthComp.health <= 0)
-                OnFire = 0;
+            if(gameObject.tag == "Player")
+                SoundManager?.PlaySound(SoundManager.PlayerHit);
+            CheckDeath(gameObject);
         }
     }
 
-    private void CheckDeath(Health healthComp)
+    private void CheckDeath(GameObject gameObject)
     {
+        Health healthComponent = gameObject.GetComponent<Health>();
         if (healthComp.health <= 0)
         {
-           Destroy(healthComp.gameObject);
+            if (gameObject.tag == "Player")
+            {
+                gameObject.transform.position = spawnpoint.transform.position;
+                OnFire = 0;
+                healthComp.health = 100;
+            }
+            else
+                Destroy(healthComp.gameObject);
         }
     }
 }
