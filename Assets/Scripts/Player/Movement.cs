@@ -23,11 +23,15 @@ public class Movement : MonoBehaviour
     public GameObject spawnpoint;
     public GameObject ScoreUI;
 
-    public Image healthbar;
-
-    public Image dashbar;
     private Vector3 startpoz_dash;
     private Liquid[] liquids;
+
+    public GameObject dashbar_rama;
+    public GameObject jumpbar_rama;
+
+    public Image healthbar;
+    public Image dashbar;
+    public Image doublejumpbar;
 
     public GameObject silverkey;
     public GameObject silverkey_text;
@@ -35,7 +39,7 @@ public class Movement : MonoBehaviour
 
     public GameObject goldenkey;
     public GameObject goldenkey_text;
-    private GameObject goldenkey_rama;
+    public GameObject goldenkey_rama;
 
     float xinput, yinput;
     float jumped, onground;
@@ -48,7 +52,7 @@ public class Movement : MonoBehaviour
     [SerializeField] float JUMPBUFFER = 0f;
     [SerializeField] float COYOTE_TIME = 0f;
     public int extrajumps = 0;
-    int jumpsleft;
+    float jumpsleft;
 
     public float dash_cooldown = 4f;
     public float DASH_POWER = 20f;
@@ -166,17 +170,21 @@ public class Movement : MonoBehaviour
             boxcl2D.sharedMaterial = air;
         }
 
-
-
         if(dash_dir == 1)
             sp.flipX = true;
         else
             sp.flipX=false;
 
         dashbar.enabled = dashing;
+        dashbar_rama.SetActive(dashing);
+        if (extrajumps == 0)
+            jumpbar_rama.SetActive(false);
+        else
+            jumpbar_rama.SetActive(true);
 
         healthbar.fillAmount = Mathf.Clamp(gameObject.GetComponent<Health>().health / 100, 0, 1f);
         dashbar.fillAmount = Mathf.Clamp(dash_timer / dash_cooldown, 0, 1f);
+        doublejumpbar.fillAmount = Mathf.Clamp((jumpsleft / extrajumps), 0, 1f);
         ScoreUI.GetComponent<TMP_Text>().text = "Score: " + score.ToString();
 
         if(jumped>0)
@@ -230,7 +238,7 @@ public class Movement : MonoBehaviour
             animator.SetBool("isWallcliming", true);
         } else if (onground > 0 || jumpsleft > 0) {
             if (jumped > 0) {
-                if (onground == 0)
+                if (onground <= 0)
                     jumpsleft--;
                 onground = 0;
                 jumped = 0;
