@@ -201,9 +201,8 @@ public class Movement : MonoBehaviour
     }
 
     private void FixedUpdate() {
-        if ((xinput != 1 || (rb.velocity.x < speedcap)) && (xinput != -1 || (rb.velocity.x > -speedcap))) {
+        if ((xinput != 1 || (rb.velocity.x < speedcap)) && (xinput != -1 || (rb.velocity.x > -speedcap))) 
             rb.AddForce(new Vector2(acceleration * xinput, 0));
-        }
 
         animator.SetBool("isWallcliming", false);
         if (Physics2D.BoxCast(boxcl2D.bounds.center, boxcl2D.bounds.size - new Vector3(0, 0.1f, 0), 0f, Vector2.left, extraHeightText, lm_platfrom) && (!Input.GetKey(KeyCode.LeftControl) || Input.GetMouseButton(0))) {
