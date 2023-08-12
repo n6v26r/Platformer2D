@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DeathManager : MonoBehaviour
 {
-    private SoundManger SoundManager;
     
     private CellingSpike[] cellingSpikes;
     private Slime[] slimes;
@@ -20,7 +19,6 @@ public class DeathManager : MonoBehaviour
 
     private void Awake()
     {
-        SoundManager = FindAnyObjectByType<SoundManger>();
         Player = GameObject.FindGameObjectWithTag("Player");
 
         liquids = FindObjectsOfType<Liquid>();
@@ -102,7 +100,6 @@ public class DeathManager : MonoBehaviour
         Health health = gameObject.GetComponent<Health>();
         if(health==null) return;
 
-        SoundManager?.PlaySound(SoundManager.CellingSpike);
         Damage(gameObject, health.MaxHealth);
     }
 
@@ -138,8 +135,6 @@ public class DeathManager : MonoBehaviour
             healthComp = gameObject.GetComponent<Health>();
             if (healthComp == null) return;
                     healthComp.InflictDamage(dmg);
-            if(gameObject.tag == "Player")
-                SoundManager?.PlaySound(SoundManager.PlayerHit);
         }
     }
 }

@@ -30,7 +30,11 @@ public class Health : MonoBehaviour
     public string[] ImuneTo;
 
     private float SpawnProtectionActive;
+    private SoundManger SoundManager;
 
+    private void Awake(){
+        SoundManager = FindAnyObjectByType<SoundManger>();
+    }
     private void Update(){
         if(SpawnProtection>0)
             SpawnProtection -= Time.deltaTime;
@@ -54,6 +58,8 @@ public class Health : MonoBehaviour
     public void InflictDamage(float damage){
         if(SpawnProtectionActive<=0)
             health -= damage;
+        if(gameObject.tag == "Player")
+            SoundManager?.PlaySound(SoundManager.PlayerHit);
     }
 
     public float GetHealth(){
