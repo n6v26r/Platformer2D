@@ -181,7 +181,7 @@ public class Movement : MonoBehaviour
         else
             jumpbar_rama.SetActive(true);
 
-        healthbar.fillAmount = Mathf.Clamp(gameObject.GetComponent<Health>().health / 100, 0, 1f);
+        healthbar.fillAmount = Mathf.Clamp(gameObject.GetComponent<Health>().GetHealth() / 100, 0, 1f);
         dashbar.fillAmount = Mathf.Clamp(dash_timer / dash_cooldown, 0, 1f);
         doublejumpbar.fillAmount = Mathf.Clamp((jumpsleft / extrajumps), 0, 1f);
         ScoreUI.GetComponent<TMP_Text>().text = "Score: " + score.ToString();
@@ -273,12 +273,5 @@ public class Movement : MonoBehaviour
 
         if (rb.velocity.y < -15)
             rb.velocity = new Vector2(rb.velocity.x, -15);
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.tag == "spike") {
-            SoundManager?.PlaySound(SoundManager.CellingSpike);
-            GetComponent<Health>().health = 0;
-        }
     }
 }

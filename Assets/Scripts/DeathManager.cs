@@ -11,6 +11,7 @@ public class DeathManager : MonoBehaviour
     private Liquid[] liquids;
     private TNT[] tnts;
     private Health healthComp;
+    private Spike[] spikes;
 
 
     public GameObject spawnpoint;
@@ -31,7 +32,7 @@ public class DeathManager : MonoBehaviour
 
         cellingSpikes = FindObjectsOfType<CellingSpike>();
         for (int i = 0; i < cellingSpikes.Length; ++i)
-            cellingSpikes[i].OnSpikeHit+= SpikeHit;
+            cellingSpikes[i].OnSpikeHit+= CellingSpikeHit;
 
         slimes = FindObjectsOfType<Slime>();
         for (int i = 0; i < slimes.Length; ++i)
@@ -40,6 +41,10 @@ public class DeathManager : MonoBehaviour
         tnts = FindObjectsOfType<TNT>();
         for (int i = 0; i < tnts.Length; ++i)
             tnts[i].OnBlowVictim += BlewUp;
+
+        spikes = FindObjectsOfType<Spike>();
+        for (int i = 0; i < spikes.Length; ++i)
+            spikes[i].OnHit += SpikeHit;
     }
 
     private void OnDestroy()
@@ -57,7 +62,7 @@ public class DeathManager : MonoBehaviour
     private float LastOnFire = 0;
     private void Update()
     {
-        //CheckDeath(Player);
+        Debug.Log(OnFire);
         if (CanCatchOnFire == true)
         {
             if (OnFire > 0 && Time.time - LastOnFire > OnFireCooldown)
@@ -110,9 +115,17 @@ public class DeathManager : MonoBehaviour
         Damage(gameObject, 5);
     }
 
-    private void SpikeHit(GameObject gameObject)
+    private void CellingSpikeHit(GameObject gameObject)
     {
         Damage(gameObject, 25);
+    }
+
+    private void SpikeHit(GameObject gameObject){
+        Health health = gameObject.GetComponent<Health>();
+        if(health==null) return;
+
+        SoundManager?.PlaySound(SoundManager.CellingSpike);
+        Damage(gameObject, health.MaxHealth);
     }
 
     private void SlimeHit(GameObject gameObject)
@@ -126,8 +139,10 @@ public class DeathManager : MonoBehaviour
 
     public void FireDartHit(GameObject gameObject)
     {
-        Damage(gameObject, 5);
-        OnFire += 25;
+        if(gameObject.tag == "Player"){
+            OnFire += 25;
+            Damage(gameObject, 5);
+        }
     }
 
     public void BlewUp(GameObject gameObject)
@@ -143,26 +158,9 @@ public class DeathManager : MonoBehaviour
         {
             healthComp = gameObject.GetComponent<Health>();
             if (healthComp == null) return;
-                    healthComp.health -= dmg;
+                    healthComp.InflictDamage(dmg);
             if(gameObject.tag == "Player")
                 SoundManager?.PlaySound(SoundManager.PlayerHit);
-            CheckDeath(gameObject);
-        }
-    }
-
-    private void CheckDeath(GameObject gameObject)
-    {
-        Health healthComponent = gameObject.GetComponent<Health>();
-        if (healthComp.health <= 0)
-        {
-            if (gameObject.tag == "Player")
-            {
-                gameObject.transform.position = spawnpoint.transform.position;
-                OnFire = 0;
-                healthComp.health = 100;
-            }
-            else
-                Destroy(healthComp.gameObject);
         }
     }
 }

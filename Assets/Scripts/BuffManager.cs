@@ -22,10 +22,7 @@ public class BuffManager : MonoBehaviour
         if (Type == 1)
         {
             Health healthComp = player.GetComponent<Health>();
-            if (healthComp.health < 75)
-                healthComp.health += 25;
-            else
-                healthComp.health = 100;
+            healthComp.AddHealth(25);
 
             Movement.score += 15;
         }
