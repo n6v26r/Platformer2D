@@ -23,6 +23,7 @@ public class DamageEffect{
 public class Health : MonoBehaviour
 {
     [SerializeField] private float health;
+    [SerializeField] private float HitSoundCooldownTime = 0.3f;
 
     public float SpawnProtection = 0.5f;
     public float MaxHealth = 100f;
@@ -30,12 +31,18 @@ public class Health : MonoBehaviour
     public string[] ImuneTo;
 
     private float SpawnProtectionActive;
+    
     private SoundManger SoundManager;
+    private float HitSoundCooldown;
 
     private void Awake(){
         SoundManager = FindAnyObjectByType<SoundManger>();
     }
     private void Update(){
+        //Cooldowns
+        if(HitSoundCooldown>0)
+            HitSoundCooldown-=Time.deltaTime;
+
         if(SpawnProtection>0)
             SpawnProtection -= Time.deltaTime;
         
@@ -58,8 +65,10 @@ public class Health : MonoBehaviour
     public void InflictDamage(float damage){
         if(SpawnProtectionActive<=0)
             health -= damage;
-        if(gameObject.tag == "Player")
+        if(gameObject.tag == "Player" && HitSoundCooldown<=0){
             SoundManager?.PlaySound(SoundManager.PlayerHit);
+            HitSoundCooldown = HitSoundCooldownTime;
+        }
     }
 
     public float GetHealth(){
