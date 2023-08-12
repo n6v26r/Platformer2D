@@ -56,26 +56,6 @@ public class DeathManager : MonoBehaviour
         }
     }
 
-    private bool CanCatchOnFire = true;
-    private int OnFire = 0;
-    private float OnFireCooldown = 0.3f;
-    private float LastOnFire = 0;
-    private void Update()
-    {
-        Debug.Log(OnFire);
-        if (CanCatchOnFire == true)
-        {
-            if (OnFire > 0 && Time.time - LastOnFire > OnFireCooldown)
-            {
-                OnFire--;
-                Damage(Player, 1);
-                LastOnFire = Time.time;
-            }
-        }
-        else
-            OnFire = 0;
-    }
-
     private void StayedInLiquid(GameObject gameObject, int Type)
     {
         if(Type == 1)
@@ -89,7 +69,6 @@ public class DeathManager : MonoBehaviour
         }
         else if(Type == 2)
         {
-            CanCatchOnFire = false;
         }
     }
     //TODO @rrradu: Complete this!
@@ -101,7 +80,6 @@ public class DeathManager : MonoBehaviour
         }
         else if(Type == 2)
         {
-            CanCatchOnFire = true;
         }
     }
 
@@ -139,10 +117,11 @@ public class DeathManager : MonoBehaviour
 
     public void FireDartHit(GameObject gameObject)
     {
-        if(gameObject.tag == "Player"){
-            OnFire += 25;
-            Damage(gameObject, 5);
-        }
+        Health healthComp = gameObject.GetComponent<Health>();
+        if(healthComp==null) return; 
+        
+        healthComp.ApplyEffect(new DamageEffect(1, 25, 0.3f, "Fire"));
+        Damage(gameObject, 5);
     }
 
     public void BlewUp(GameObject gameObject)
