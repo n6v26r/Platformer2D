@@ -36,12 +36,10 @@ public class PressurePlate : MonoBehaviour
                 }
             }
         }
-        Debug.Log("<color=pink>[PressurePlate MSG]: Press Me Daddy UWU</color>");
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         spriteRenderer.sprite = sprites[0];
-        Debug.Log("<color=pink>[PressurePlate MSG]: *CENSORED*</color>");
     }
 }
