@@ -6,7 +6,6 @@ public class FireDartShooter : MonoBehaviour
 {
     public GameObject FireDartRight;
     public GameObject FireDartLeft;
-    public Sprite[] sprites;
 
     private Animator SelfAnimator;
     private bool ShouldShoot = false;
