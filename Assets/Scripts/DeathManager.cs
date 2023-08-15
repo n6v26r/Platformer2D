@@ -113,12 +113,9 @@ public class DeathManager : MonoBehaviour
     }
 
     public void FireDartHit(GameObject gameObject)
-    {
-        Health healthComp = gameObject.GetComponent<Health>();
-        if(healthComp==null) return; 
-        
-        healthComp.ApplyEffect(new DamageEffect(1, 25, 0.3f, "Fire"));
+    {        
         Damage(gameObject, new DamageEffect(5, 1, 0, "Hit"));
+        Damage(gameObject, new DamageEffect(1, 25, 0.3f, "Fire"));
     }
 
     public void BlewUp(GameObject gameObject)
