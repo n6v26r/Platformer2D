@@ -126,8 +126,6 @@ public class DeathManager : MonoBehaviour
         Health healthComp = gameObject.GetComponent<Health>();
         if(healthComp!=null)
             Damage(gameObject, new DamageEffect(healthComp.MaxHealth, 1, 0, "Explosion"));
-        else
-            Destroy(gameObject);
     }
 
     private void Damage(GameObject gameObject, DamageEffect effect){
