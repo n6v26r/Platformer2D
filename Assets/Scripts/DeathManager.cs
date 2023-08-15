@@ -105,7 +105,7 @@ public class DeathManager : MonoBehaviour
 
     private void SlimeHit(GameObject gameObject)
     {
-       Damage(gameObject, new DamageEffect(20f, 1, 0, "Hit"));
+        Damage(gameObject, new DamageEffect(20f, 1, 0, "Hit"));
     }
 
     public void BulletHit(GameObject gameObject){

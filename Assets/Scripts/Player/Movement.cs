@@ -151,7 +151,7 @@ public class Movement : MonoBehaviour
         xinput = Input.GetAxisRaw("Horizontal");
         yinput = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W))
             jumped = JUMPBUFFER;
 
         if (Physics2D.BoxCast(boxcl2D.bounds.center, boxcl2D.bounds.size - new Vector3(0.1f, 0, 0), 0f, Vector2.down, extraHeightText, lm_platfrom)) {
