@@ -83,33 +83,33 @@ public class DeathManager : MonoBehaviour
 
     private void LavaDamage(GameObject gameObject)
     {
-        Damage(gameObject, 1);
+        Damage(gameObject, new DamageEffect(1, 1, 0, "Fire"));
     }
 
     private void EscapeLavaDamage(GameObject gameObject)
     {
-        Damage(gameObject, 5);
+        Damage(gameObject, new DamageEffect(5, 1, 0, "Fire"));
     }
 
     private void CellingSpikeHit(GameObject gameObject)
     {
-        Damage(gameObject, 25);
+        Damage(gameObject, new DamageEffect(25, 1, 0, "Hit"));
     }
 
     private void SpikeHit(GameObject gameObject){
         Health health = gameObject.GetComponent<Health>();
         if(health==null) return;
 
-        Damage(gameObject, health.MaxHealth);
+        Damage(gameObject, new DamageEffect(health.MaxHealth, 1, 0, "Hit"));
     }
 
     private void SlimeHit(GameObject gameObject)
     {
-       Damage(gameObject, 20f);
+       Damage(gameObject, new DamageEffect(20f, 1, 0, "Hit"));
     }
 
     public void BulletHit(GameObject gameObject){
-        Damage(gameObject, 30);
+        Damage(gameObject, new DamageEffect(30, 1, 0, "Hit"));
     }
 
     public void FireDartHit(GameObject gameObject)
@@ -118,23 +118,20 @@ public class DeathManager : MonoBehaviour
         if(healthComp==null) return; 
         
         healthComp.ApplyEffect(new DamageEffect(1, 25, 0.3f, "Fire"));
-        Damage(gameObject, 5);
+        Damage(gameObject, new DamageEffect(5, 1, 0, "Hit"));
     }
 
     public void BlewUp(GameObject gameObject)
     {
-        if (gameObject.tag == "Player")
-            Damage(gameObject, 100);
+        Health healthComp = gameObject.GetComponent<Health>();
+        if(healthComp!=null)
+            Damage(gameObject, new DamageEffect(healthComp.MaxHealth, 1, 0, "Explosion"));
         else
             Destroy(gameObject);
     }
 
-    private void Damage(GameObject gameObject, float dmg){
-        if (gameObject.layer == 6 || gameObject.layer == 7)
-        {
-            healthComp = gameObject.GetComponent<Health>();
-            if (healthComp == null) return;
-                    healthComp.InflictDamage(dmg);
-        }
+    private void Damage(GameObject gameObject, DamageEffect effect){
+        healthComp = gameObject.GetComponent<Health>();
+        healthComp?.ApplyEffect(effect); 
     }
 }
