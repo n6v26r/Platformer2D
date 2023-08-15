@@ -123,23 +123,21 @@ public class Health : MonoBehaviour
                 return;
             }
         }
-
         StartCoroutine(DmgEffect(effect));
     }
 
     IEnumerator DmgEffect(DamageEffect effect)
     {
         PendingDmgEff.Add(effect);
-        int order = PendingDmgEff.Count - 1;
-        while (PendingDmgEff[order].iterations > 0)
+        while (PendingDmgEff[PendingDmgEff.FindIndex(a => a==effect)].iterations > 0)
         {
-            if (ImuneTo.Contains(PendingDmgEff[order].type)) // If the enity has imunity to this dmg type
-                InflictDamage(PendingDmgEff[order].InflictDmg*(100 - (int)ImuneTo[PendingDmgEff[order].type]));
+            if (ImuneTo.Contains(PendingDmgEff[PendingDmgEff.FindIndex(a => a==effect)].type)) // If the enity has imunity to this dmg type
+                InflictDamage(PendingDmgEff[PendingDmgEff.FindIndex(a => a==effect)].InflictDmg*(100 - (int)ImuneTo[PendingDmgEff[PendingDmgEff.FindIndex(a => a==effect)].type]));
             else
-                InflictDamage(PendingDmgEff[order].InflictDmg);
-            yield return new WaitForSeconds(PendingDmgEff[order].delay);
-            PendingDmgEff[order].iterations--;
+                InflictDamage(PendingDmgEff[PendingDmgEff.FindIndex(a => a==effect)].InflictDmg);
+            yield return new WaitForSeconds(PendingDmgEff[PendingDmgEff.FindIndex(a => a==effect)].delay);
+            PendingDmgEff[PendingDmgEff.FindIndex(a => a==effect)].iterations--;
         }
-        PendingDmgEff.RemoveAt(order);
+        PendingDmgEff.RemoveAt(PendingDmgEff.FindIndex(a => a==effect));
     }
 }

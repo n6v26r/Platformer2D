@@ -113,7 +113,7 @@ public class DeathManager : MonoBehaviour
     }
 
     public void FireDartHit(GameObject gameObject)
-    {        
+    {
         Damage(gameObject, new DamageEffect(5, 1, 0, "Hit"));
         Damage(gameObject, new DamageEffect(1, 25, 0.3f, "Fire"));
     }
