@@ -21,7 +21,6 @@ public class TNT : MonoBehaviour
     {
         if (Blew == false)
         {
-            Debug.Log("I`m boutta to blowwwww uhhhhhh");
             StartCoroutine(Blowing());
         }
     }
