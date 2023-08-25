@@ -12,9 +12,9 @@ public class InventoryManagement : MonoBehaviour
     [HideInInspector]
     public int TopazsCollected = 0;
     [HideInInspector]
-    public int SilverKeysInInventory = 0;
+    public static int SilverKeysInInventory = 0;
     [HideInInspector]
-    public int GoldenKeysInInventory = 0;
+    public static int GoldenKeysInInventory = 0;
 
     private Door[] doors;
     private Items[] items;

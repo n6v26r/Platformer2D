@@ -39,6 +39,7 @@ public class Movement : MonoBehaviour
     public GameObject goldenkey;
     public GameObject goldenkey_text;
     public GameObject goldenkey_rama;
+    public GameObject inventorymanager;
 
     float xinput, yinput;
     float jumped, onground;
@@ -185,6 +186,8 @@ public class Movement : MonoBehaviour
         dashbar.fillAmount = Mathf.Clamp(dash_timer / dash_cooldown, 0, 1f);
         doublejumpbar.fillAmount = Mathf.Clamp((jumpsleft / extrajumps), 0, 1f);
         ScoreUI.GetComponent<TMP_Text>().text = "Score: " + score.ToString();
+
+        silverkey_text.GetComponent<Text>().text = InventoryManagement.
 
         if(jumped>0)
             animator.SetBool("IsJumping", true);

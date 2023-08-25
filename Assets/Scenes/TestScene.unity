@@ -4019,7 +4019,7 @@ PrefabInstance:
       objectReference: {fileID: 1903353767}
     - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
       propertyPath: dashing
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
       propertyPath: goldenkey
@@ -4033,6 +4033,10 @@ PrefabInstance:
       propertyPath: silverkey
       value: 
       objectReference: {fileID: 208262965}
+    - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
+      propertyPath: JUMPBUFFER
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
       propertyPath: extrajumps
       value: 0
