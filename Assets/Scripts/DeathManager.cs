@@ -69,7 +69,7 @@ public class DeathManager : MonoBehaviour
         {
         }
     }
-    //TODO @rrradu: Complete this!
+    // Its compleated, water doesn`t deal damage thats why it doesn`t do anything in death manager.
     private void LeftLiquid(int Type)
     {
         if (Type == 1)
@@ -121,8 +121,10 @@ public class DeathManager : MonoBehaviour
     public void BlewUp(GameObject gameObject)
     {
         Health healthComp = gameObject.GetComponent<Health>();
-        if(healthComp!=null)
+        if (healthComp != null && gameObject.tag == "Player")
             Damage(gameObject, new DamageEffect(healthComp.MaxHealth, 1, 0, "Explosion"));
+        else
+            Destroy(gameObject);
     }
 
     private void Damage(GameObject gameObject, DamageEffect effect){

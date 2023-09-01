@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DamageEffect
+public class DamageEffect // cool stuff! :)
 {
     public float InflictDmg;
     public float iterations;

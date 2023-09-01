@@ -47,7 +47,7 @@ public class Destructible : MonoBehaviour
                 {
                     if ((lin != -2 || col != -2) && (lin != -2 || col != 2) && (lin != 2 || col != -2) && (lin != 2 || col != 2))
                     {
-                        if (x + col == transform.position.x && y + lin == transform.position.y)
+                        if (x + col == transform.position.x && y + lin == transform.position.y && gameObject != null)
                             Destroy(gameObject);
                     }
                 }

@@ -101,8 +101,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 2
-  Target: {x: 0, y: 0}
   Victim: {fileID: 0}
+  Target: {x: 0, y: 0}
   PatrolDirection: {x: -1, y: 0}
   PatrolDistance: 10
   RememberPlayerCounter: 3
