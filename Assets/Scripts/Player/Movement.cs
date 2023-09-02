@@ -42,6 +42,7 @@ public class Movement : MonoBehaviour
 
     float xinput, yinput;
     float jumped, onground;
+    int leftwall, rightwall;
 
     public float jumppower = 0f;
     public float acceleration = 0f;
@@ -146,6 +147,7 @@ public class Movement : MonoBehaviour
         start_holdgrav = HOLD_GRAVITY;
         healthbar.fillAmount = 1;
         jumpsleft = extrajumps;
+        allow_walljump = 1;
     }
 
     // Update is called once per frame
@@ -153,9 +155,15 @@ public class Movement : MonoBehaviour
         xinput = Input.GetAxisRaw("Horizontal");
         yinput = Input.GetAxisRaw("Vertical");
 
+        //Registers the jump input
+        //---
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W))
             jumped = JUMPBUFFER;
+        //---
 
+        //Chechink if the player is on ground and it signals it in "onground"
+        //it resets double jump and applies friction if not moving
+        //---
         if (Physics2D.BoxCast(boxcl2D.bounds.center, boxcl2D.bounds.size - new Vector3(0.1f, 0, 0), 0f, Vector2.down, extraHeightText, lm_platfrom)) {
             onground = COYOTE_TIME;
             jumpsleft = extrajumps;
@@ -170,26 +178,51 @@ public class Movement : MonoBehaviour
             ground.GetComponent<Rigidbody2D>().sharedMaterial = air;
             boxcl2D.sharedMaterial = air;
         }
+        //---
 
+        //Check if the player is on a wall and signals it in "leftwall" and "rightwall"
+        //---
+        if (Physics2D.BoxCast(boxcl2D.bounds.center, boxcl2D.bounds.size - new Vector3(0, 0.1f, 0), 0f, Vector2.left, extraHeightText, lm_platfrom))
+            rightwall = 1;
+        else
+            rightwall = 0;
+
+        if (Physics2D.BoxCast(boxcl2D.bounds.center, boxcl2D.bounds.size - new Vector3(0, 0.1f, 0), 0f, Vector2.right, extraHeightText, lm_platfrom))
+            leftwall = 1;
+        else
+            leftwall = 0;
+        //---
+
+        //Character flip
+        //---
         if(dash_dir == 1)
             sp.flipX = true;
         else
             sp.flipX=false;
+        //---
 
+
+        //UI
+        //----
+        //Dash bar
         dashbar.enabled = dashing;
         dashbar_rama.SetActive(dashing);
+        dashbar.fillAmount = Mathf.Clamp(dash_timer / dash_cooldown, 0, 1f);
+
+        ///Double jump bar
         if (extrajumps == 0)
             jumpbar_rama.SetActive(false);
         else
             jumpbar_rama.SetActive(true);
-
-        healthbar.fillAmount = Mathf.Clamp(gameObject.GetComponent<Health>().GetHealth() / 100, 0, 1f);
-        dashbar.fillAmount = Mathf.Clamp(dash_timer / dash_cooldown, 0, 1f);
         doublejumpbar.fillAmount = Mathf.Clamp((jumpsleft / extrajumps), 0, 1f);
+
+        //Health, score and keys
         ScoreUI.GetComponent<TMP_Text>().text = "Score: " + score.ToString();
+        healthbar.fillAmount = Mathf.Clamp(gameObject.GetComponent<Health>().GetHealth() / 100, 0, 1f);
+        //----
 
 
-        if(jumped>0)
+        if (jumped>0)
             animator.SetBool("IsJumping", true);
         else
             animator.SetBool("IsJumping", false);
@@ -204,32 +237,36 @@ public class Movement : MonoBehaviour
     }
 
     private void FixedUpdate() {
+        //Adds force when the player wants to walk
+        //It caps the walking speed, but it doesn't hard-cap the movement speed
+        //---
         if ((xinput != 1 || (rb.velocity.x < speedcap)) && (xinput != -1 || (rb.velocity.x > -speedcap))) 
             rb.AddForce(new Vector2(acceleration * xinput, 0));
+        //---
 
-        
 
+        Debug.Log(allow_walljump);
         animator.SetBool("isWallcliming", false);
-        if ((Physics2D.BoxCast(boxcl2D.bounds.center, boxcl2D.bounds.size - new Vector3(0, 0.1f, 0), 0f, Vector2.left, extraHeightText, lm_platfrom) && (!Input.GetKey(KeyCode.LeftControl) || Input.GetMouseButton(0)))){
-            rb.velocity = new Vector2(rb.velocity.x, -FALLINGSPEED_WALLCLIMB);
-            if (jumped > 0) {
+        if (rightwall == 1 && allow_walljump == 1) {//If on a wall on the right
+            rb.velocity = new Vector2(rb.velocity.x, -FALLINGSPEED_WALLCLIMB);//Grabs*
+            if (jumped > 0) {//Jumps off
                 jumped = 0;
                 rb.velocity = new Vector2(0, 0);
                 rb.AddForce(new Vector2(WALLJUMPPOWER, jumppower * 1.15f));
                 SoundManager?.PlaySound(SoundManager.PlayerJump);
             }
             animator.SetBool("isWallcliming", true);
-        } else if ((Physics2D.BoxCast(boxcl2D.bounds.center, boxcl2D.bounds.size - new Vector3(0, 0.1f, 0), 0f, Vector2.right, extraHeightText, lm_platfrom) && (!Input.GetKey(KeyCode.LeftControl) || Input.GetMouseButton(0)))) {
-            rb.velocity = new Vector2(rb.velocity.x, -FALLINGSPEED_WALLCLIMB);
-            if (jumped > 0) {
+        } else if (leftwall == 1 && allow_walljump == 1) {//If on a wall on the left
+            rb.velocity = new Vector2(rb.velocity.x, -FALLINGSPEED_WALLCLIMB);//Grabs*
+            if (jumped > 0) {//Jumps off
                 jumped = 0;
                 rb.velocity = new Vector2(0, 0);
                 rb.AddForce(new Vector2(-WALLJUMPPOWER, jumppower * 1.15f));
                 SoundManager?.PlaySound(SoundManager.PlayerJump);
             }
             animator.SetBool("isWallcliming", true);
-        } else if (onground > 0 || jumpsleft > 0) {
-            if (jumped > 0) {
+        } else if (onground > 0 || jumpsleft > 0) {//if grounded(or has double jumps) 
+            if (jumped > 0) {//and if pressing the jump input
                 if (onground <= 0)
                     jumpsleft--;
                 onground = 0;
@@ -238,12 +275,19 @@ public class Movement : MonoBehaviour
                 rb.AddForce(new Vector2(0, jumppower));
                 SoundManager?.PlaySound(SoundManager.PlayerJump);
             }
-        } 
+            allow_walljump = 0;
+        }
 
+        if (onground <= 0 && leftwall == 0 && rightwall == 0)
+            allow_walljump = 1;
+
+        //Allows exetended jump 
+        //---
         if (rb.velocity.y > 0 && (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W)))
             rb.gravityScale = HOLD_GRAVITY;
         else
             rb.gravityScale = BASE_GRAVITY;
+        //---
 
         if (xinput != 0)
             dash_dir = Mathf.RoundToInt(xinput);
