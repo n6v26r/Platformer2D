@@ -54,6 +54,7 @@ public class Movement : MonoBehaviour
     public int extrajumps = 0;
     float jumpsleft;
     float allow_walljump;
+    int walljumpsticky;
 
     public float dash_cooldown = 4f;
     public float DASH_POWER = 20f;
@@ -148,6 +149,7 @@ public class Movement : MonoBehaviour
         healthbar.fillAmount = 1;
         jumpsleft = extrajumps;
         allow_walljump = 1;
+        walljumpsticky = 0;
     }
 
     // Update is called once per frame
@@ -240,13 +242,15 @@ public class Movement : MonoBehaviour
         //Adds force when the player wants to walk
         //It caps the walking speed, but it doesn't hard-cap the movement speed
         //---
-        if ((xinput != 1 || (rb.velocity.x < speedcap)) && (xinput != -1 || (rb.velocity.x > -speedcap))) 
+        if ((xinput != 1 || (rb.velocity.x < speedcap && leftwall == 0)) && (xinput != -1 || (rb.velocity.x > -speedcap && rightwall == 0))) 
             rb.AddForce(new Vector2(acceleration * xinput, 0));
         //---
 
+        if (onground > 0)
+            walljumpsticky = 0;
 
         animator.SetBool("isWallcliming", false);
-        if (rightwall == 1 && allow_walljump == 1 && onground<=0 && Mathf.Floor(rb.velocity.x)!=0) {//If on a wall on the right
+        if (((rightwall == 1) && (allow_walljump == 1 && onground <= 0 && Mathf.CeilToInt(rb.velocity.x) != 0 || walljumpsticky == 1))) {//If on a wall on the right
             rb.velocity = new Vector2(rb.velocity.x, -FALLINGSPEED_WALLCLIMB);//Grabs*
             if (jumped > 0) {//Jumps off
                 jumped = 0;
@@ -255,7 +259,8 @@ public class Movement : MonoBehaviour
                 SoundManager?.PlaySound(SoundManager.PlayerJump);
             }
             animator.SetBool("isWallcliming", true);
-        } else if (leftwall == 1 && allow_walljump == 1 && onground<=0 && Mathf.Floor(rb.velocity.x)!=0) {//If on a wall on the left
+            walljumpsticky = 1;
+        } else if (((leftwall == 1) && (allow_walljump == 1 && onground <=0 && Mathf.CeilToInt(rb.velocity.x) != 0 || walljumpsticky == 1))) {//If on a wall on the left
             rb.velocity = new Vector2(rb.velocity.x, -FALLINGSPEED_WALLCLIMB);//Grabs*
             if (jumped > 0) {//Jumps off
                 jumped = 0;
@@ -264,6 +269,7 @@ public class Movement : MonoBehaviour
                 SoundManager?.PlaySound(SoundManager.PlayerJump);
             }
             animator.SetBool("isWallcliming", true);
+            walljumpsticky = 1;
         } else if (onground > 0 || jumpsleft > 0) {//if grounded(or has double jumps) 
             if (jumped > 0) {//and if pressing the jump input
                 if (onground <= 0)
@@ -276,7 +282,6 @@ public class Movement : MonoBehaviour
             }
             allow_walljump = 0;
         }
-
         if (onground <= 0 && leftwall == 0 && rightwall == 0)
             allow_walljump = 1;
 
