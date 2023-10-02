@@ -4022,6 +4022,22 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
+      propertyPath: scoreUI
+      value: 
+      objectReference: {fileID: 1239900999}
+    - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
+      propertyPath: speedCap
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
+      propertyPath: dashPower
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
+      propertyPath: goldenKey
+      value: 
+      objectReference: {fileID: 185783896}
+    - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
       propertyPath: goldenkey
       value: 
       objectReference: {fileID: 185783896}
@@ -4029,6 +4045,14 @@ PrefabInstance:
       propertyPath: healthbar
       value: 
       objectReference: {fileID: 1097850531}
+    - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
+      propertyPath: jumpPower
+      value: 550
+      objectReference: {fileID: 0}
+    - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
+      propertyPath: silverKey
+      value: 
+      objectReference: {fileID: 208262965}
     - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
       propertyPath: silverkey
       value: 
@@ -4038,8 +4062,16 @@ PrefabInstance:
       value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
+      propertyPath: coyoteTime
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
       propertyPath: extrajumps
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
+      propertyPath: jumpBuffer
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
       propertyPath: spawnpoint
@@ -4048,6 +4080,26 @@ PrefabInstance:
     - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
       propertyPath: COYOTE_TIME
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
+      propertyPath: baseGravity
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
+      propertyPath: dashbarRama
+      value: 
+      objectReference: {fileID: 1056904926}
+    - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
+      propertyPath: holdGravity
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
+      propertyPath: jumpbarRama
+      value: 
+      objectReference: {fileID: 2019550323}
+    - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
+      propertyPath: dashCooldown
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
       propertyPath: dashbar_rama
@@ -4061,6 +4113,26 @@ PrefabInstance:
       propertyPath: doublejumpbar
       value: 
       objectReference: {fileID: 223577499}
+    - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
+      propertyPath: goldenKeyRama
+      value: 
+      objectReference: {fileID: 838646794}
+    - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
+      propertyPath: goldenKeyText
+      value: 
+      objectReference: {fileID: 1048540801}
+    - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
+      propertyPath: silverKeyRama
+      value: 
+      objectReference: {fileID: 31087250}
+    - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
+      propertyPath: silverKeyText
+      value: 
+      objectReference: {fileID: 789664666}
+    - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
+      propertyPath: dashMaxAirTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
       propertyPath: goldenkey_rama
       value: 
@@ -4077,6 +4149,10 @@ PrefabInstance:
       propertyPath: silverkey_text
       value: 
       objectReference: {fileID: 789664666}
+    - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
+      propertyPath: lmPlatfrom.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2485824032784383721, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
       propertyPath: m_Name
       value: Player

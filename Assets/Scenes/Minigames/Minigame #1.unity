@@ -265,12 +265,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ff2f2150496e204685159dffede7e70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lm_platfrom:
+  lmPlatfrom:
     serializedVersion: 2
     m_Bits: 8
-  JUMPPOWER: 5.4
-  leftspeed: 3
-  rightspeed: 5
+  jumpPower: 4
+  leftSpeed: 1
+  rightSpeed: 3
 --- !u!1 &98399272
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class CartMovement : MonoBehaviour
 {
-    private Animator m_Animator;
+    private Animator mAnimator;
     private bool ducking;
 
-    [SerializeField] private LayerMask lm_platfrom;
+    [SerializeField] private LayerMask lmPlatfrom;
     float extraHeightText = .1f;
-    BoxCollider2D boxcl2D;
+    BoxCollider2D boxCl2D;
 
     private Rigidbody2D rb;
-    public float JUMPPOWER = 0f;
-    public float leftspeed = 1f;
-    public float rightspeed = 3f;
+    public float jumpPower = 0f;
+    public float leftSpeed = 1f;
+    public float rightSpeed = 3f;
 
     void Awake() {
-        m_Animator = GetComponent<Animator>();
+        mAnimator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        boxcl2D = GetComponent<BoxCollider2D>();
+        boxCl2D = GetComponent<BoxCollider2D>();
     }
 
     // Start is called before the first frame update
@@ -31,13 +31,13 @@ public class CartMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.UpArrow) && Physics2D.BoxCast(boxcl2D.bounds.center, boxcl2D.bounds.size - new Vector3(0.1f, 0, 0), 0f, Vector2.down, extraHeightText, lm_platfrom))
-            rb.velocity = new Vector2(rb.velocity.x, JUMPPOWER);
+        if (Input.GetKey(KeyCode.UpArrow) && Physics2D.BoxCast(boxCl2D.bounds.center, boxCl2D.bounds.size - new Vector3(0.1f, 0, 0), 0f, Vector2.down, extraHeightText, lmPlatfrom))
+            rb.velocity = new Vector2(rb.velocity.x, jumpPower);
 
         if (Input.GetKey(KeyCode.LeftArrow))
-            rb.velocity = new Vector2(-leftspeed, rb.velocity.y);
+            rb.velocity = new Vector2(-leftSpeed, rb.velocity.y);
         else if (Input.GetKey(KeyCode.RightArrow))
-            rb.velocity = new Vector2(rightspeed, rb.velocity.y);
+            rb.velocity = new Vector2(rightSpeed, rb.velocity.y);
         else
             rb.velocity = new Vector2(0, rb.velocity.y);
 
@@ -47,6 +47,6 @@ public class CartMovement : MonoBehaviour
             ducking = false;
         
 
-        m_Animator.SetBool("Ducking", ducking);
+        mAnimator.SetBool("Ducking", ducking);
     }
 }

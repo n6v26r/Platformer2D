@@ -36,7 +36,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2485824032784383717
 SpriteRenderer:
@@ -102,31 +102,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 023df0086b9b69a49afbba9d170ae0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lm_platfrom:
+  lmPlatfrom:
     serializedVersion: 2
-    m_Bits: 200
+    m_Bits: 0
   good: {fileID: 6200000, guid: f463d48b9dacdc640a5fa48faf07bb19, type: 2}
   air: {fileID: 6200000, guid: 731e8d731d5cc1e4c8ecccaa840a4289, type: 2}
   ground: {fileID: 0}
-  spawnpoint: {fileID: 0}
-  ScoreUI: {fileID: 0}
+  scoreUI: {fileID: 0}
+  dashbarRama: {fileID: 0}
+  jumpbarRama: {fileID: 0}
   healthbar: {fileID: 0}
   dashbar: {fileID: 0}
-  jumppower: 550
+  doublejumpbar: {fileID: 0}
+  silverKey: {fileID: 0}
+  silverKeyText: {fileID: 0}
+  silverKeyRama: {fileID: 0}
+  goldenKey: {fileID: 0}
+  goldenKeyText: {fileID: 0}
+  goldenKeyRama: {fileID: 0}
+  jumpPower: 0
   acceleration: 50
-  speedcap: 5
-  HOLD_GRAVITY: 1.5
-  BASE_GRAVITY: 5
-  JUMPBUFFER: 0.5
-  COYOTE_TIME: 0.6
-  extrajumps: 0
-  dash_cooldown: 6
-  DASH_POWER: 4
-  DASH_MAXAIRTIME: 1
-  FALLINGSPEED_WALLCLIMB: 1
-  WALLJUMPPOWER: 390
-  dashing: 0
-  start_holdgrav: 0
+  speedCap: 0
+  holdGravity: 0
+  baseGravity: 0
+  jumpBuffer: 0
+  coyoteTime: 0
+  extraJumps: 0
+  dashCooldown: 4
+  dashPower: 20
+  dashMaxAirTime: 0
+  fallingSpeedWallClimb: 1
+  wallJumpPower: 390
+  dashing: 1
+  startHoldGrav: 0
 --- !u!50 &2485824032784383719
 Rigidbody2D:
   serializedVersion: 4
@@ -212,6 +220,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  HitSoundCooldownTime: 0.3
+  SpawnProtection: 0.5
+  MaxHealth: 100
+  ImuneTo_Serializable: []
 --- !u!95 &3733695131143416909
 Animator:
   serializedVersion: 5

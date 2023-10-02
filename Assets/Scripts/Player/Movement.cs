@@ -14,61 +14,61 @@ public class Movement : MonoBehaviour
     BoxCollider2D boxcl2D;
     private BoxCollider2D ppbx; 
     Animator animator;
-    [SerializeField] private LayerMask lm_platfrom;
+    [SerializeField] private LayerMask lmPlatfrom;
     float extraHeightText = .1f;
 
     public PhysicsMaterial2D good;
     public PhysicsMaterial2D air;
     public GameObject ground;
-    public GameObject ScoreUI;
+    public GameObject scoreUI;
 
-    private Vector3 startpoz_dash;
+    private Vector3 startPozDash;
     private Liquid[] liquids;
 
-    public GameObject dashbar_rama;
-    public GameObject jumpbar_rama;
+    public GameObject dashbarRama;
+    public GameObject jumpbarRama;
 
     public Image healthbar;
     public Image dashbar;
     public Image doublejumpbar;
 
-    public GameObject silverkey;
-    public GameObject silverkey_text;
-    public GameObject silverkey_rama;
+    public GameObject silverKey;
+    public GameObject silverKeyText;
+    public GameObject silverKeyRama;
 
-    public GameObject goldenkey;
-    public GameObject goldenkey_text;
-    public GameObject goldenkey_rama;
+    public GameObject goldenKey;
+    public GameObject goldenKeyText;
+    public GameObject goldenKeyRama;
 
-    float xinput, yinput;
-    float jumped, onground;
-    int leftwall, rightwall;
+    float xInput, yInput;
+    float jumped, onGround;
+    int leftWall, rightWall;
 
-    public float jumppower = 0f;
+    public float jumpPower = 0f;
     public float acceleration = 0f;
-    public float speedcap = 0f;
-    public float HOLD_GRAVITY = 0f;
-    public float BASE_GRAVITY = 0f;
-    [SerializeField] float JUMPBUFFER = 0f;
-    [SerializeField] float COYOTE_TIME = 0f;
-    public int extrajumps = 0;
-    float jumpsleft;
-    float allow_walljump;
-    int walljumpsticky;
+    public float speedCap = 0f;
+    public float holdGravity = 0f;
+    public float baseGravity = 0f;
+    [SerializeField] float jumpBuffer = 0f;
+    [SerializeField] float coyoteTime = 0f;
+    public int extraJumps = 0;
+    float jumpsLeft;
+    float allowWallJump;
+    int wallJumpSticky;
 
-    public float dash_cooldown = 4f;
-    public float DASH_POWER = 20f;
-    public float DASH_MAXAIRTIME = 0f;
-    float dash_airtime;
-    float dash_timer = 0f;
-    int dash_dir = 1;
+    public float dashCooldown = 4f;
+    public float dashPower = 20f;
+    public float dashMaxAirTime = 0f;
+    float dashAirtime;
+    float dashTimer = 0f;
+    int dashDir = 1;
 
-    public float FALLINGSPEED_WALLCLIMB = 1f;
-    public float WALLJUMPPOWER = 390f;
+    public float fallingSpeedWallClimb = 1f;
+    public float wallJumpPower = 390f;
 
     public bool dashing = false;
 
-    public float start_holdgrav = 0;
+    public float startHoldGrav = 0;
 
     public static int score = 0;
 
@@ -93,16 +93,16 @@ public class Movement : MonoBehaviour
         if(Type == 1)
         {
             acceleration = 50;
-            speedcap = 1;
-            jumppower = 200;
-            BASE_GRAVITY = 1.8f;
+            speedCap = 1;
+            jumpPower = 200;
+            baseGravity = 1.8f;
         }
         else if(Type == 2)
         {
             acceleration = 20;
-            speedcap = 4;
-            jumppower = 250;
-            BASE_GRAVITY = 0.3f;
+            speedCap = 4;
+            jumpPower = 250;
+            baseGravity = 0.3f;
             gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         }
     }
@@ -119,7 +119,7 @@ public class Movement : MonoBehaviour
         }
         else if(Type == 2)
         {
-            onground = 1;
+            onGround = 1;
         }
     }
 
@@ -128,48 +128,48 @@ public class Movement : MonoBehaviour
         if (Type == 1)
         {
             acceleration = 50;
-            speedcap = 5;
-            jumppower = 550;
-            BASE_GRAVITY = 5;
+            speedCap = 5;
+            jumpPower = 550;
+            baseGravity = 5;
         }
         else if (Type == 2)
         {
             acceleration = 50;
-            speedcap = 5;
-            jumppower = 550;
-            BASE_GRAVITY = 5;
+            speedCap = 5;
+            jumpPower = 550;
+            baseGravity = 5;
         }
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        rb.gravityScale = BASE_GRAVITY;
-        start_holdgrav = HOLD_GRAVITY;
+        rb.gravityScale = baseGravity;
+        startHoldGrav = holdGravity;
         healthbar.fillAmount = 1;
-        jumpsleft = extrajumps;
-        allow_walljump = 1;
-        walljumpsticky = 0;
+        jumpsLeft = extraJumps;
+        allowWallJump = 1;
+        wallJumpSticky = 0;
     }
 
     // Update is called once per frame
     void Update() {
-        xinput = Input.GetAxisRaw("Horizontal");
-        yinput = Input.GetAxisRaw("Vertical");
+        xInput = Input.GetAxisRaw("Horizontal");
+        yInput = Input.GetAxisRaw("Vertical");
 
         //Registers the jump input
         //---
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W))
-            jumped = JUMPBUFFER;
+            jumped = jumpBuffer;
         //---
 
         //Chechink if the player is on ground and it signals it in "onground"
         //it resets double jump and applies friction if not moving
         //---
-        if (Physics2D.BoxCast(boxcl2D.bounds.center, boxcl2D.bounds.size - new Vector3(0.1f, 0, 0), 0f, Vector2.down, extraHeightText, lm_platfrom)) {
-            onground = COYOTE_TIME;
-            jumpsleft = extrajumps;
-            if (xinput == 0 || Math.Abs(rb.velocity.x) > speedcap) {
+        if (Physics2D.BoxCast(boxcl2D.bounds.center, boxcl2D.bounds.size - new Vector3(0.1f, 0, 0), 0f, Vector2.down, extraHeightText, lmPlatfrom)) {
+            onGround = coyoteTime;
+            jumpsLeft = extraJumps;
+            if (xInput == 0 || Math.Abs(rb.velocity.x) > speedCap) {
                 ground.GetComponent<Rigidbody2D>().sharedMaterial = good;
                 boxcl2D.sharedMaterial = good;
             } else {
@@ -184,20 +184,20 @@ public class Movement : MonoBehaviour
 
         //Check if the player is on a wall and signals it in "leftwall" and "rightwall"
         //---
-        if (Physics2D.BoxCast(boxcl2D.bounds.center, boxcl2D.bounds.size - new Vector3(0, 0.1f, 0), 0f, Vector2.left, extraHeightText, lm_platfrom))
-            rightwall = 1;
+        if (Physics2D.BoxCast(boxcl2D.bounds.center, boxcl2D.bounds.size - new Vector3(0, 0.1f, 0), 0f, Vector2.left, extraHeightText, lmPlatfrom))
+            rightWall = 1;
         else
-            rightwall = 0;
+            rightWall = 0;
 
-        if (Physics2D.BoxCast(boxcl2D.bounds.center, boxcl2D.bounds.size - new Vector3(0, 0.1f, 0), 0f, Vector2.right, extraHeightText, lm_platfrom))
-            leftwall = 1;
+        if (Physics2D.BoxCast(boxcl2D.bounds.center, boxcl2D.bounds.size - new Vector3(0, 0.1f, 0), 0f, Vector2.right, extraHeightText, lmPlatfrom))
+            leftWall = 1;
         else
-            leftwall = 0;
+            leftWall = 0;
         //---
 
         //Character flip
         //---
-        if(dash_dir == 1)
+        if(dashDir == 1)
             sp.flipX = true;
         else
             sp.flipX=false;
@@ -208,18 +208,18 @@ public class Movement : MonoBehaviour
         //----
         //Dash bar
         dashbar.enabled = dashing;
-        dashbar_rama.SetActive(dashing);
-        dashbar.fillAmount = Mathf.Clamp(dash_timer / dash_cooldown, 0, 1f);
+        dashbarRama.SetActive(dashing);
+        dashbar.fillAmount = Mathf.Clamp(dashTimer / dashCooldown, 0, 1f);
 
         ///Double jump bar
-        if (extrajumps == 0)
-            jumpbar_rama.SetActive(false);
+        if (extraJumps == 0)
+            jumpbarRama.SetActive(false);
         else
-            jumpbar_rama.SetActive(true);
-        doublejumpbar.fillAmount = Mathf.Clamp((jumpsleft / extrajumps), 0, 1f);
+            jumpbarRama.SetActive(true);
+        doublejumpbar.fillAmount = Mathf.Clamp((jumpsLeft / extraJumps), 0, 1f);
 
         //Health, score and keys
-        ScoreUI.GetComponent<TMP_Text>().text = "Score: " + score.ToString();
+        scoreUI.GetComponent<TMP_Text>().text = "Score: " + score.ToString();
         healthbar.fillAmount = Mathf.Clamp(gameObject.GetComponent<Health>().GetHealth() / 100, 0, 1f);
         //----
 
@@ -229,7 +229,7 @@ public class Movement : MonoBehaviour
         else
             animator.SetBool("IsJumping", false);
 
-        if(xinput!=0)
+        if(xInput!=0)
             animator.SetBool("IsMoving", true);
         else
             animator.SetBool("IsMoving", false);
@@ -242,75 +242,75 @@ public class Movement : MonoBehaviour
         //Adds force when the player wants to walk
         //It caps the walking speed, but it doesn't hard-cap the movement speed
         //---
-        if ((xinput != 1 || (rb.velocity.x < speedcap && leftwall == 0)) && (xinput != -1 || (rb.velocity.x > -speedcap && rightwall == 0))) 
-            rb.AddForce(new Vector2(acceleration * xinput, 0));
+        if ((xInput != 1 || (rb.velocity.x < speedCap && leftWall == 0)) && (xInput != -1 || (rb.velocity.x > -speedCap && rightWall == 0))) 
+            rb.AddForce(new Vector2(acceleration * xInput, 0));
         //---
 
-        if (onground > 0)
-            walljumpsticky = 0;
+        if (onGround > 0)
+            wallJumpSticky = 0;
 
         animator.SetBool("isWallcliming", false);
-        if (((rightwall == 1) && (allow_walljump == 1 && onground <= 0 && Mathf.CeilToInt(rb.velocity.x) != 0 || walljumpsticky == 1))) {//If on a wall on the right
-            rb.velocity = new Vector2(rb.velocity.x, -FALLINGSPEED_WALLCLIMB);//Grabs*
+        if (((rightWall == 1) && (allowWallJump == 1 && onGround <= 0 && Mathf.CeilToInt(rb.velocity.x) != 0 || wallJumpSticky == 1))) {//If on a wall on the right
+            rb.velocity = new Vector2(rb.velocity.x, -fallingSpeedWallClimb);//Grabs*
             if (jumped > 0) {//Jumps off
                 jumped = 0;
                 rb.velocity = new Vector2(0, 0);
-                rb.AddForce(new Vector2(WALLJUMPPOWER, jumppower * 1.15f));
+                rb.AddForce(new Vector2(wallJumpPower, jumpPower * 1.15f));
                 SoundManager?.PlaySound(SoundManager.PlayerJump);
             }
             animator.SetBool("isWallcliming", true);
-            walljumpsticky = 1;
-        } else if (((leftwall == 1) && (allow_walljump == 1 && onground <=0 && Mathf.CeilToInt(rb.velocity.x) != 0 || walljumpsticky == 1))) {//If on a wall on the left
-            rb.velocity = new Vector2(rb.velocity.x, -FALLINGSPEED_WALLCLIMB);//Grabs*
+            wallJumpSticky = 1;
+        } else if (((leftWall == 1) && (allowWallJump == 1 && onGround <=0 && Mathf.CeilToInt(rb.velocity.x) != 0 || wallJumpSticky == 1))) {//If on a wall on the left
+            rb.velocity = new Vector2(rb.velocity.x, -fallingSpeedWallClimb);//Grabs*
             if (jumped > 0) {//Jumps off
                 jumped = 0;
                 rb.velocity = new Vector2(0, 0);
-                rb.AddForce(new Vector2(-WALLJUMPPOWER, jumppower * 1.15f));
+                rb.AddForce(new Vector2(-wallJumpPower, jumpPower * 1.15f));
                 SoundManager?.PlaySound(SoundManager.PlayerJump);
             }
             animator.SetBool("isWallcliming", true);
-            walljumpsticky = 1;
-        } else if (onground > 0 || jumpsleft > 0) {//if grounded(or has double jumps) 
+            wallJumpSticky = 1;
+        } else if (onGround > 0 || jumpsLeft > 0) {//if grounded(or has double jumps) 
             if (jumped > 0) {//and if pressing the jump input
-                if (onground <= 0)
-                    jumpsleft--;
-                onground = 0;
+                if (onGround <= 0)
+                    jumpsLeft--;
+                onGround = 0;
                 jumped = 0;
                 rb.velocity = new Vector2(rb.velocity.x, 0);
-                rb.AddForce(new Vector2(0, jumppower));
+                rb.AddForce(new Vector2(0, jumpPower));
                 SoundManager?.PlaySound(SoundManager.PlayerJump);
             }
-            allow_walljump = 0;
+            allowWallJump = 0;
         }
-        if (onground <= 0 && leftwall == 0 && rightwall == 0)
-            allow_walljump = 1;
+        if (onGround <= 0 && leftWall == 0 && rightWall == 0)
+            allowWallJump = 1;
 
         //Allows exetended jump 
         //---
         if (rb.velocity.y > 0 && (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W)))
-            rb.gravityScale = HOLD_GRAVITY;
+            rb.gravityScale = holdGravity;
         else
-            rb.gravityScale = BASE_GRAVITY;
+            rb.gravityScale = baseGravity;
         //---
 
-        if (xinput != 0)
-            dash_dir = Mathf.RoundToInt(xinput);
+        if (xInput != 0)
+            dashDir = Mathf.RoundToInt(xInput);
 
-        if ((Input.GetKey(KeyCode.LeftShift )|| Input.GetMouseButton(1)) && dash_timer >= dash_cooldown && dashing) {
+        if ((Input.GetKey(KeyCode.LeftShift )|| Input.GetMouseButton(1)) && dashTimer >= dashCooldown && dashing) {
             SoundManager?.PlaySound(SoundManager.PlayerDash);
-            dash_timer = 0;
-            dash_airtime = DASH_MAXAIRTIME;
+            dashTimer = 0;
+            dashAirtime = dashMaxAirTime;
         }
 
 
-        if (dash_airtime > 0) {
-            rb.velocity = new Vector2(transform.localScale.x * DASH_POWER * dash_dir, 0);
+        if (dashAirtime > 0) {
+            rb.velocity = new Vector2(transform.localScale.x * dashPower * dashDir, 0);
 
             rb.constraints = RigidbodyConstraints2D.FreezePositionY;
             rb.freezeRotation = true;
             transform.rotation = Quaternion.identity;
 
-            dash_airtime -= 0.1f;
+            dashAirtime -= 0.1f;
         } else {
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
@@ -318,11 +318,11 @@ public class Movement : MonoBehaviour
         if (jumped > 0)
             jumped -= 0.1f;
 
-        if (onground > 0)
-            onground -= 0.1f;
+        if (onGround > 0)
+            onGround -= 0.1f;
 
-        if (dash_timer < dash_cooldown)
-            dash_timer += 0.1f;
+        if (dashTimer < dashCooldown)
+            dashTimer += 0.1f;
 
         if (rb.velocity.y < -15)
             rb.velocity = new Vector2(rb.velocity.x, -15);
