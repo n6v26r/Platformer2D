@@ -30,7 +30,7 @@ public class Movement : MonoBehaviour
 
     public Image healthbar;
     public Image dashbar;
-    public Image doublejumpbar;
+    public Image doublejump;
 
     public GameObject silverKey;
     public GameObject silverKeyText;
@@ -54,7 +54,6 @@ public class Movement : MonoBehaviour
     public int extraJumps = 0;
     float jumpsLeft;
     float allowWallJump;
-    int wallJumpSticky;
 
     public float dashCooldown = 4f;
     public float dashPower = 20f;
@@ -86,6 +85,25 @@ public class Movement : MonoBehaviour
             liquids[i].OnLiquidStay2D += StayedInLiquid;
             liquids[i].OnLiquidExit += LeftLiquid;
         }
+
+        ground = GameObject.Find("Grid/Ground");
+
+        scoreUI = GameObject.Find("Canvas/Misc./Score");
+
+        dashbarRama = GameObject.Find("Canvas/Dash/rama_dash");
+        jumpbarRama = GameObject.Find("Canvas/Jump/rama_jump");
+
+        healthbar = GameObject.Find("Canvas/Health/Image").GetComponent<Image>();
+        dashbar = GameObject.Find("Canvas/Dash/Image").GetComponent<Image>();
+        doublejump = GameObject.Find("Canvas/Jump/Image").GetComponent<Image>();
+
+        silverKey = GameObject.Find("Canvas/Silver Key/silverkey");
+        silverKeyText = GameObject.Find("Canvas/Silver Key/silverkey_text");
+        silverKeyRama = GameObject.Find("Canvas/Silver Key/rama_silver");
+
+        goldenKey = GameObject.Find("Canvas/Golden key/goldenkey");
+        goldenKeyText = GameObject.Find("Canvas/Golden key/goldenkey_text");
+        goldenKeyRama = GameObject.Find("Canvas/Golden key/rama_golden");
     }
 
     private void EnteredLiquid(GameObject gameObject, int Type)
@@ -149,7 +167,6 @@ public class Movement : MonoBehaviour
         healthbar.fillAmount = 1;
         jumpsLeft = extraJumps;
         allowWallJump = 1;
-        wallJumpSticky = 0;
     }
 
     // Update is called once per frame
@@ -159,7 +176,7 @@ public class Movement : MonoBehaviour
 
         //Registers the jump input
         //---
-        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W))
             jumped = jumpBuffer;
         //---
 
@@ -207,20 +224,29 @@ public class Movement : MonoBehaviour
         //UI
         //----
         //Dash bar
-        dashbar.enabled = dashing;
-        dashbarRama.SetActive(dashing);
-        dashbar.fillAmount = Mathf.Clamp(dashTimer / dashCooldown, 0, 1f);
+        if (dashbar != null) {
+            dashbar.enabled = dashing;
+            dashbar.fillAmount = Mathf.Clamp(dashTimer / dashCooldown, 0, 1f);
+        }
+        if(dashbarRama != null)
+            dashbarRama.SetActive(dashing);
 
         ///Double jump bar
-        if (extraJumps == 0)
-            jumpbarRama.SetActive(false);
-        else
-            jumpbarRama.SetActive(true);
-        doublejumpbar.fillAmount = Mathf.Clamp((jumpsLeft / extraJumps), 0, 1f);
+        if(jumpbarRama != null)
+            if (extraJumps == 0)
+                jumpbarRama.SetActive(false);
+            else
+                jumpbarRama.SetActive(true);
+
+        if(doublejump != null)
+            doublejump.fillAmount = Mathf.Clamp((jumpsLeft / extraJumps), 0, 1f);
 
         //Health, score and keys
-        scoreUI.GetComponent<TMP_Text>().text = "Score: " + score.ToString();
-        healthbar.fillAmount = Mathf.Clamp(gameObject.GetComponent<Health>().GetHealth() / 100, 0, 1f);
+        if(scoreUI != null)
+            scoreUI.GetComponent<TMP_Text>().text = "Score: " + score.ToString();
+
+        if(healthbar != null)
+            healthbar.fillAmount = Mathf.Clamp(gameObject.GetComponent<Health>().GetHealth() / 100, 0, 1f);
         //----
 
 
@@ -246,11 +272,8 @@ public class Movement : MonoBehaviour
             rb.AddForce(new Vector2(acceleration * xInput, 0));
         //---
 
-        if (onGround > 0)
-            wallJumpSticky = 0;
-
         animator.SetBool("isWallcliming", false);
-        if (((rightWall == 1) && (allowWallJump == 1 && onGround <= 0 && Mathf.CeilToInt(rb.velocity.x) != 0 || wallJumpSticky == 1))) {//If on a wall on the right
+        if (((rightWall == 1) && (allowWallJump == 1 && onGround <= 0))) {//If on a wall on the right
             rb.velocity = new Vector2(rb.velocity.x, -fallingSpeedWallClimb);//Grabs*
             if (jumped > 0) {//Jumps off
                 jumped = 0;
@@ -259,8 +282,7 @@ public class Movement : MonoBehaviour
                 SoundManager?.PlaySound(SoundManager.PlayerJump);
             }
             animator.SetBool("isWallcliming", true);
-            wallJumpSticky = 1;
-        } else if (((leftWall == 1) && (allowWallJump == 1 && onGround <=0 && Mathf.CeilToInt(rb.velocity.x) != 0 || wallJumpSticky == 1))) {//If on a wall on the left
+        } else if (((leftWall == 1) && (allowWallJump == 1 && onGround <=0))) {//If on a wall on the left
             rb.velocity = new Vector2(rb.velocity.x, -fallingSpeedWallClimb);//Grabs*
             if (jumped > 0) {//Jumps off
                 jumped = 0;
@@ -269,8 +291,7 @@ public class Movement : MonoBehaviour
                 SoundManager?.PlaySound(SoundManager.PlayerJump);
             }
             animator.SetBool("isWallcliming", true);
-            wallJumpSticky = 1;
-        } else if (onGround > 0 || jumpsLeft > 0) {//if grounded(or has double jumps) 
+        } else if (onGround > 0 || (jumpsLeft > 0)) {//if grounded(or has double jumps) 
             if (jumped > 0) {//and if pressing the jump input
                 if (onGround <= 0)
                     jumpsLeft--;

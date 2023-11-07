@@ -23,14 +23,20 @@ public class Button : MonoBehaviour {
         yield return new WaitForSeconds(wait[0]);
         for (int i = 0; i < on.Count; i++)
             on[i].SetActive(true);
+
         yield return new WaitForSeconds(wait[1]);
+
         for (int i = 0; i < off.Count; i++)
             off[i].SetActive(false);
+
         yield return new WaitForSeconds(wait[2]);
+
         if (Scene != -1)
             SceneManager.LoadScene(Scene);
-        else
+        else 
             Application.Quit();
+        
+
         yield return new WaitForSeconds(wait[3]);
     }
 }
