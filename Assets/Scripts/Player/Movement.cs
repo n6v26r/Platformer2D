@@ -42,7 +42,7 @@ public class Movement : MonoBehaviour
 
     float xInput, yInput;
     float jumped, onGround;
-    int leftWall, rightWall;
+    public int leftWall, rightWall;
 
     public float jumpPower = 0f;
     public float acceleration = 0f;
@@ -241,7 +241,7 @@ public class Movement : MonoBehaviour
         if(doublejump != null)
             doublejump.fillAmount = Mathf.Clamp((jumpsLeft / extraJumps), 0, 1f);
 
-        //Health, score and keys
+        //Health, score
         if(scoreUI != null)
             scoreUI.GetComponent<TMP_Text>().text = "Score: " + score.ToString();
 
