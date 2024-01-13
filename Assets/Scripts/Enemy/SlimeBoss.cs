@@ -32,8 +32,6 @@ public class SlimeBoss : MonoBehaviour
     float distance;
     float iFrame;
     
-    bool touchingPlayer;
-
     void Start()
     {
         boxcl2D = GetComponent<BoxCollider2D>();
@@ -54,7 +52,10 @@ public class SlimeBoss : MonoBehaviour
                 pozChange = (transform.position - player.transform.position).normalized; 
                 pozChange = new Vector3(pozChange.x * xSpeed * Time.deltaTime, pozChange.y * 0, pozChange.z * 0);
 
-                transform.position -= pozChange;
+                if(!(pozChange.x<0 && Physics2D.BoxCast(boxcl2D.bounds.center, boxcl2D.bounds.size - new Vector3(0, 0.1f, 0), 0f, Vector2.left, extraHeightText, lmPlatfrom))
+                    && !(pozChange.x>0 && Physics2D.BoxCast(boxcl2D.bounds.center, boxcl2D.bounds.size - new Vector3(0, 0.1f, 0), 0f, Vector2.right, extraHeightText, lmPlatfrom))){
+                    transform.position -= pozChange;
+                }
 
                 if (timer >= switchStat) {
                     status = State.jumping;
@@ -105,21 +106,14 @@ public class SlimeBoss : MonoBehaviour
 
         if(iFrame > 0) {
             iFrame -= Time.deltaTime;
-        }else if(!touchingPlayer)
+        }else 
             Physics2D.IgnoreCollision(player.GetComponent<BoxCollider2D>(), boxcl2D, false);
     }
 
-    private void OnCollisionExit2D(Collision2D collision){
-        if(collision.gameObject.tag == "Player"){
-            touchingPlayer = false;
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision) {
+    private void OnTriggerEnter2D(Collider2D collision) {
         if(collision.gameObject.tag == "Player") {
             Physics2D.IgnoreCollision(collision.gameObject.GetComponent<BoxCollider2D>(), boxcl2D, true);
             iFrame = invTime;
-            touchingPlayer = true;
         }
     }
 }
