@@ -1,3 +1,7 @@
+// Nota 2.50
+
+// TODO (topool): FIX CODE PLS!
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,7 +23,7 @@ public class SlimeBoss : MonoBehaviour
     public float jumpheight;
     public float maxDis = 50f;
     [SerializeField] private LayerMask lmPlatfrom;
-    public float extraHeightText = .1f;
+    public float extraHeightText = 3f;
     public float invTime = 0f;
     BoxCollider2D boxcl2D;
 
@@ -28,8 +32,6 @@ public class SlimeBoss : MonoBehaviour
     float distance;
     float iFrame;
   
-
-    // Start is called before the first frame update
     void Start()
     {
         boxcl2D = GetComponent<BoxCollider2D>();
@@ -43,7 +45,6 @@ public class SlimeBoss : MonoBehaviour
        startpoz = transform.position;
     }
 
-    // Update is called once per frame
     void Update()
     {
         switch (status) {
