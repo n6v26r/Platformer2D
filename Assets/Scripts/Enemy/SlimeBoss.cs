@@ -31,7 +31,9 @@ public class SlimeBoss : MonoBehaviour
     float remain;
     float distance;
     float iFrame;
-  
+    
+    bool touchingPlayer;
+
     void Start()
     {
         boxcl2D = GetComponent<BoxCollider2D>();
@@ -103,14 +105,21 @@ public class SlimeBoss : MonoBehaviour
 
         if(iFrame > 0) {
             iFrame -= Time.deltaTime;
-        }else
+        }else if(!touchingPlayer)
             Physics2D.IgnoreCollision(player.GetComponent<BoxCollider2D>(), boxcl2D, false);
+    }
+
+    private void OnCollisionExit2D(Collision2D collision){
+        if(collision.gameObject.tag == "Player"){
+            touchingPlayer = false;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
         if(collision.gameObject.tag == "Player") {
             Physics2D.IgnoreCollision(collision.gameObject.GetComponent<BoxCollider2D>(), boxcl2D, true);
             iFrame = invTime;
+            touchingPlayer = true;
         }
     }
 }
