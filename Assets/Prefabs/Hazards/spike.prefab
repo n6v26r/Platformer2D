@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6490943866699806621}
   - component: {fileID: 921998554086026490}
   - component: {fileID: 1361613763722546610}
+  - component: {fileID: 3018412235019030113}
   m_Layer: 0
   m_Name: spike
   m_TagString: spike
@@ -31,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &921998554086026490
 SpriteRenderer:
@@ -130,3 +131,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.82101035, y: 0.69100714}
   m_EdgeRadius: 0
+--- !u!114 &3018412235019030113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8227144888328865893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44a3fc8721d163343bc5e88eb8fa7a53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

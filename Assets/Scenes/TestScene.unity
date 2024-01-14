@@ -401,7 +401,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   switchStat: 7
   timer: 0
-  xSpeed: 4
+  xSpeed: 3
   jumpheight: 5
   maxDis: 12
   lmPlatfrom:

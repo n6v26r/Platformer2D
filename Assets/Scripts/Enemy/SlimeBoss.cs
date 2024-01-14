@@ -1,7 +1,3 @@
-// Nota 2.50
-
-// TODO (topool): FIX CODE PLS!
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,7 +19,7 @@ public class SlimeBoss : MonoBehaviour
     public float jumpheight;
     public float maxDis = 50f;
     [SerializeField] private LayerMask lmPlatfrom;
-    public float extraHeightText = 3f;
+    public float extraHeightText = 10f;
     public float invTime = 0f;
     BoxCollider2D boxcl2D;
 
@@ -52,8 +48,9 @@ public class SlimeBoss : MonoBehaviour
                 pozChange = (transform.position - player.transform.position).normalized; 
                 pozChange = new Vector3(pozChange.x * xSpeed * Time.deltaTime, pozChange.y * 0, pozChange.z * 0);
 
-                if(!(pozChange.x<0 && Physics2D.BoxCast(boxcl2D.bounds.center, boxcl2D.bounds.size - new Vector3(0, 0.1f, 0), 0f, Vector2.left, extraHeightText, lmPlatfrom))
-                    && !(pozChange.x>0 && Physics2D.BoxCast(boxcl2D.bounds.center, boxcl2D.bounds.size - new Vector3(0, 0.1f, 0), 0f, Vector2.right, extraHeightText, lmPlatfrom))){
+                if(!(pozChange.x > 0 && Physics2D.BoxCast(boxcl2D.bounds.center, boxcl2D.bounds.size - new Vector3(0, 0.1f, 0), 0f, Vector2.left, extraHeightText, lmPlatfrom))
+                    && !(pozChange.x < 0 && Physics2D.BoxCast(boxcl2D.bounds.center, boxcl2D.bounds.size - new Vector3(0, 0.1f, 0), 0f, Vector2.right, extraHeightText, lmPlatfrom))
+                    && Mathf.Abs(pozChange.x) < 15){ 
                     transform.position -= pozChange;
                 }
 
@@ -92,14 +89,14 @@ public class SlimeBoss : MonoBehaviour
             case State.falling:
                 if(remain <= 0) {
                     status = State.moving;
-                    switchStat = Random.Range(6, 10);
+                    switchStat = Random.Range(6, 8);
                     timer = remain = 0;
                 }
 
                 transform.position = new Vector3(transform.position.x, startpoz.y + fall.Evaluate(remain) * jumpheight, startpoz.y);
                 Debug.Log(fall.Evaluate(remain));
 
-                remain -= Time.deltaTime * 3;
+                remain -= Time.deltaTime * 2.6f;
                 break;
         }
 

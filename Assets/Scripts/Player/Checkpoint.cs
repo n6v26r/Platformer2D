@@ -5,6 +5,7 @@ using UnityEngine;
 public class Checkpoint : MonoBehaviour
 {
     public List<GameObject> Checkpoints = new List<GameObject>();
+    public GameObject DeathManager;
     public Sprite On;
     public Sprite Off;
 
@@ -18,7 +19,7 @@ public class Checkpoint : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if(collision.tag == "Player" && sp.sprite == Off) {
-            GetComponent<DeathManager>().spawnpoint.transform.position = transform.position;
+            DeathManager.GetComponent<DeathManager>().spawnpoint.transform.position = transform.position;
             sp.sprite = On;
             for (int i = 0; i < Checkpoints.Count; i++)
                 Checkpoints[i].GetComponent<SpriteRenderer>().sprite = Off;
