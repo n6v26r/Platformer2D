@@ -86,24 +86,36 @@ public class Movement : MonoBehaviour
             liquids[i].OnLiquidExit += LeftLiquid;
         }
 
-        ground = GameObject.Find("Grid/Ground");
+        if(ground == null)
+            ground = GameObject.Find("Grid/Ground");
+        if (scoreUI == null)
+            scoreUI = GameObject.Find("Canvas/Misc./Score");
 
-        scoreUI = GameObject.Find("Canvas/Misc./Score");
+        if (dashbarRama == null)
+            dashbarRama = GameObject.Find("Canvas/Dash/rama_dash");
+        if (jumpbarRama == null)
+            jumpbarRama = GameObject.Find("Canvas/Jump/rama_jump");
 
-        dashbarRama = GameObject.Find("Canvas/Dash/rama_dash");
-        jumpbarRama = GameObject.Find("Canvas/Jump/rama_jump");
+        if (healthbar == null)
+            healthbar = GameObject.Find("Canvas/Health/Image").GetComponent<Image>();
+        if (dashbar == null)
+            dashbar = GameObject.Find("Canvas/Dash/Image").GetComponent<Image>();
+        if (doublejump == null)
+            doublejump = GameObject.Find("Canvas/Jump/Image").GetComponent<Image>();
 
-        healthbar = GameObject.Find("Canvas/Health/Image").GetComponent<Image>();
-        dashbar = GameObject.Find("Canvas/Dash/Image").GetComponent<Image>();
-        doublejump = GameObject.Find("Canvas/Jump/Image").GetComponent<Image>();
+        if (silverKey == null)
+            silverKey = GameObject.Find("Canvas/Silver Key/silverkey");
+        if (silverKeyText == null)
+            silverKeyText = GameObject.Find("Canvas/Silver Key/silverkey_text");
+        if (silverKeyRama == null)
+            silverKeyRama = GameObject.Find("Canvas/Silver Key/rama_silver");
 
-        silverKey = GameObject.Find("Canvas/Silver Key/silverkey");
-        silverKeyText = GameObject.Find("Canvas/Silver Key/silverkey_text");
-        silverKeyRama = GameObject.Find("Canvas/Silver Key/rama_silver");
-
-        goldenKey = GameObject.Find("Canvas/Golden key/goldenkey");
-        goldenKeyText = GameObject.Find("Canvas/Golden key/goldenkey_text");
-        goldenKeyRama = GameObject.Find("Canvas/Golden key/rama_golden");
+        if (goldenKey == null)
+            goldenKey = GameObject.Find("Canvas/Golden key/goldenkey");
+        if (goldenKeyText == null)
+            goldenKeyText = GameObject.Find("Canvas/Golden key/goldenkey_text");
+        if (goldenKeyRama == null)
+            goldenKeyRama = GameObject.Find("Canvas/Golden key/rama_golden");
     }
 
     private void EnteredLiquid(GameObject gameObject, int Type)
