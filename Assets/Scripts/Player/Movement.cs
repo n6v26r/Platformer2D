@@ -221,7 +221,6 @@ public class Movement : MonoBehaviour
         if (dashbar != null) {
             dashbar.enabled = dashing;
             dashbar.fillAmount = Mathf.Clamp(dashTimer / dashCooldown, 0, 1f);
-            Debug.Log(dashTimer / dashCooldown);
         }
         if (dashbarRama != null)
             dashbarRama.SetActive(dashing);
@@ -334,7 +333,6 @@ public class Movement : MonoBehaviour
             dashTimer = 0;
             dashAirtime = dashMaxAirTime;
         }
-
 
         if (dashAirtime > 0) {
             rb.velocity = new Vector2(transform.localScale.x * dashPower * dashDir, 0);

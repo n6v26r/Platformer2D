@@ -104,7 +104,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lmPlatfrom:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   good: {fileID: 6200000, guid: f463d48b9dacdc640a5fa48faf07bb19, type: 2}
   air: {fileID: 6200000, guid: 731e8d731d5cc1e4c8ecccaa840a4289, type: 2}
   ground: {fileID: 0}
@@ -113,24 +113,25 @@ MonoBehaviour:
   jumpbarRama: {fileID: 0}
   healthbar: {fileID: 0}
   dashbar: {fileID: 0}
-  doublejumpbar: {fileID: 0}
+  doublejump: {fileID: 0}
   silverKey: {fileID: 0}
   silverKeyText: {fileID: 0}
   silverKeyRama: {fileID: 0}
   goldenKey: {fileID: 0}
   goldenKeyText: {fileID: 0}
   goldenKeyRama: {fileID: 0}
-  jumpPower: 0
+  jumpPower: 550
   acceleration: 50
-  speedCap: 0
-  holdGravity: 0
-  baseGravity: 0
-  jumpBuffer: 0
-  coyoteTime: 0
+  speedCap: 5
+  holdGravity: 1.5
+  baseGravity: 5
+  jumpBuffer: 0.5
+  coyoteTime: 0.6
   extraJumps: 0
-  dashCooldown: 4
-  dashPower: 20
-  dashMaxAirTime: 0
+  dashCooldown: 6
+  dashPower: 4
+  dashMaxAirTime: 1
+  dashAirtime: 0
   fallingSpeedWallClimb: 1
   wallJumpPower: 390
   dashing: 1
