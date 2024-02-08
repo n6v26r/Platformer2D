@@ -173,7 +173,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!50 &15390737
 Rigidbody2D:
   serializedVersion: 4
@@ -34835,6 +34835,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2485824032784383721, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
   m_PrefabInstance: {fileID: 2485824034448868814}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &500953797 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6535969421262498859, guid: b341b4e717bac9541a1ae270b46f3484, type: 3}
+  m_PrefabInstance: {fileID: 840498757}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &511703295
 GameObject:
   m_ObjectHideFlags: 0
@@ -36429,11 +36440,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2485824032784383714, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.41
+      value: 47.27
       objectReference: {fileID: 0}
     - target: {fileID: 2485824032784383714, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.82
+      value: 0.94
       objectReference: {fileID: 0}
     - target: {fileID: 2485824032784383714, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
       propertyPath: m_LocalPosition.z
@@ -36506,7 +36517,7 @@ PrefabInstance:
     - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
       propertyPath: healthbar
       value: 
-      objectReference: {fileID: 1903353767}
+      objectReference: {fileID: 500953797}
     - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
       propertyPath: jumpPower
       value: 550
@@ -36528,8 +36539,12 @@ PrefabInstance:
       value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
+      propertyPath: doublejump
+      value: 
+      objectReference: {fileID: 223577499}
+    - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
       propertyPath: extraJumps
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
       propertyPath: extrajumps
@@ -36691,6 +36706,10 @@ PrefabInstance:
     - target: {fileID: 8344904655711565986, guid: 8d8dc0d7c42693a488fd864a8b7a6b3a, type: 3}
       propertyPath: m_Name
       value: Ghost
+      objectReference: {fileID: 0}
+    - target: {fileID: 8344904655711565986, guid: 8d8dc0d7c42693a488fd864a8b7a6b3a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

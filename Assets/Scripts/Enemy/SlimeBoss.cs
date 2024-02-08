@@ -76,7 +76,7 @@ public class SlimeBoss : MonoBehaviour
                     status = State.falling;
                 }
 
-                Debug.Log(Physics2D.BoxCast(boxcl2D.bounds.center, boxcl2D.bounds.size - new Vector3(0, 0.1f, 0), 0f, Vector2.left, extraHeightText, lmPlatfrom));
+                //Debug.Log(Physics2D.BoxCast(boxcl2D.bounds.center, boxcl2D.bounds.size - new Vector3(0, 0.1f, 0), 0f, Vector2.left, extraHeightText, lmPlatfrom));
 
                 transform.position = new Vector3(transform.position.x, startpoz.y + jump.Evaluate(remain) * jumpheight, startpoz.y);
                 if (!(Physics2D.BoxCast(boxcl2D.bounds.center, boxcl2D.bounds.size - new Vector3(0, 0.1f, 0), 0f, Vector2.left, extraHeightText, lmPlatfrom) ||
@@ -84,7 +84,7 @@ public class SlimeBoss : MonoBehaviour
                     transform.position = new Vector3(startpoz.x - follow.Evaluate(remain) * distance, transform.position.y, startpoz.y);
                 }
 
-                remain += Time.deltaTime * 2;
+                remain += Time.deltaTime * 1.3f;
                 break;
             case State.falling:
                 if(remain <= 0) {
@@ -94,7 +94,6 @@ public class SlimeBoss : MonoBehaviour
                 }
 
                 transform.position = new Vector3(transform.position.x, startpoz.y + fall.Evaluate(remain) * jumpheight, startpoz.y);
-                Debug.Log(fall.Evaluate(remain));
 
                 remain -= Time.deltaTime * 2.6f;
                 break;

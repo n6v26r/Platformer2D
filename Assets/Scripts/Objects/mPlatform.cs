@@ -41,9 +41,13 @@ public class mPlatform : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision) {
         if (collision.gameObject.tag == "Player") {
-            start = 1;
-            collision.gameObject.GetComponent<Rigidbody2D>().interpolation = RigidbodyInterpolation2D.None;
-            collision.transform.SetParent(transform);
+            if (collision.gameObject.GetComponent<Movement>().dashAirtime <= 0) {
+                start = 1;
+                collision.gameObject.GetComponent<Rigidbody2D>().interpolation = RigidbodyInterpolation2D.None;
+                collision.transform.SetParent(transform);
+            } else {
+                collision.transform.SetParent(null);
+            }
         }
     }
 

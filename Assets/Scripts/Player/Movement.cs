@@ -42,7 +42,7 @@ public class Movement : MonoBehaviour
 
     float xInput, yInput;
     float jumped, onGround;
-    public int leftWall, rightWall;
+    int leftWall, rightWall;
 
     public float jumpPower = 0f;
     public float acceleration = 0f;
@@ -58,7 +58,7 @@ public class Movement : MonoBehaviour
     public float dashCooldown = 4f;
     public float dashPower = 20f;
     public float dashMaxAirTime = 0f;
-    float dashAirtime;
+    public float dashAirtime;
     float dashTimer = 0f;
     int dashDir = 1;
 
@@ -192,24 +192,6 @@ public class Movement : MonoBehaviour
             jumped = jumpBuffer;
         //---
 
-        //Chechink if the player is on ground and it signals it in "onground"
-        //it resets double jump and applies friction if not moving
-        //---
-        if (Physics2D.BoxCast(boxcl2D.bounds.center, boxcl2D.bounds.size - new Vector3(0.1f, 0, 0), 0f, Vector2.down, extraHeightText, lmPlatfrom)) {
-            onGround = coyoteTime;
-            jumpsLeft = extraJumps;
-            if (xInput == 0 || Math.Abs(rb.velocity.x) > speedCap) {
-                ground.GetComponent<Rigidbody2D>().sharedMaterial = good;
-                boxcl2D.sharedMaterial = good;
-            } else {
-                ground.GetComponent<Rigidbody2D>().sharedMaterial = air;
-                boxcl2D.sharedMaterial = air;
-            }
-        } else {
-            ground.GetComponent<Rigidbody2D>().sharedMaterial = air;
-            boxcl2D.sharedMaterial = air;
-        }
-        //---
 
         //Check if the player is on a wall and signals it in "leftwall" and "rightwall"
         //---
@@ -239,8 +221,9 @@ public class Movement : MonoBehaviour
         if (dashbar != null) {
             dashbar.enabled = dashing;
             dashbar.fillAmount = Mathf.Clamp(dashTimer / dashCooldown, 0, 1f);
+            Debug.Log(dashTimer / dashCooldown);
         }
-        if(dashbarRama != null)
+        if (dashbarRama != null)
             dashbarRama.SetActive(dashing);
 
         ///Double jump bar
@@ -285,7 +268,7 @@ public class Movement : MonoBehaviour
         //---
 
         animator.SetBool("isWallcliming", false);
-        if (((rightWall == 1) && (allowWallJump == 1 && onGround <= 0))) {//If on a wall on the right
+        if (rightWall == 1) {//If on a wall on the right
             rb.velocity = new Vector2(rb.velocity.x, -fallingSpeedWallClimb);//Grabs*
             if (jumped > 0) {//Jumps off
                 jumped = 0;
@@ -294,7 +277,7 @@ public class Movement : MonoBehaviour
                 SoundManager?.PlaySound(SoundManager.PlayerJump);
             }
             animator.SetBool("isWallcliming", true);
-        } else if (((leftWall == 1) && (allowWallJump == 1 && onGround <=0))) {//If on a wall on the left
+        } else if (leftWall == 1) {//If on a wall on the left
             rb.velocity = new Vector2(rb.velocity.x, -fallingSpeedWallClimb);//Grabs*
             if (jumped > 0) {//Jumps off
                 jumped = 0;
@@ -315,8 +298,25 @@ public class Movement : MonoBehaviour
             }
             allowWallJump = 0;
         }
-        if (onGround <= 0 && leftWall == 0 && rightWall == 0)
-            allowWallJump = 1;
+
+        //Chechink if the player is on ground and it signals it in "onground"
+        //it resets double jump and applies friction if not moving
+        //---
+        if (Physics2D.BoxCast(boxcl2D.bounds.center, boxcl2D.bounds.size - new Vector3(0.1f, 0, 0), 0f, Vector2.down, extraHeightText, lmPlatfrom)) {
+            onGround = coyoteTime;
+            jumpsLeft = extraJumps;
+            if (xInput == 0 || Math.Abs(rb.velocity.x) > speedCap && dashAirtime <= 0) {
+                ground.GetComponent<Rigidbody2D>().sharedMaterial = good;
+                boxcl2D.sharedMaterial = good;
+            } else {
+                ground.GetComponent<Rigidbody2D>().sharedMaterial = air;
+                boxcl2D.sharedMaterial = air;
+            }
+        } else {
+            ground.GetComponent<Rigidbody2D>().sharedMaterial = air;
+            boxcl2D.sharedMaterial = air;
+        }
+        //---
 
         //Allows exetended jump 
         //---
@@ -338,6 +338,7 @@ public class Movement : MonoBehaviour
 
         if (dashAirtime > 0) {
             rb.velocity = new Vector2(transform.localScale.x * dashPower * dashDir, 0);
+
 
             rb.constraints = RigidbodyConstraints2D.FreezePositionY;
             rb.freezeRotation = true;

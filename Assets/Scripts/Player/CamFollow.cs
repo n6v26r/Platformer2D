@@ -6,7 +6,7 @@ public class CamFollow : MonoBehaviour
 {
     public GameObject Entity;
     public Vector3 offset;
-    public Vector2 EntityAllowedFreeMovementSpace = new Vector2(2, 2);
+    public Vector2 EntityAllowedFreeMovementSpace = new Vector2(1, 1);
     public Vector2 DistanceForTeleport = new Vector2(10, 10);
     public float StopFollowOnEntityStill = 0.2f;
     public float Speed = 5f;
@@ -37,7 +37,7 @@ public class CamFollow : MonoBehaviour
             EntityPos = lastEntityPosition;
         }
         
-        Vector2 MoveTo2D = Vector2.MoveTowards(MoveTo, EntityPos, Speed*Time.deltaTime);
+        Vector2 MoveTo2D = Vector2.MoveTowards(MoveTo, EntityPos, Speed*(Mathf.Abs(Entity.transform.position.x - transform.position.x) + Mathf.Abs(Entity.transform.position.y - transform.position.y)) * 0.99f *Time.deltaTime);
         MoveTo = new Vector3(MoveTo2D.x, MoveTo2D.y, MoveTo.z);
         
         gameObject.transform.position = MoveTo;
