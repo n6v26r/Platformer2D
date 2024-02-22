@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class FireDart : MonoBehaviour
 {
-    private float Speed = 25f;
+    private float Speed = 5f;
     private float Distante = 0f;
     private Vector3 targetpos;
     private Action<GameObject> FireDartHit;
@@ -20,10 +20,7 @@ public class FireDart : MonoBehaviour
 
     private void Update()
     {
-       if(transform.localScale.x == 1) 
-        transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x+1, transform.position.y, transform.position.z), Speed * Time.deltaTime);
-       else if(transform.localScale.x == -1)
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x - 1, transform.position.y, transform.position.z), Speed * Time.deltaTime);
+        transform.position += transform.right * Time.deltaTime * Speed;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

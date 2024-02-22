@@ -11,6 +11,9 @@ public class FireDartShooter : MonoBehaviour
     private bool ShouldShoot = false;
     private bool CanShoot = true;
 
+    public float delay = 0f;
+    public float timer = 0f;
+
     private void Start()
     {
         SelfAnimator = GetComponent<Animator>();
@@ -18,16 +21,17 @@ public class FireDartShooter : MonoBehaviour
 
     private void Update()
     {
-        if(ShouldShoot == true && CanShoot == true)
+        if(delay <= timer && CanShoot == true)
         {
             StartCoroutine(Shoot());
-            ShouldShoot = false;
+            timer = 0f;
         }
+        timer += Time.deltaTime;
     }
 
     public void AllowShoot()
     {
-        ShouldShoot = true;
+        timer = delay;
     }
 
     private IEnumerator Shoot()
@@ -35,17 +39,14 @@ public class FireDartShooter : MonoBehaviour
         CanShoot = false;
         SelfAnimator.Play("ChargeUp");
 
-        yield return new WaitForSeconds(0.01f); // Detect new animation
+        yield return new WaitForSeconds(0.02f); // Detect new animation
         yield return new WaitForSeconds(SelfAnimator.GetCurrentAnimatorStateInfo(0).length);
 
-        if(transform.localScale.x == 1)
-            Instantiate(FireDartRight, new Vector3(transform.position.x + 0.5f, transform.position.y + 0.125f, transform.position.z), Quaternion.identity);
-        else if(transform.localScale.x == -1)
-            Instantiate(FireDartLeft, new Vector3(transform.position.x - 0.5f, transform.position.y + 0.125f, transform.position.z), Quaternion.identity);
-        
+        Instantiate(FireDartRight, new Vector3(transform.position.x, transform.position.y, transform.position.z), gameObject.transform.rotation);
+
         SelfAnimator.Play("ChargeDown");
 
-        yield return new WaitForSeconds(0.01f); // Detect new animation
+        yield return new WaitForSeconds(0.02f); // Detect new animation
         yield return new WaitForSeconds(SelfAnimator.GetCurrentAnimatorStateInfo(0).length);
 
         CanShoot = true;
