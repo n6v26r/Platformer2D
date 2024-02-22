@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class FireDart : MonoBehaviour
 {
-    private float Speed = 5f;
+    public float Speed = 5f;
     private float Distante = 0f;
     private Vector3 targetpos;
     private Action<GameObject> FireDartHit;

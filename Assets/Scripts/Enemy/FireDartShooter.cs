@@ -6,6 +6,7 @@ public class FireDartShooter : MonoBehaviour
 {
     public GameObject FireDartRight;
     public GameObject FireDartLeft;
+    public GameObject bullet;
 
     private Animator SelfAnimator;
     private bool ShouldShoot = false;
@@ -13,6 +14,8 @@ public class FireDartShooter : MonoBehaviour
 
     public float delay = 0f;
     public float timer = 0f;
+    public float speed = 0f;
+    public int stop = 0;
 
     private void Start()
     {
@@ -26,7 +29,8 @@ public class FireDartShooter : MonoBehaviour
             StartCoroutine(Shoot());
             timer = 0f;
         }
-        timer += Time.deltaTime;
+        if(stop == 0)
+            timer += Time.deltaTime;
     }
 
     public void AllowShoot()
@@ -36,19 +40,19 @@ public class FireDartShooter : MonoBehaviour
 
     private IEnumerator Shoot()
     {
-        CanShoot = false;
+        stop = 1;
         SelfAnimator.Play("ChargeUp");
 
         yield return new WaitForSeconds(0.02f); // Detect new animation
         yield return new WaitForSeconds(SelfAnimator.GetCurrentAnimatorStateInfo(0).length);
 
-        Instantiate(FireDartRight, new Vector3(transform.position.x, transform.position.y, transform.position.z), gameObject.transform.rotation);
+        bullet = Instantiate(FireDartRight, new Vector3(transform.position.x, transform.position.y, transform.position.z), gameObject.transform.rotation);
+        bullet.GetComponent<FireDart>().Speed = speed;
 
         SelfAnimator.Play("ChargeDown");
 
-        yield return new WaitForSeconds(0.02f); // Detect new animation
+        stop = 0;
+        yield return new WaitForSeconds(0.01f); // Detect new animation
         yield return new WaitForSeconds(SelfAnimator.GetCurrentAnimatorStateInfo(0).length);
-
-        CanShoot = true;
     }
 }
