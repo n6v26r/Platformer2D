@@ -11,11 +11,12 @@ public class FireDartShooter : MonoBehaviour
     private Animator SelfAnimator;
     private bool ShouldShoot = false;
     private bool CanShoot = true;
+    private int stop = 0;
 
+    public float waitTime = 0f;
     public float delay = 0f;
     public float timer = 0f;
     public float speed = 0f;
-    public int stop = 0;
 
     private void Start()
     {
@@ -24,13 +25,16 @@ public class FireDartShooter : MonoBehaviour
 
     private void Update()
     {
-        if(delay <= timer && CanShoot == true)
-        {
-            StartCoroutine(Shoot());
-            timer = 0f;
+        if (waitTime <= 0) {
+            if (delay <= timer && CanShoot == true) {
+                StartCoroutine(Shoot());
+                timer = 0f;
+            }
+            if (stop == 0)
+                timer += Time.deltaTime;
+        } else {
+            waitTime -= Time.deltaTime;
         }
-        if(stop == 0)
-            timer += Time.deltaTime;
     }
 
     public void AllowShoot()
@@ -48,11 +52,12 @@ public class FireDartShooter : MonoBehaviour
 
         bullet = Instantiate(FireDartRight, new Vector3(transform.position.x, transform.position.y, transform.position.z), gameObject.transform.rotation);
         bullet.GetComponent<FireDart>().Speed = speed;
+        bullet.transform.localScale = transform.localScale;
 
         SelfAnimator.Play("ChargeDown");
 
-        stop = 0;
         yield return new WaitForSeconds(0.01f); // Detect new animation
         yield return new WaitForSeconds(SelfAnimator.GetCurrentAnimatorStateInfo(0).length);
+        stop = 0;
     }
 }

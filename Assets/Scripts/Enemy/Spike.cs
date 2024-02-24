@@ -13,8 +13,10 @@ public class Spike : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
-        if(other.gameObject.tag == "Player")
-            SoundManager.PlaySound(SoundManager.CellingSpike);
-        OnHit(other.gameObject);
+        if (other.gameObject.tag == "Player") {
+            if(SoundManager != null)
+                SoundManager.PlaySound(SoundManager.CellingSpike);
+            OnHit(other.gameObject);
+        }
     }
 }
