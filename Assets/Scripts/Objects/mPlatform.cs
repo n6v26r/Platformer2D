@@ -34,6 +34,7 @@ public class mPlatform : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision) {
         if (collision.gameObject.tag == "Player") {
             launchdir = (points[poz].transform.position - transform.position).normalized;
+            collision.gameObject.GetComponent<Rigidbody2D>().velocity += new Vector2(launchdir.x * speed[poz] * 1f, launchdir.y * speed[poz] * 0.6f);
             collision.gameObject.GetComponent<Rigidbody2D>().interpolation = RigidbodyInterpolation2D.Interpolate;
             collision.transform.SetParent(null);
         }
