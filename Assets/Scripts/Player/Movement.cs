@@ -243,6 +243,16 @@ public class Movement : MonoBehaviour
             healthbar.fillAmount = Mathf.Clamp(gameObject.GetComponent<Health>().GetHealth() / 100, 0, 1f);
         //----
 
+        //Silver key
+        //--
+        silverKeyText.GetComponent<TMP_Text>().text = "x " + InventoryManagement.SilverKeysInInventory;
+        //--
+
+        //Golden keys
+        //--
+        goldenKeyText.GetComponent<TMP_Text>().text = "x " + InventoryManagement.GoldenKeysInInventory;
+        //--
+
 
         if (jumped>0)
             animator.SetBool("IsJumping", true);
@@ -358,10 +368,5 @@ public class Movement : MonoBehaviour
 
         if (rb.velocity.y < -15)
             rb.velocity = new Vector2(rb.velocity.x, -15);
-    }
-
-    private void OnTriggerStay2D(Collider2D collision) {
-        if(collision.gameObject.tag == "Boss")
-            GetComponent<Health>().InflictDamage(25);
     }
 }

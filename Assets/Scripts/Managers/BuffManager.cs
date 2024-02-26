@@ -34,7 +34,7 @@ public class BuffManager : MonoBehaviour
         {
             player.GetComponent<Movement>().dashing = true;
             Movement.score += 25;
-        }else if(Type == 4) {
+        }else if(Type == 6) {
             player.GetComponent<Movement>().extraJumps++;
         }
     }

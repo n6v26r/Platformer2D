@@ -176,7 +176,7 @@ Transform:
   - {fileID: 4531711443914827177}
   - {fileID: 6988198638431643791}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7833236510801948473
 GameObject:
@@ -276,7 +276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cf7ebc0d7ca52049b089008a9ce07d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemType: 4
+  ItemType: 6
 --- !u!61 &1392977210883993415
 BoxCollider2D:
   m_ObjectHideFlags: 0
