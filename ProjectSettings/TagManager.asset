@@ -11,6 +11,7 @@ TagManager:
   - FireDartShooter
   - pressure plate
   - TNT
+  - Boss
   layers:
   - Default
   - TransparentFX

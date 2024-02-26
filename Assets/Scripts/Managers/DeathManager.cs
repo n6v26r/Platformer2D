@@ -91,7 +91,7 @@ public class DeathManager : MonoBehaviour
         Damage(gameObject, new DamageEffect(5, 1, 0, "Fire"));
     }
 
-    private void CellingSpikeHit(GameObject gameObject)
+    public void CellingSpikeHit(GameObject gameObject)
     {
         Damage(gameObject, new DamageEffect(25, 1, 0, "Hit"));
     }

@@ -108,6 +108,7 @@ public class SlimeBoss : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if(collision.gameObject.tag == "Player") {
+            collision.gameObject.GetComponent<Health>().InflictDamage(25);
             Physics2D.IgnoreCollision(collision.gameObject.GetComponent<BoxCollider2D>(), boxcl2D, true);
             iFrame = invTime;
         }

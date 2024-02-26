@@ -21,6 +21,7 @@ public class Checkpoint : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision) {
         if(collision.tag == "Player" && sp.sprite == Off) {
             DeathManager.GetComponent<DeathManager>().spawnpoint.transform.position = transform.position;
+            Movement.score += 10;
             sp.sprite = On;
             for (int i = 0; i < Checkpoints.Count; i++)
                 Checkpoints[i].GetComponent<SpriteRenderer>().sprite = Off;
