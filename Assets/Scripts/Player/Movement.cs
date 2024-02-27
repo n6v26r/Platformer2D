@@ -53,7 +53,7 @@ public class Movement : MonoBehaviour
     [SerializeField] float coyoteTime = 0f;
     public int extraJumps = 0;
     float jumpsLeft;
-    float allowWallJump;
+    int allowWallJump = 1;
 
     public float dashCooldown = 4f;
     public float dashPower = 20f;
@@ -277,7 +277,15 @@ public class Movement : MonoBehaviour
         //---
 
         animator.SetBool("isWallcliming", false);
-        if (rightWall == 1) {//If on a wall on the right
+
+        if (rightWall + leftWall == 0) {
+            if (onGround > 0)
+                allowWallJump = 0;
+            else
+                allowWallJump = 1;
+        }
+
+        if (rightWall == 1 && allowWallJump == 1) {//If on a wall on the right
             rb.velocity = new Vector2(rb.velocity.x, -fallingSpeedWallClimb);//Grabs*
             if (jumped > 0) {//Jumps off
                 jumped = 0;
@@ -286,7 +294,7 @@ public class Movement : MonoBehaviour
                 SoundManager?.PlaySound(SoundManager.PlayerJump);
             }
             animator.SetBool("isWallcliming", true);
-        } else if (leftWall == 1) {//If on a wall on the left
+        } else if (leftWall == 1 && allowWallJump == 1) {//If on a wall on the left
             rb.velocity = new Vector2(rb.velocity.x, -fallingSpeedWallClimb);//Grabs*
             if (jumped > 0) {//Jumps off
                 jumped = 0;
