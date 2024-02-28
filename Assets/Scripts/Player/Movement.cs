@@ -278,12 +278,11 @@ public class Movement : MonoBehaviour
 
         animator.SetBool("isWallcliming", false);
 
-        if (rightWall + leftWall == 0) {
-            if (onGround > 0)
-                allowWallJump = 0;
-            else
-                allowWallJump = 1;
-        }
+       
+        if (onGround > 0)
+            allowWallJump = 0;
+        else if(rightWall + leftWall == 0)
+            allowWallJump = 1;
 
         if (rightWall == 1 && allowWallJump == 1) {//If on a wall on the right
             rb.velocity = new Vector2(rb.velocity.x, -fallingSpeedWallClimb);//Grabs*
@@ -313,7 +312,6 @@ public class Movement : MonoBehaviour
                 rb.AddForce(new Vector2(0, jumpPower));
                 SoundManager?.PlaySound(SoundManager.PlayerJump);
             }
-            allowWallJump = 0;
         }
 
         //Chechink if the player is on ground and it signals it in "onground"

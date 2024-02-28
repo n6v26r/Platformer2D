@@ -209,6 +209,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2485824032784383721, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
   m_PrefabInstance: {fileID: 148756133}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &23817200 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2485824032784383716, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
+  m_PrefabInstance: {fileID: 148756133}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 23817194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 023df0086b9b69a49afbba9d170ae0ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &27208910
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11857,11 +11868,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2485824032784383714, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4
+      value: -4.23
       objectReference: {fileID: 0}
     - target: {fileID: 2485824032784383714, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.1
+      value: -0.36
       objectReference: {fileID: 0}
     - target: {fileID: 2485824032784383714, guid: 4f08428f902ca984183d92fc3b0ef273, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13213,6 +13224,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1727901674}
     m_Modifications:
+    - target: {fileID: 139721930188586094, guid: 0a05086ba8693714392d8000fcd9a4e2, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 23817194}
     - target: {fileID: 2661819586896173806, guid: 0a05086ba8693714392d8000fcd9a4e2, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -13464,6 +13479,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LifeManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6498602582496959105, guid: 95eba3acafa89b44da5beb25513e5d94, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 23817200}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -557,7 +557,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Button: {fileID: 1108778538}
   Door: {fileID: 1269957528}
-  end: 0.2
+  end: 3
 --- !u!4 &241800421
 Transform:
   m_ObjectHideFlags: 0
@@ -16287,7 +16287,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1369180443 stripped
 GameObject:

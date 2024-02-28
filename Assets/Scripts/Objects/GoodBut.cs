@@ -8,6 +8,7 @@ public class GoodBut : MonoBehaviour
     public GameObject Door;
     public float end = 0f;
     float counter = 0f;
+    int inrange = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -18,23 +19,31 @@ public class GoodBut : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(counter >= end)
-            Door.SetActive(false);
-        Debug.Log(counter);
-    }
-
-
-    private void OnTriggerStay2D(Collider2D collision) {
-        if (collision.gameObject.tag == "Player") {
+        if(inrange == 1) {
             if (Input.GetKey(KeyCode.E)) {
-                Debug.Log("pressing");
-                Button.SetActive(false);
                 counter += Time.deltaTime;
+                Button.SetActive(false);
             } else {
                 Button.SetActive(true);
             }
-        } else {
+        } else { 
             Button.SetActive(true);
+        }
+
+        if (counter >= end)
+            Door.SetActive(false);
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if(collision.gameObject.tag == "Player") {
+            inrange = 1;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision) {
+        if (collision.gameObject.tag == "Player") {
+            inrange = 0;
         }
     }
 }
