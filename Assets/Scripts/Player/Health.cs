@@ -61,6 +61,7 @@ public class Health : MonoBehaviour
             gameObject.transform.position = FindObjectOfType<Spawnpoint>().transform.position; // Move player to spawnpoint
             ActivateSpawnProtection();
             ResetHealth();
+            FindAnyObjectByType<LiveManager>().OnDeath();
         }
     }
 

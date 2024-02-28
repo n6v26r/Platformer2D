@@ -30,7 +30,7 @@ public class LiveManager : MonoBehaviour
             Player.death = OnDeath;
     }
 
-    private void OnDeath(){
+    public void OnDeath(){
         lives--;
         if(lives<=0){
             Movement.score = 0;

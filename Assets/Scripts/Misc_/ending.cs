@@ -11,6 +11,7 @@ public class ending : MonoBehaviour
 
     private void Start()
     {
+        Destroy(FindAnyObjectByType<SoundManger>());
         if (Movement.score >= goodending)
             ending2.SetActive(true);
         else
