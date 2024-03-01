@@ -284,7 +284,7 @@ public class Movement : MonoBehaviour
         else if(rightWall + leftWall == 0)
             allowWallJump = 1;
 
-        if (rightWall == 1 && allowWallJump == 1) {//If on a wall on the right
+        if (rightWall == 1) {//If on a wall on the right
             rb.velocity = new Vector2(rb.velocity.x, -fallingSpeedWallClimb);//Grabs*
             if (jumped > 0) {//Jumps off
                 jumped = 0;
@@ -293,7 +293,7 @@ public class Movement : MonoBehaviour
                 SoundManager?.PlaySound(SoundManager.PlayerJump);
             }
             animator.SetBool("isWallcliming", true);
-        } else if (leftWall == 1 && allowWallJump == 1) {//If on a wall on the left
+        } else if (leftWall == 1) {//If on a wall on the left
             rb.velocity = new Vector2(rb.velocity.x, -fallingSpeedWallClimb);//Grabs*
             if (jumped > 0) {//Jumps off
                 jumped = 0;
