@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7732367273198543786}
   - component: {fileID: 2237574209250092232}
   - component: {fileID: 4752716689609710332}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Block
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -176,7 +176,7 @@ Transform:
   - {fileID: 4531711443914827177}
   - {fileID: 6988198638431643791}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7833236510801948473
 GameObject:

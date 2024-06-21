@@ -99704,10 +99704,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 94283833420330648, guid: b597b4bb1b6ce2c4eb5d35f179280e09, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 946852019886654102, guid: b597b4bb1b6ce2c4eb5d35f179280e09, type: 3}
       propertyPath: m_Name
       value: Dimond
