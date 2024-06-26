@@ -711,6 +711,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25cd36d9ef4a8364195fa5a4cfb0489a, type: 3}
+--- !u!1 &191566716 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2332954645616128026, guid: 25cd36d9ef4a8364195fa5a4cfb0489a, type: 3}
+  m_PrefabInstance: {fileID: 191566715}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &195117600
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17801,6 +17806,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WormHole
       objectReference: {fileID: 0}
+    - target: {fileID: 2775543139516384267, guid: 25cd36d9ef4a8364195fa5a4cfb0489a, type: 3}
+      propertyPath: WormBrother
+      value: 
+      objectReference: {fileID: 191566716}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
