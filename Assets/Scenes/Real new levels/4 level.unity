@@ -664,7 +664,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 485019810066444798, guid: 25cd36d9ef4a8364195fa5a4cfb0489a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.45
+      value: 5.65
       objectReference: {fileID: 0}
     - target: {fileID: 485019810066444798, guid: 25cd36d9ef4a8364195fa5a4cfb0489a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -702,10 +702,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: WormHole (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2775543139516384267, guid: 25cd36d9ef4a8364195fa5a4cfb0489a, type: 3}
+      propertyPath: sprites.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2775543139516384267, guid: 25cd36d9ef4a8364195fa5a4cfb0489a, type: 3}
+      propertyPath: sprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: d8656a41cf379f94d89e4b178e5c9765, type: 3}
+    - target: {fileID: 2775543139516384267, guid: 25cd36d9ef4a8364195fa5a4cfb0489a, type: 3}
+      propertyPath: sprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 6c721b2fa3b8b224496a4c52d12b153a, type: 3}
+    - target: {fileID: 2775543139516384267, guid: 25cd36d9ef4a8364195fa5a4cfb0489a, type: 3}
+      propertyPath: sprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 997d1abe9f3044143b68101af4315239, type: 3}
+    - target: {fileID: 2775543139516384267, guid: 25cd36d9ef4a8364195fa5a4cfb0489a, type: 3}
+      propertyPath: sprites.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 269641e9047e2584d9c2c3cc1f7aa85c, type: 3}
     - target: {fileID: 2980904485231257082, guid: 25cd36d9ef4a8364195fa5a4cfb0489a, type: 3}
       propertyPath: m_FlipY
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2980904485231257082, guid: 25cd36d9ef4a8364195fa5a4cfb0489a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d8656a41cf379f94d89e4b178e5c9765, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17810,6 +17834,30 @@ PrefabInstance:
       propertyPath: WormBrother
       value: 
       objectReference: {fileID: 191566716}
+    - target: {fileID: 2775543139516384267, guid: 25cd36d9ef4a8364195fa5a4cfb0489a, type: 3}
+      propertyPath: sprites.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2775543139516384267, guid: 25cd36d9ef4a8364195fa5a4cfb0489a, type: 3}
+      propertyPath: sprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: d8656a41cf379f94d89e4b178e5c9765, type: 3}
+    - target: {fileID: 2775543139516384267, guid: 25cd36d9ef4a8364195fa5a4cfb0489a, type: 3}
+      propertyPath: sprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 6c721b2fa3b8b224496a4c52d12b153a, type: 3}
+    - target: {fileID: 2775543139516384267, guid: 25cd36d9ef4a8364195fa5a4cfb0489a, type: 3}
+      propertyPath: sprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 997d1abe9f3044143b68101af4315239, type: 3}
+    - target: {fileID: 2775543139516384267, guid: 25cd36d9ef4a8364195fa5a4cfb0489a, type: 3}
+      propertyPath: sprites.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 269641e9047e2584d9c2c3cc1f7aa85c, type: 3}
+    - target: {fileID: 2980904485231257082, guid: 25cd36d9ef4a8364195fa5a4cfb0489a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d8656a41cf379f94d89e4b178e5c9765, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -34,7 +34,7 @@ public class LiveManager : MonoBehaviour
         lives--;
         if(lives<=0){
             Movement.score = 0;
-            lives = 15;
+            lives = 45;
         }
         if (text != null)
             text.GetComponent<TMP_Text>().text = "Lives: " + lives.ToString();

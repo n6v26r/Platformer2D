@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class ending : MonoBehaviour
 {
     public int goodending = 0;
     public GameObject ending1;
     public GameObject ending2;
+    public GameObject scoreUI;
 
     private void Start()
     {
@@ -17,6 +19,11 @@ public class ending : MonoBehaviour
         else
             ending1.SetActive(true);
         StartCoroutine("end");
+    }
+
+    private void Update() {
+        if (scoreUI != null)
+            scoreUI.GetComponent<TMP_Text>().text = "Score: " + Movement.score.ToString();
     }
 
     IEnumerator end() {
