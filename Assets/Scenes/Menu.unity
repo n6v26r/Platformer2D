@@ -777,7 +777,7 @@ MonoBehaviour:
     - Interact
 
 
-    An ability can be used only after its respenctive ore has been
+    An ability can be used only after its respective ore has been
     mined'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7bb2174aaa21fd34995b9baf6975395e, type: 2}

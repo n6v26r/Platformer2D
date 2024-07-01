@@ -18,18 +18,20 @@ public class ending : MonoBehaviour
             ending2.SetActive(true);
         else
             ending1.SetActive(true);
+        if (scoreUI != null)
+            scoreUI.GetComponent<TMP_Text>().text = "Score: " + Movement.score.ToString();
+
         StartCoroutine("end");
     }
 
     private void Update() {
-        if (scoreUI != null)
-            scoreUI.GetComponent<TMP_Text>().text = "Score: " + Movement.score.ToString();
+        
     }
 
     IEnumerator end() {
         Movement.score = 0;
         LiveManager lm = FindAnyObjectByType<LiveManager>();
-        lm.lives = 15; 
+        lm.lives = 45; 
         yield return new WaitForSeconds(10);
         SceneManager.LoadScene(0);
     }
